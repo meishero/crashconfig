@@ -184,18 +184,18 @@
   
  
 #JULI  按自己理解分流 itdog测试了
-  - DOMAIN-SUFFIX,php.jdshipin.com,🇺🇸 美国节点   #失效
-  - DOMAIN-SUFFIX,163189.xyz,🚀 节点选择 #🇺🇸 美国节点  #直连就可以  不一定要代理
+  - DOMAIN-SUFFIX,php.jdshipin.com,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,163189.xyz,🇺🇸 美国节点 #直连就可以  不一定要代理
   - DOMAIN-SUFFIX,1678520.xyz,🇪🇺 欧洲节点 #🇺🇸 美国节点 #直连就可以  不一定要代理 #捷克 #德国最快
-  - DOMAIN-SUFFIX,178.indevs.in,🚀 节点选择 #🇺🇸 美国节点 #直连就可以  不一定要代理
+  - DOMAIN-SUFFIX,178.indevs.in,🇺🇸 美国节点 #直连就可以  不一定要代理
 #  - DOMAIN-SUFFIX,veryfast.filegear-sg.me,🇹🇼 台湾节点  #失效
-  - DOMAIN-SUFFIX,cdn.loc.cc,🇺🇸 美国节点 #🇺🇸 美国节点  #直连就可以  不一定要代理
+  - DOMAIN-SUFFIX,cdn.loc.cc,🇺🇸 美国节点 #直连就可以  不一定要代理
 
 #jacktv
-  - DOMAIN-SUFFIX,filegear-sg.me,🇺🇸 美国节点 #🇺🇸 美国节点  #直连就可以  不一定要代理
+  - DOMAIN-SUFFIX,filegear-sg.me,🇺🇸 美国节点 #直连就可以  不一定要代理
 
 #chinatvlive.264788.xyz
-  - DOMAIN-SUFFIX,live.264788.xyz,🇺🇸 美国节点 #🇺🇸 美国节点  #直连就可以  不一定要代理
+  - DOMAIN-SUFFIX,live.264788.xyz,🇺🇸 美国节点 #直连就可以  不一定要代理
   
 #iptv总部
   - IP-CIDR,82.156.243.185/32,🇺🇸 美国节点
