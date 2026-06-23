@@ -69,6 +69,7 @@ rule-providers:
     behavior: domain
     proxy: DIRECT
     url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/ai.mrs"
+    path: "./ruleset/ai.mrs"
   youtube:
     type: http
     format: mrs
@@ -76,6 +77,7 @@ rule-providers:
     behavior: domain
     proxy: DIRECT
     url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/youtube.mrs"
+    path: "./ruleset/youtube.mrs"
   netflix:
     type: http
     format: mrs
@@ -83,6 +85,7 @@ rule-providers:
     behavior: domain
     proxy: DIRECT
     url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/netflix.mrs"
+    path: "./ruleset/netflix.mrs"
   telegramip:
     type: http
     format: mrs
@@ -90,6 +93,7 @@ rule-providers:
     behavior: ipcidr
     proxy: DIRECT
     url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/telegramip.mrs"
+    path: "./ruleset/telegramip.mrs"
   applications:
     type: http
     format: text
@@ -97,6 +101,7 @@ rule-providers:
     behavior: classical
     proxy: DIRECT
     url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/applications.list"
+    path: "./ruleset/applications.list"
   private:
     type: http
     format: mrs
@@ -104,6 +109,7 @@ rule-providers:
     behavior: domain
     proxy: DIRECT
     url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/private.mrs"
+    path: "./ruleset/private.mrs"
   privateip:
     type: http
     format: mrs
@@ -111,6 +117,7 @@ rule-providers:
     behavior: ipcidr
     proxy: DIRECT
     url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/privateip.mrs"
+    path: "./ruleset/privateip.mrs"
   networktest:
     type: http
     format: mrs
@@ -118,6 +125,7 @@ rule-providers:
     behavior: domain
     proxy: DIRECT
     url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/networktest.mrs"
+    path: "./ruleset/networktest.mrs"
   apple-cn:
     type: http
     format: mrs
@@ -125,6 +133,7 @@ rule-providers:
     behavior: domain
     proxy: DIRECT
     url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/apple-cn.mrs"
+    path: "./ruleset/apple-cn.mrs"
   google-cn:
     type: http
     format: mrs
@@ -132,20 +141,23 @@ rule-providers:
     behavior: domain
     proxy: DIRECT
     url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/google-cn.mrs"
+    path: "./ruleset/google-cn.mrs"
   googlefcm:
     type: http
     format: mrs
     interval: 86400
     behavior: domain
     proxy: DIRECT
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@refs/heads/meta/geo/geosite/googlefcm.mrs"
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@refs/heads/meta/geo/geosite/googlefcm.mrs"  
+    path: "./ruleset/googlefcm.mrs"                                                                     
   steamcn:
     type: http
     format: mrs
     interval: 86400
     behavior: domain
     proxy: DIRECT
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@refs/heads/meta/geo/geosite/steam@cn.mrs"
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@refs/heads/meta/geo/geosite/steam@cn.mrs" 
+    path: "./ruleset/steamcn.mrs"                                                                        
   microsoft-cn:
     type: http
     format: mrs
@@ -153,6 +165,7 @@ rule-providers:
     behavior: domain
     proxy: DIRECT
     url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/microsoft-cn.mrs"
+    path: "./ruleset/microsoft-cn.mrs"
   games-cn:
     type: http
     format: mrs
@@ -160,6 +173,7 @@ rule-providers:
     behavior: domain
     proxy: DIRECT
     url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/games-cn.mrs"
+    path: "./ruleset/games-cn.mrs"
   games:
     type: http
     format: mrs
@@ -167,6 +181,7 @@ rule-providers:
     behavior: domain
     proxy: DIRECT
     url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/games.mrs"
+    path: "./ruleset/games.mrs"
   mediaip:
     type: http
     format: mrs
@@ -174,6 +189,7 @@ rule-providers:
     behavior: ipcidr
     proxy: DIRECT
     url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/mediaip.mrs"
+    path: "./ruleset/mediaip.mrs"
   media:
     type: http
     format: mrs
@@ -181,6 +197,7 @@ rule-providers:
     behavior: domain
     proxy: DIRECT
     url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/media.mrs"
+    path: "./ruleset/media.mrs"
   cnip:
     type: http
     format: mrs
@@ -188,6 +205,7 @@ rule-providers:
     behavior: ipcidr
     proxy: DIRECT
     url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/cnip.mrs"
+    path: "./ruleset/cnip.mrs"
   proxy:
     type: http
     format: mrs
@@ -195,6 +213,7 @@ rule-providers:
     behavior: domain
     proxy: DIRECT
     url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/proxy.mrs"
+    path: "./ruleset/proxy.mrs"
   cn:
     type: http
     format: mrs
@@ -202,6 +221,7 @@ rule-providers:
     behavior: domain
     proxy: DIRECT
     url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/cn.mrs"
+    path: "./ruleset/cn.mrs"
   ads:
     type: http
     format: mrs
@@ -209,6 +229,7 @@ rule-providers:
     behavior: domain
     proxy: DIRECT
     url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/ads.mrs"
+    path: "./ruleset/ads.mrs"
 
 #规则顺序
 rules:
