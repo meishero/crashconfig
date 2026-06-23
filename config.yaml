@@ -1,7 +1,7 @@
 proxy-providers:
   edgetunnel:
     type: http
-    url: "https://ddd0802.meishero.qzz.io/sub?token=3f9c77e61bbda33864b06f3c962047b8&b64"
+    url: "https://ddd0802.meishero.qzz.io/sub?token=3f9c77e61bbda33864b06f3c962047b8"
     path: "./providers/edgetunnel.yaml"
     interval: 10800
     health-check:
@@ -45,7 +45,7 @@ proxy-groups:
   - {name: 🛑 广告拦截, type: select, proxies: [🔴 拦截, 🟢 放行]}
   - {name: 🔒 私有网络, type: select, proxies: [DIRECT], hidden: true}
   - {name: 🔴 拦截, type: select, proxies: [REJECT], hidden: true}
-  - {name: 🟢 放行, type: select, proxies: [PASS], hidden: true}
+  - {name: 🟢 放行, type: select, proxies: [DIRECT], hidden: true}
   - {name: 🎯 本地直连, type: select, proxies: [DIRECT], hidden: true}
 
   - {name: 🇭🇰 香港节点, type: url-test, tolerance: 50, include-all: true, filter: "(?i)(🇭🇰|港|hk|hongkong|hong kong)"}
