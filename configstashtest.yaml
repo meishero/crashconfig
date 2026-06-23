@@ -1,7 +1,7 @@
 proxy-providers:
   edgetunnel:
     type: http
-    url: "vless://37f3f281-3853-4532-8204-a24dc49e6d94@ddd0802.meishero.qzz.io:443?security=tls&type=ws&ech=https%3A%2F%2Fdns.alidns.com%2Fdns-query&host=ddd0802.meishero.qzz.io&fp=firefox&sni=ddd0802.meishero.qzz.io&path=%2Fcity%2Factivity%2Freg&encryption=none#edgetunnel"
+    url: "https://ddd0802.meishero.qzz.io/sub?token=3f9c77e61bbda33864b06f3c962047b8&b64"
     path: "./providers/edgetunnel.yaml"
     interval: 10800
     health-check:
