@@ -14,7 +14,7 @@ proxy-providers:
       skip-cert-verify: true
 proxy-groups:
   - {name: 🚀 节点选择, type: select, proxies: [♻️ 自动选择, ✨ 自动选择（去高倍率）, 🛠️ 手动切换, ⚖️ 负载均衡, 🚑 故障转移, 🎯 本地直连, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
-  - {name: 🛠️ 手动切换, type: select, include-all: true, proxies: [🎯 本地直连, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
+  - {name: 🛠️ 手动切换, type: select, include-all: true, exclude-filter: "(?i)(剩余|重置|到期|防失联|官网|导航|客服|http|www|分享|bestcf.pages.dev)", proxies: [🎯 本地直连, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
   - {name: ♻️ 自动选择, type: url-test, interval: 1800, tolerance: 50, include-all: true, exclude-filter: "(?i)(剩余|重置|到期|防失联|官网|导航|客服|http|www|分享|bestcf.pages.dev)"}
   - {name: ✨ 自动选择（去高倍率）, type: url-test, interval: 1800, tolerance: 50, include-all: true, exclude-filter: "(?i)(剩余|重置|到期|防失联|官网|导航|客服|http|www|分享|bestcf.pages.dev)`(?i)(专线|专用|高级|直连|急速|高速|高倍率|游戏|铂金|钻石|企业|VIP|Ultra|Game|IEPL|IPLC|AIA|BGP|GIA|CN2|CMI|HGC|HKT|CTM|CC|AC|x([2-9]|\\d{2,}))"}
   - {name: ⚖️ 负载均衡, type: load-balance, interval: 1800, include-all: true, hidden: true, exclude-filter: "(?i)(剩余|重置|到期|防失联|官网|导航|客服|http|www|分享|bestcf.pages.dev)"}
