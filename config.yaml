@@ -212,6 +212,233 @@ rule-providers:
 
 #规则顺序
 rules:
+# -------------------你新提供的手动自定义规则（置顶最高优先级）--------------------
+  - DOMAIN-SUFFIX,todesk.com,🎯 本地直连
+  - DOMAIN-SUFFIX,now.com,🇭🇰 香港节点
+  - DOMAIN-SUFFIX,now-tv.com,🇭🇰 香港节点
+  - DOMAIN-SUFFIX,ovhcloud.com,🇭🇰 香港节点
+  - DOMAIN-SUFFIX,852851.xyz,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,cdnipcs.com,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,tuta.com,🇺🇸 美国节点
+  - IP-CIDR,38.58.176.207/32,🇺🇸 美国节点
+  - IP-CIDR,51.77.133.124/32,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,789505.xyz,🎯 本地直连
+  - DOMAIN-SUFFIX,707626.xyz,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,newl.zenfit.cfd,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,pixman.passwdwork.cc.cd,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,mpd.cc.cd,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,pixman.us.ci,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,test96.178.indevs.in,🇺🇸 美国节点
+#  - DOMAIN-SUFFIX,cloudflare.com,🇭🇰 香港节点
+  - DOMAIN-SUFFIX,cloudflaremirrors.com,🇭🇰 香港节点
+  - DOMAIN-SUFFIX,claude.ai,🇯🇵 日本节点
+  - DOMAIN-SUFFIX,litv.tv,🇹🇼 台湾节点
+  - DOMAIN-SUFFIX,hinet.net,🇹🇼 台湾节点
+  - DOMAIN-SUFFIX,4gtv.tv,🇹🇼 台湾节点
+  - DOMAIN-SUFFIX,api2.4gtv.tv,🇹🇼 台湾节点
+  - DOMAIN-SUFFIX,ofiii.com,🇹🇼 台湾节点
+#  - DOMAIN-SUFFIX,docker.com,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,goiptv.de5.net,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,goiptv.us.ci,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,starhubgo.com,🇸🇬 新加坡节点
+#  - DOMAIN-SUFFIX,workers.dev,🇹🇼 台湾节点
+  - DOMAIN-SUFFIX,veloxmedia.co.uk,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,newtvsuper.com,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,catvod.com,🇺🇸 美国节点
+  - IP-CIDR,50.7.158.194/32,🇯🇵 日本节点
+  - IP-CIDR,103.102.135.231/24,🇺🇸 美国节点
+  - IP-CIDR,123.51.231.132/32,🇹🇼 台湾节点
+  - IP-CIDR,60.250.121.103/32,🇹🇼 台湾节点
+#  - DOMAIN-SUFFIX,163189.xyz,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,z2u.com,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,amazonaws.com,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,nodeseek.com,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,go-iptv.ggff.net,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,tvb.com,🇭🇰 香港节点
+  - DOMAIN-SUFFIX,stream-link.org,🇸🇬 新加坡节点
+  - DOMAIN-SUFFIX,lioncdn.net,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,edgeware.tvb.com,🇭🇰 香港节点
+  - DOMAIN-SUFFIX,cdn.hinet.net,🇹🇼 台湾节点
+  - DOMAIN-SUFFIX,858.qzz.io,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,bee.tzh911.qzz.io,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,cluster-cz5nqyh5nreq6ua6gaqd7okl7o.cloudworkstations.dev,🇺🇸 美国节点
+#  - DOMAIN-SUFFIX,qzz.io,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,hrtn.net,🇭🇰 香港节点
+  - DOMAIN-SUFFIX,pendy.dpdns.org,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,diver.eu.org,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,wrod.diver.eu.org,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,judy.xx.kg,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,8plus.eu.org,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,ru8.dpdns.org,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,vip-tptv.xyz,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,passwdword.xyz,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,infini.money,🇹🇼 台湾节点
+  - DOMAIN-SUFFIX,hudsonvalleyhost.com,🇺🇸 美国节点
+  - DOMAIN-KEYWORD,astro,🇸🇬 新加坡节点
+  - DOMAIN-KEYWORD,wavve,🇸🇬 新加坡节点
+  - DOMAIN-SUFFIX,r2.hfyrw.com,🇺🇸 美国节点
+
+# NAME: PanVod
+# AUTHOR: eulac-dev
+# REPO: https://github.com/eulac-dev/Proxy
+# UPDATED: 2026-04-21  08:34
+# TOTAL: 44
+
+#115
+  - DOMAIN,fhnfile.oss-cn-shenzhen.aliyuncs.com,🎯 本地直连
+  - DOMAIN-SUFFIX,115.com,🎯 本地直连
+  - DOMAIN-SUFFIX,115cdn.com,🎯 本地直连
+  - DOMAIN-SUFFIX,115cdn.net,🎯 本地直连
+  - DOMAIN-SUFFIX,115img.com,🎯 本地直连
+  - DOMAIN-SUFFIX,116cd.cn,🎯 本地直连
+  - DOMAIN-SUFFIX,116cd.com,🎯 本地直连
+  - DOMAIN-SUFFIX,116cd.net,🎯 本地直连
+  - DOMAIN-SUFFIX,anxia.com,🎯 本地直连
+  - DOMAIN-SUFFIX,sq.cc,🎯 本地直连
+  
+#阿里/夸克/UC
+  - DOMAIN,cf.aliyun.com,🎯 本地直连
+  - DOMAIN,ynuf.aliapp.org,🎯 本地直连
+  - DOMAIN-SUFFIX,alipan.com,🎯 本地直连
+  - DOMAIN-SUFFIX,alicdn.com,🎯 本地直连
+  - DOMAIN-SUFFIX,aliyundrive.com,🎯 本地直连
+  - DOMAIN-SUFFIX,aliyundrive.net,🎯 本地直连
+  - DOMAIN-SUFFIX,alibaba.com,🎯 本地直连
+  - DOMAIN-SUFFIX,quark.cn,🎯 本地直连
+  - DOMAIN-SUFFIX,uc.cn,🎯 本地直连
+  - DOMAIN-SUFFIX,taobao.com,🎯 本地直连
+  - DOMAIN-SUFFIX,aliyuncs.com,🎯 本地直连
+  
+#百度
+  - DOMAIN,himg.bdimg.com,🎯 本地直连
+  - DOMAIN,staticiot.cdn.bcebos.com,🎯 本地直连
+  - DOMAIN,thumbnail0.baidupcs.com,🎯 本地直连
+  - DOMAIN-SUFFIX,baidu.com,🎯 本地直连
+  - DOMAIN-SUFFIX,bdstatic.com,🎯 本地直连
+  
+#天翼
+  - DOMAIN,ux.21cn.com,🎯 本地直连
+  - DOMAIN-SUFFIX,189.cn,🎯 本地直连
+  - DOMAIN-SUFFIX,dlife.cn,🎯 本地直连
+  
+#迅雷
+  - DOMAIN,static.xbase.cloud,🎯 本地直连
+  - DOMAIN-SUFFIX,xunlei.com,🎯 本地直连
+  - DOMAIN-SUFFIX,a.88cdn.com,🎯 本地直连
+  
+#123
+  - DOMAIN,www.123912.com,🎯 本地直连
+  - DOMAIN,www.123295.com,🎯 本地直连
+  - DOMAIN,www.123865.com,🎯 本地直连
+  - DOMAIN-SUFFIX,cjjd19.com,🎯 本地直连
+  - DOMAIN-SUFFIX,123pan.com,🎯 本地直连
+  - DOMAIN-SUFFIX,cnzz.com,🎯 本地直连
+  
+#移动云盘
+  - DOMAIN-SUFFIX,cmicapm.com,🎯 本地直连
+  - DOMAIN-SUFFIX,10086.cn,🎯 本地直连
+  - DOMAIN-SUFFIX,139.com,🎯 本地直连
+  - DOMAIN-SUFFIX,cmecloud.cn,🎯 本地直连
+  
+#光鸭
+  - DOMAIN-SUFFIX,guangyacdn.com,🎯 本地直连
+  - DOMAIN-SUFFIX,guangyapan.com,🎯 本地直连
+
+
+# NAME: ResourceSite
+# AUTHOR: eulac-dev
+# REPO: https://github.com/eulac-dev/Proxy
+# UPDATED: 2026-03-15  00:26
+# TOTAL: 25
+
+#玩偶哥哥
+  - DOMAIN-KEYWORD,wogg,🎯 本地直连
+
+#木偶
+  - DOMAIN,666.666291.xyz,🎯 本地直连
+  - DOMAIN,www.muou.asia,🎯 本地直连
+  - DOMAIN,www.muou.site,🎯 本地直连
+
+#蜡笔
+  - DOMAIN,fmao.shop,🎯 本地直连
+
+#至臻
+  - DOMAIN,www.miqk.cc,🎯 本地直连
+  - DOMAIN,xiaomi666.fun,🎯 本地直连
+  - DOMAIN-SUFFIX,mihdr.top,🎯 本地直连
+
+#多多
+  - DOMAIN,tv.214521.xyz,🎯 本地直连
+  - DOMAIN,duo.hidns.vip,🎯 本地直连
+  - DOMAIN-KEYWORD,yydsys,🎯 本地直连
+
+#二小
+  - DOMAIN,zhizhen1.top,🎯 本地直连
+  - DOMAIN-KEYWORD,erxiaopan,🎯 本地直连
+  - DOMAIN-KEYWORD,erixaopan,🎯 本地直连
+  - DOMAIN-KEYWORD,erxiaozhan,🎯 本地直连
+  - DOMAIN-KEYWORD,2xiaozhan,🎯 本地直连
+  - DOMAIN-KEYWORD,2xiaopan,🎯 本地直连
+  - DOMAIN-KEYWORD,wexwp,🎯 本地直连
+
+#虎斑
+  - DOMAIN,xhban.xyz,🎯 本地直连
+  - IP-CIDR,154.222.27.33/32,🎯 本地直连
+  - IP-CIDR,103.45.162.207/32,🎯 本地直连
+
+#小斑
+  - DOMAIN,xsayang.fun,🎯 本地直连
+  - IP-CIDR,154.201.83.50/32,🎯 本地直连
+
+#欧歌
+  - DOMAIN,woog.nxog.eu.org,🎯 本地直连
+
+#闪电
+  - DOMAIN,sd.sduc.site,🎯 本地直连
+  
+  
+ 
+#JULI  按自己理解分流 itdog测试了
+  - DOMAIN-SUFFIX,php.jdshipin.com,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,163189.xyz,🇺🇸 美国节点 #直连就可以  不一定要代理
+  - DOMAIN-SUFFIX,1678520.xyz,🇪🇺 欧洲节点 #🇺🇸 美国节点 #直连就可以  不一定要代理 #捷克 #德国最快
+  - DOMAIN-SUFFIX,178.indevs.in,🇺🇸 美国节点 #直连就可以  不一定要代理
+#  - DOMAIN-SUFFIX,veryfast.filegear-sg.me,🇹🇼 台湾节点  #失效
+  - DOMAIN-SUFFIX,cdn.loc.cc,🇺🇸 美国节点 #直连就可以  不一定要代理
+
+#jacktv
+  - DOMAIN-SUFFIX,filegear-sg.me,🇺🇸 美国节点 #直连就可以  不一定要代理
+
+#chinatvlive.264788.xyz
+  - DOMAIN-SUFFIX,live.264788.xyz,🇺🇸 美国节点 #直连就可以  不一定要代理
+  
+#iptv总部
+  - IP-CIDR,82.156.243.185/32,🇺🇸 美国节点
+  
+  
+#hameni
+  - DOMAIN-SUFFIX,hanime1.me,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,hanimeone.me,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,hanime1.biz,🇺🇸 美国节点
+  - DOMAIN-SUFFIX,hanime1.info,🇺🇸 美国节点
+  
+#ha.msbot.dpdns.org
+  - DOMAIN-SUFFIX,ha.msbot.dpdns.org,🇺🇸 美国节点  #直连就可以  不一定要代理
+
+  - DOMAIN,ghfast.top,🎯 本地直连 
+  - DOMAIN,github-proxy.memory-echoes.cn,🎯 本地直连 
+  - DOMAIN,gh.927223.xyz,🎯 本地直连 
+  - DOMAIN,ghf.无名氏.top,🎯 本地直连 
+  - DOMAIN,github.dpik.top,🎯 本地直连 
+  - DOMAIN,ghproxy.net,🎯 本地直连 
+  - DOMAIN,gh-proxy.com,🎯 本地直连 
+  - DOMAIN,gh-proxy.org,🎯 本地直连 
+  - DOMAIN,githubproxy.cc,🎯 本地直连 
+  - DOMAIN,ghproxylist.com,🎯 本地直连
+  - DOMAIN,cdn.gh-proxy.com,🎯 本地直连
+  - DOMAIN,api.github.com,🚀 节点选择 
+# --------------------------------------------------------------------------
+
   - DOMAIN-SUFFIX,captive.apple.com,🍎 苹果服务
   - DOMAIN-SUFFIX,kamo.teracloud.jp,🀄️ 国内流量
 
