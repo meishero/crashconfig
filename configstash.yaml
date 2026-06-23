@@ -59,42 +59,42 @@ proxy-groups:
 - {name: 👑 高级节点, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: "(?i)(专线|专用|高级|直连|急速|高速|高倍率|游戏|铂金|钻石|企业|VIP|Ultra|Game|IEPL|IPLC|AIA|BGP|GIA|CN2|CMI|HGC|HKT|CTM|CC|AC|x([2-9]|\d{2,}))"}
   - {name: 📉 省流节点, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: "(?i)(0\\.[1-6][倍|x]|低倍率|省流|大流量|闲时|Low)"}
 
-#规则提供者（更新list格式）
+#规则提供者（更新mrs格式）
   - {name: edgetunnel, type: url-test, tolerance: 100, lazy: true, use: [edgetunnel]}
 
 rule-providers:
   ai:
     type: http
-    format: text
+    format: mrs
     interval: 86400
     behavior: domain
     proxy: DIRECT
-    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/ai.list"
-    path: "./providers/rules/ai.list"
+    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/ai.mrs"
+    path: "./ruleset/ai.mrs"
   youtube:
     type: http
-    format: text
+    format: mrs
     interval: 86400
     behavior: domain
     proxy: DIRECT
-    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/youtube.list"
-    path: "./providers/rules/youtube.list"
+    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/youtube.mrs"
+    path: "./ruleset/youtube.mrs"
   netflix:
     type: http
-    format: text
+    format: mrs
     interval: 86400
     behavior: domain
     proxy: DIRECT
-    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/netflix.list"
-    path: "./providers/rules/netflix.list"
+    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/netflix.mrs"
+    path: "./ruleset/netflix.mrs"
   telegramip:
     type: http
-    format: text
+    format: mrs
     interval: 86400
     behavior: ipcidr
     proxy: DIRECT
-    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/telegramip.list"
-    path: "./providers/rules/telegramip.list"
+    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/telegramip.mrs"
+    path: "./ruleset/telegramip.mrs"
   applications:
     type: http
     format: text
@@ -102,135 +102,135 @@ rule-providers:
     behavior: classical
     proxy: DIRECT
     url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/applications.list"
-    path: "./providers/rules/applications.list"
+    path: "./ruleset/applications.list"
   private:
     type: http
-    format: text
+    format: mrs
     interval: 86400
     behavior: domain
     proxy: DIRECT
-    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/private.list"
-    path: "./providers/rules/private.list"
+    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/private.mrs"
+    path: "./ruleset/private.mrs"
   privateip:
     type: http
-    format: text
+    format: mrs
     interval: 86400
     behavior: ipcidr
     proxy: DIRECT
-    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/privateip.list"
-    path: "./providers/rules/privateip.list"
+    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/privateip.mrs"
+    path: "./ruleset/privateip.mrs"
   networktest:
     type: http
-    format: text
+    format: mrs
     interval: 86400
     behavior: domain
     proxy: DIRECT
-    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/networktest.list"
-    path: "./providers/rules/networktest.list"
+    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/networktest.mrs"
+    path: "./ruleset/networktest.mrs"
   apple-cn:
     type: http
-    format: text
+    format: mrs
     interval: 86400
     behavior: domain
     proxy: DIRECT
-    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/apple-cn.list"
-    path: "./providers/rules/apple-cn.list"
+    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/apple-cn.mrs"
+    path: "./ruleset/apple-cn.mrs"
   google-cn:
     type: http
-    format: text
+    format: mrs
     interval: 86400
     behavior: domain
     proxy: DIRECT
-    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/google-cn.list"
-    path: "./providers/rules/google-cn.list"
+    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/google-cn.mrs"
+    path: "./ruleset/google-cn.mrs"
   googlefcm:
     type: http
-    format: text
+    format: mrs
     interval: 86400
     behavior: domain
     proxy: DIRECT
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@refs/heads/meta/geo/geosite/googlefcm.list"
-    path: "./providers/rules/googlefcm.list"
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@refs/heads/meta/geo/geosite/googlefcm.mrs"  
+    path: "./ruleset/googlefcm.mrs"                                                                     
   steamcn:
     type: http
-    format: text
+    format: mrs
     interval: 86400
     behavior: domain
     proxy: DIRECT
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@refs/heads/meta/geo/geosite/steam@cn.list"
-    path: "./providers/rules/steamcn.list"
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@refs/heads/meta/geo/geosite/steam@cn.mrs" 
+    path: "./ruleset/steamcn.mrs"                                                                        
   microsoft-cn:
     type: http
-    format: text
+    format: mrs
     interval: 86400
     behavior: domain
     proxy: DIRECT
-    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/microsoft-cn.list"
-    path: "./providers/rules/microsoft-cn.list"
+    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/microsoft-cn.mrs"
+    path: "./ruleset/microsoft-cn.mrs"
   games-cn:
     type: http
-    format: text
+    format: mrs
     interval: 86400
     behavior: domain
     proxy: DIRECT
-    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/games-cn.list"
-    path: "./providers/rules/games-cn.list"
+    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/games-cn.mrs"
+    path: "./ruleset/games-cn.mrs"
   games:
     type: http
-    format: text
+    format: mrs
     interval: 86400
     behavior: domain
     proxy: DIRECT
-    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/games.list"
-    path: "./providers/rules/games.list"
+    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/games.mrs"
+    path: "./ruleset/games.mrs"
   mediaip:
     type: http
-    format: text
+    format: mrs
     interval: 86400
     behavior: ipcidr
     proxy: DIRECT
-    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/mediaip.list"
-    path: "./providers/rules/mediaip.list"
+    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/mediaip.mrs"
+    path: "./ruleset/mediaip.mrs"
   media:
     type: http
-    format: text
+    format: mrs
     interval: 86400
     behavior: domain
     proxy: DIRECT
-    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/media.list"
-    path: "./providers/rules/media.list"
+    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/media.mrs"
+    path: "./ruleset/media.mrs"
   cnip:
     type: http
-    format: text
+    format: mrs
     interval: 86400
     behavior: ipcidr
     proxy: DIRECT
-    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/cnip.list"
-    path: "./providers/rules/cnip.list"
+    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/cnip.mrs"
+    path: "./ruleset/cnip.mrs"
   proxy:
     type: http
-    format: text
+    format: mrs
     interval: 86400
     behavior: domain
     proxy: DIRECT
-    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/proxy.list"
-    path: "./providers/rules/proxy.list"
+    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/proxy.mrs"
+    path: "./ruleset/proxy.mrs"
   cn:
     type: http
-    format: text
+    format: mrs
     interval: 86400
     behavior: domain
     proxy: DIRECT
-    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/cn.list"
-    path: "./providers/rules/cn.list"
+    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/cn.mrs"
+    path: "./ruleset/cn.mrs"
   ads:
     type: http
-    format: text
+    format: mrs
     interval: 86400
     behavior: domain
     proxy: DIRECT
-    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/ads.list"
-    path: "./providers/rules/ads.list"
+    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/ads.mrs"
+    path: "./ruleset/ads.mrs"
 
 #规则顺序
 rules:
