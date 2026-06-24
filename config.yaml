@@ -14,28 +14,44 @@ proxy-providers:
       skip-cert-verify: true
 proxy-groups:
   - {name: 🚀 节点选择, type: select, proxies: [♻️ 自动选择, ✨ 自动选择（去高倍率）, 🛠️ 手动切换, ⚖️ 负载均衡, 🚑 故障转移, 🎯 本地直连, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
-  - {name: 🛠️ 手动切换, type: select, include-all: true, exclude-filter: "(?i)(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev)", proxies: [🎯 本地直连, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
-  - {name: ♻️ 自动选择, type: url-test, interval: 300, tolerance: 50, include-all: true, exclude-filter: "(?i)(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev)"}
-  - {name: ✨ 自动选择（去高倍率）, type: url-test, interval: 300, tolerance: 50, include-all: true, exclude-filter: "(?i)(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev|专线|专用|高级|直连|急速|高速|高倍率|游戏|铂金|钻石|企业|VIP|Ultra|Game|IEPL|IPLC|AIA|BGP|GIA|CN2|CMI|HGC|HKT|CTM|CC|AC|x([2-9]|\\d{2,}))"}
-  - {name: ⚖️ 负载均衡, type: load-balance, interval: 300, tolerance: 150, include-all: true, hidden: true, exclude-filter: "(?i)(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev)"}
-  - {name: 🚑 故障转移, type: fallback, interval: 300, include-all: true, hidden: true, exclude-filter: "(?i)(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev)"}
+  - {name: 🛠️ 手动切换, type: select, include-all: true, exclude-filter: "(?i)(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev)", proxies: [🎯 本地直连, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
+  - {name: ♻️ 自动选择, type: url-test, interval: 300, tolerance: 50, include-all: true, exclude-filter: "(?i)(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev)"}
+  - {name: ✨ 自动选择（去高倍率）, type: url-test, interval: 300, tolerance: 50, include-all: true, exclude-filter: "(?i)(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev|专线|专用|高级|直连|急速|高速|高倍率|游戏|铂金|钻石|企业|VIP|Ultra|Game|IEPL|IPLC|AIA|BGP|GIA|CN2|CMI|HGC|HKT|CTM|CC|AC|x([2-9]|\\d{2,}))"}
+  - {name: ⚖️ 负载均衡, type: load-balance, interval: 300, tolerance: 150, include-all: true, hidden: true, exclude-filter: "(?i)(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev)"}
+  - {name: 🚑 故障转移, type: fallback, interval: 300, include-all: true, hidden: true, exclude-filter: "(?i)(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev)"}
 
   - {name: 🤖 AI 平台, type: select, proxies: [🚀 节点选择, 🤖 AI节点（过滤港澳）, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
-  - {name: 🤖 AI节点（过滤港澳）, type: url-test, interval: 300, tolerance: 50, include-all: true, hidden: true, exclude-filter: "(?i)(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev|🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)"}
-  - {name: 🎬 奈飞视频, type: select, proxies: [🚀 节点选择, 🎬 奈飞节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
-  - {name: 🎬 奈飞节点, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: "(?i)(NF|奈飞|解锁|Netflix|NETFLIX|Media)", hidden: true}
+  - {name: 🤖 AI节点（过滤港澳）, type: url-test, interval: 300, tolerance: 50, include-all: true, hidden: true, exclude-filter: "(?i)(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev|🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)"}
+
+  - {name: 🎥 奈飞视频, type: select, proxies: [🚀 节点选择, 🎬 奈飞节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
+  - {name: 🎥 奈飞节点, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: "(?i)(NF|奈飞|解锁|Netflix|Media)", hidden: true} 
+  - {name: 📽️ 迪士尼+, type: select, proxies: [🚀 节点选择, 📽️ 迪士尼+节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
+  - {name: 📽️ 迪士尼+节点, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: "(?i)(解锁|disney|迪士尼|Media)", hidden: true}
+  - {name: 🎞️ Max, type: select, proxies: [🚀 节点选择, 🎞 Max节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
+  - {name: 🎞️ Max节点, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: "(?i)(解锁|max|Media)", hidden: true}
+  - {name: 🎬 Prime Video, type: select, proxies: [🚀 节点选择, 🎬 Prime Video节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
+  - {name: 🎬 Prime Video节点, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: "(?i)(解锁|Prime|Media)", hidden: true}
+  - {name: 🍎 Apple TV+, type: select, proxies: [🚀 节点选择, 🍎 Apple TV+节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
+  - {name: 🍎 Apple TV+节点, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: "(?i)(解锁|apple tv|appletv|Media)", hidden: true}
   - {name: ▶️ 油管视频, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
+
+  - {name: 🎬 TikTok, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
+  - {name: ⬇️ BT trackerslist, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
+
   - {name: 📢 谷歌推送, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
   - {name: 📲 电报消息, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
   - {name: 🌍 国际媒体, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
   - {name: 🌐 国际流量, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
-  - {name: 🎮 外服游戏, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
+  - {name: 🌐 国际域名, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
 
+  - {name: 🎮 外服游戏, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
   - {name: 🕹 国服游戏, type: select, proxies: [🎯 本地直连, 🚀 节点选择, ♻️ 自动选择, 🛠️ 手动切换, edgetunnel]}
   - {name: 🦾 Steam平台, type: select, proxies: [🎯 本地直连, 🚀 节点选择, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
+
   - {name: 🪟 微软服务, type: select, proxies: [🎯 本地直连, 🚀 节点选择, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
   - {name: 🍎 苹果服务, type: select, proxies: [🎯 本地直连, 🚀 节点选择, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
   - {name: 🇬 谷歌服务, type: select, proxies: [🎯 本地直连, 🚀 节点选择, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
+
   - {name: 📈 网络测速, type: select, proxies: [🎯 本地直连, 🚀 节点选择, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
   - {name: ↔️ 直连软件, type: select, proxies: [🎯 本地直连, 🚀 节点选择, ♻️ 自动选择, 🛠️ 手动切换, edgetunnel]}
   - {name: 🀄️ 国内流量, type: select, proxies: [🎯 本地直连, 🚀 节点选择, ♻️ 自动选择, 🛠️ 手动切换, edgetunnel]}
@@ -44,6 +60,7 @@ proxy-groups:
 
   - {name: 🛑 广告拦截, type: select, proxies: [🔴 拦截, 🟢 放行]}
   - {name: 🔒 私有网络, type: select, proxies: [DIRECT], hidden: true}
+  # - {name: 📌 fakeip 过滤, type: select, proxies: [DIRECT], hidden: true}
   - {name: 🔴 拦截, type: select, proxies: [REJECT], hidden: true}
 #PASS的改造-clash没有mihome的pass的写法
   - {name: 🟢 放行, type: select, proxies: [🚀 节点选择, 🎯 本地直连]}
@@ -63,6 +80,20 @@ proxy-groups:
 #规则提供者（更新mrs格式）
   - {name: edgetunnel, type: url-test, tolerance: 50, lazy: true, use: [edgetunnel]}
 rule-providers:
+  # fakeip-filter:
+    # type: http
+    # behavior: domain
+    # format: mrs
+    # path: ./ruleset/fakeip-filter.mrs
+    # url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/fakeip-filter.mrs"
+    # interval: 86400
+  trackerslist:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/trackerslist.mrs
+    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/trackerslist.mrs"
+    interval: 86400
   ai:
     type: http
     format: mrs
@@ -86,7 +117,42 @@ rule-providers:
     behavior: domain
     proxy: DIRECT
     url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/netflix.mrs"
-    path: "./ruleset/netflix.mrs"
+    path: "./ruleset/netflix.mrs"     
+  disney:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/disney.mrs
+    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/disney.mrs"
+    interval: 86400
+  max:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/max.mrs
+    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/max.mrs"
+    interval: 86400
+  primevideo:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/primevideo.mrs
+    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/primevideo.mrs"
+    interval: 86400
+  appletv:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/appletv.mrs
+    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/appletv.mrs"
+    interval: 86400
+  tiktok:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/tiktok.mrs
+    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/tiktok.mrs"
+    interval: 86400
   telegramip:
     type: http
     format: mrs
@@ -183,6 +249,13 @@ rule-providers:
     proxy: DIRECT
     url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/games.mrs"
     path: "./ruleset/games.mrs"
+  # netflixip:
+    # type: http
+    # behavior: ipcidr
+    # format: mrs
+    # path: ./ruleset/netflixip.mrs
+    # url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/netflixip.mrs"
+    # interval: 86400
   mediaip:
     type: http
     format: mrs
@@ -207,6 +280,13 @@ rule-providers:
     proxy: DIRECT
     url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/cnip.mrs"
     path: "./ruleset/cnip.mrs"
+  gfw:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/gfw.mrs
+    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/gfw.mrs"
+    interval: 86400
   proxy:
     type: http
     format: mrs
@@ -253,7 +333,7 @@ rules:
   - DOMAIN-SUFFIX,test96.178.indevs.in,🇺🇸 美国节点
 #  - DOMAIN-SUFFIX,cloudflare.com,🇭🇰 港澳节点
   - DOMAIN-SUFFIX,cloudflaremirrors.com,🇭🇰 港澳节点
-  - DOMAIN-SUFFIX,claude.ai,🇯🇵 日本节点
+  - DOMAIN-SUFFIX,claude.ai,🤖 AI 平台
   - DOMAIN-SUFFIX,litv.tv,🇹🇼 台湾节点
   - DOMAIN-SUFFIX,hinet.net,🇹🇼 台湾节点
   - DOMAIN-SUFFIX,4gtv.tv,🇹🇼 台湾节点
@@ -464,6 +544,8 @@ rules:
   - DOMAIN-SUFFIX,captive.apple.com,🍎 苹果服务
   - DOMAIN-SUFFIX,kamo.teracloud.jp,🀄️ 国内流量
 
+  # - RULE-SET,fakeip-filter,📌 fakeip 过滤,no-resolve
+  
   - RULE-SET,privateip,🔒 私有网络,no-resolve
   - RULE-SET,private,🔒 私有网络
   - RULE-SET,telegramip,📲 电报消息,no-resolve
@@ -478,13 +560,21 @@ rules:
   - RULE-SET,games-cn,🕹 国服游戏
 
   - RULE-SET,googlefcm,📢 谷歌推送
-  - RULE-SET,netflix,🎬 奈飞视频
+  - RULE-SET,netflix,🎥 奈飞视频
+  - RULE-SET,disney,📽️ 迪士尼+
+  - RULE-SET,max,🎞️ Max
+  - RULE-SET,primevideo,🎬 Prime Video
+  - RULE-SET,appletv,🍎 Apple TV+
+  - RULE-SET,tiktok,🎬 TikTok
+  - RULE-SET,trackerslist,⬇️ BT trackerslist
+  
   - RULE-SET,youtube,▶️ 油管视频
   - RULE-SET,ai,🤖 AI 平台
   - RULE-SET,media,🌍 国际媒体
   - RULE-SET,games,🎮 外服游戏
 
   - RULE-SET,proxy,🌐 国际流量
+  - RULE-SET,gfw,🌐 国际域名
   - RULE-SET,cn,🀄️ 国内流量
   - RULE-SET,mediaip,🌍 国际媒体
   - RULE-SET,cnip,🀄️ 国内流量
