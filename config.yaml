@@ -45,7 +45,8 @@ proxy-groups:
   - {name: 🛑 广告拦截, type: select, proxies: [🔴 拦截, 🟢 放行]}
   - {name: 🔒 私有网络, type: select, proxies: [DIRECT], hidden: true}
   - {name: 🔴 拦截, type: select, proxies: [REJECT], hidden: true}
-  - {name: 🟢 放行, type: select, proxies: [DIRECT], hidden: true}
+#PASS的改造-clash没有mihome的pass的写法
+  - {name: 🟢 放行, type: select, proxies: [🚀 节点选择, 🎯 本地直连], hidden: true}
   - {name: 🎯 本地直连, type: select, proxies: [DIRECT], hidden: true}
 
   - {name: 🇭🇰 香港节点, type: url-test, tolerance: 50, include-all: true, filter: "(?i)(🇭🇰|港|hk|hongkong|hong kong)"}
@@ -60,7 +61,7 @@ proxy-groups:
   - {name: 📉 省流节点, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: "(?i)(0\\.[1-6][倍|x]|低倍率|省流|大流量|闲时|Low)"}
 
 #规则提供者（更新mrs格式）
-  - {name: edgetunnel, type: url-test, tolerance: 100, lazy: true, use: [edgetunnel]}
+  - {name: edgetunnel, type: url-test, tolerance: 50, lazy: true, use: [edgetunnel]}
 rule-providers:
   ai:
     type: http
