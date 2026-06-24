@@ -46,7 +46,7 @@ proxy-groups:
   - {name: 🔒 私有网络, type: select, proxies: [DIRECT], hidden: true}
   - {name: 🔴 拦截, type: select, proxies: [REJECT], hidden: true}
 #PASS的改造-clash没有mihome的pass的写法
-  - {name: 🟢 放行, type: select, proxies: [🚀 节点选择, 🎯 本地直连], hidden: true}
+  - {name: 🟢 放行, type: select, proxies: [🚀 节点选择, 🎯 本地直连]}
   - {name: 🎯 本地直连, type: select, proxies: [DIRECT], hidden: true}
 
   - {name: 🇭🇰 香港节点, type: url-test, tolerance: 50, include-all: true, filter: "(?i)(🇭🇰|港|hk|hongkong|hong kong)"}
