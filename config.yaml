@@ -27,7 +27,7 @@ proxy-groups:
   - {name: 🎥 奈飞节点, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: "(?i)(NF|奈飞|解锁|Netflix|Media)", hidden: true} 
   - {name: 📽️ 迪士尼+, type: select, proxies: [🚀 节点选择, 📽️ 迪士尼+节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
   - {name: 📽️ 迪士尼+节点, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: "(?i)(解锁|disney|迪士尼|Media)", hidden: true}
-  - {name: 🎞️ Max, type: select, proxies: [🚀 节点选择, 🎞 Max节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
+  - {name: 🎞️ Max, type: select, proxies: [🚀 节点选择, 🎞️ Max节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
   - {name: 🎞️ Max节点, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: "(?i)(解锁|max|Media)", hidden: true}
   - {name: 🎬 Prime Video, type: select, proxies: [🚀 节点选择, 🎬 Prime Video节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
   - {name: 🎬 Prime Video节点, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: "(?i)(解锁|Prime|Media)", hidden: true}
