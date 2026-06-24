@@ -14,16 +14,16 @@ proxy-providers:
       skip-cert-verify: true
 proxy-groups:
   - {name: 🚀 节点选择, type: select, proxies: [♻️ 自动选择, ✨ 自动选择（去高倍率）, 🛠️ 手动切换, ⚖️ 负载均衡, 🚑 故障转移, 🎯 本地直连, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
-  - {name: 🛠️ 手动切换, type: select, include-all: true, exclude-filter: "(?i)(剩余|重置|到期|防失联|官网|导航|客服|http|www|分享|bestcf.pages.dev)", proxies: [🎯 本地直连, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
-  - {name: ♻️ 自动选择, type: url-test, interval: 300, tolerance: 50, include-all: true, exclude-filter: "(?i)(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev)"}
-  - {name: ✨ 自动选择（去高倍率）, type: url-test, interval: 300, tolerance: 50, include-all: true, exclude-filter: "(?i)(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev|专线|专用|高级|直连|急速|高速|高倍率|游戏|铂金|钻石|企业|VIP|Ultra|Game|IEPL|IPLC|AIA|BGP|GIA|CN2|CMI|HGC|HKT|CTM|CC|AC|x([2-9]|\d{2,}))"}
-  - {name: ⚖️ 负载均衡, type: load-balance, interval: 300, tolerance: 150, include-all: true, hidden: true, exclude-filter: "(?i)(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev)"}
-  - {name: 🚑 故障转移, type: fallback, interval: 300, include-all: true, hidden: true, exclude-filter: "(?i)(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev)"}
+  - {name: 🛠️ 手动切换, type: select, include-all: true, exclude-filter: '(?i)(剩余|重置|到期|防失联|官网|导航|客服|http|www|分享|bestcf.pages.dev)', proxies: [🎯 本地直连, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
+  - {name: ♻️ 自动选择, type: url-test, interval: 300, tolerance: 50, include-all: true, exclude-filter: '(?i)(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev)'}
+  - {name: ✨ 自动选择（去高倍率）, type: url-test, interval: 300, tolerance: 50, include-all: true, exclude-filter: '(?i)(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev|专线|专用|高级|直连|急速|高速|高倍率|游戏|铂金|钻石|企业|VIP|Ultra|Game|IEPL|IPLC|AIA|BGP|GIA|CN2|CMI|HGC|HKT|CTM|CC|AC|x([2-9]|\d{2,}))'}
+  - {name: ⚖️ 负载均衡, type: load-balance, interval: 300, tolerance: 150, include-all: true, hidden: true, exclude-filter: '(?i)(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev)'}
+  - {name: 🚑 故障转移, type: fallback, interval: 300, include-all: true, hidden: true, exclude-filter: '(?i)(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev)'}
 
   - {name: 🤖 AI 平台, type: select, proxies: [🚀 节点选择, 🤖 AI节点（过滤港澳）, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
-  - {name: 🤖 AI节点（过滤港澳）, type: url-test, interval: 300, tolerance: 50, include-all: true, hidden: true, exclude-filter: "(?i)(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev|🇭🇰|🇲🇴|港|澳|澳门|\b(hk|hongkong|hong kong)\b)"}
+  - {name: 🤖 AI节点（过滤港澳）, type: url-test, interval: 300, tolerance: 50, include-all: true, hidden: true, exclude-filter: '(?i)(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev|🇭🇰|🇲🇴|港|澳|澳门|\b(hk|hongkong|hong kong)\b)'}
   - {name: 🎬 奈飞视频, type: select, proxies: [🚀 节点选择, 🎬 奈飞节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
-  - {name: 🎬 奈飞节点, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: "(?i)(NF|奈飞|解锁|Netflix|NETFLIX|Media)", hidden: true}
+  - {name: 🎬 奈飞节点, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: '(?i)(NF|奈飞|解锁|Netflix|NETFLIX|Media)', hidden: true}
   - {name: ▶️ 油管视频, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
   - {name: 📢 谷歌推送, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
   - {name: 📲 电报消息, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
@@ -49,15 +49,15 @@ proxy-groups:
   - {name: 🟢 放行, type: select, proxies: [🚀 节点选择, 🎯 本地直连]}
   - {name: 🎯 本地直连, type: select, proxies: [DIRECT], hidden: true}
 
-  - {name: 🇭🇰 港澳节点, type: url-test, tolerance: 50, include-all: true, filter: "(?i)(🇭🇰|🇲🇴|港|澳|澳门|\b(hk|hongkong|hong kong)\b)", exclude-filter: "(?i)(澳大利亚)"}
-  - {name: 🇹🇼 台湾节点, type: url-test, tolerance: 50, include-all: true, filter: "(?i)(🇹🇼|台|\b(tw|taiwan|tai wan|TPE|TSA|KHH)\b)", exclude-filter: "(?i)(仙台)"}
-  - {name: 🇺🇸 美国节点, type: url-test, tolerance: 50, include-all: true, filter: "(?i)(🇺🇸|美|洛杉矶|圣何塞|西雅图|纽约|波特兰|旧金山|休斯|达拉斯|硅谷|堪萨斯|迈阿密|凤凰城|芝加哥|奥勒姆|USA|SJC|JFK|LAX|ORD|ATL|DFW|SFO|MIA|SEA|IAD|\b(us|unitedstates|united states)\b)", exclude-filter: "(?i)(南美|中美|拉美|亚美尼亚|美属)"}
-  - {name: 🇪🇺 欧洲节点, type: url-test, tolerance: 50, include-all: true, filter: "(?i)(🇪🇺|欧|欧洲|德国|奥|比|保|克罗地亚|塞|捷|丹|爱沙|芬|法|德|希|匈|爱尔|意|拉|立|卢|马其它|荷|波|葡|罗|斯洛伐|斯洛文|西|瑞|英|法国|英国|荷兰|Germany|France|United Kingdom|Frankfurt|Paris|London|\b(DE|FR|GB|UK|NL|🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|🇬🇧|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU)\b)", exclude-filter: "(?i)(欧巴)"}
-  - {name: 🇯🇵 日本节点, type: url-test, tolerance: 50, include-all: true, filter: "(?i)(🇯🇵|日|东京|小日本|小日子|大阪|埼玉|九州|仙台|\b(jp|japan|NRT|HND|KIX|CTS|FUK)\b)", exclude-filter: "(?i)(尼日利亚|尼日尔|日内瓦)"}
-  - {name: 🇰🇷 韩国节点, type: url-test, tolerance: 50, include-all: true, filter: "(?i)(🇰🇷|韩|韓|首尔|南朝鲜|欧巴|泡菜|\b(kr|kor)\b)"}
-  - {name: 🇸🇬 新加坡节点, type: url-test, tolerance: 50, include-all: true, filter: "(?i)(🇸🇬|坡|狮城|\b(sg|sin|xsp)\b)"}
+  - {name: 🇭🇰 港澳节点, type: url-test, tolerance: 50, include-all: true, filter: '(?i)(🇭🇰|🇲🇴|港|澳|澳门|\b(hk|hongkong|hong kong)\b)', exclude-filter: '(?i)(澳大利亚)'}
+  - {name: 🇹🇼 台湾节点, type: url-test, tolerance: 50, include-all: true, filter: '(?i)(🇹🇼|台|\b(tw|taiwan|tai wan|TPE|TSA|KHH)\b)', exclude-filter: '(?i)(仙台)'}
+  - {name: 🇺🇸 美国节点, type: url-test, tolerance: 50, include-all: true, filter: '(?i)(🇺🇸|美|洛杉矶|圣何塞|西雅图|纽约|波特兰|旧金山|休斯|达拉斯|硅谷|堪萨斯|迈阿密|凤凰城|芝加哥|奥勒姆|USA|SJC|JFK|LAX|ORD|ATL|DFW|SFO|MIA|SEA|IAD|\b(us|unitedstates|united states)\b)', exclude-filter: '(?i)(南美|中美|拉美|亚美尼亚|美属)'}
+  - {name: 🇪🇺 欧洲节点, type: url-test, tolerance: 50, include-all: true, filter: '(?i)(🇪🇺|欧|欧洲|德国|奥|比|保|克罗地亚|塞|捷|丹|爱沙|芬|法|德|希|匈|爱尔|意|拉|立|卢|马其它|荷|波|葡|罗|斯洛伐|斯洛文|西|瑞|英|法国|英国|荷兰|Germany|France|United Kingdom|Frankfurt|Paris|London|\b(DE|FR|GB|UK|NL|🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|🇬🇧|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU)\b)', exclude-filter: '(?i)(欧巴)'}
+  - {name: 🇯🇵 日本节点, type: url-test, tolerance: 50, include-all: true, filter: '(?i)(🇯🇵|日|东京|小日本|小日子|大阪|埼玉|九州|仙台|\b(jp|japan|NRT|HND|KIX|CTS|FUK)\b)', exclude-filter: '(?i)(尼日利亚|尼日尔|日内瓦)'}
+  - {name: 🇰🇷 韩国节点, type: url-test, tolerance: 50, include-all: true, filter: '(?i)(🇰🇷|韩|韓|首尔|南朝鲜|欧巴|泡菜|\b(kr|kor)\b)'}
+  - {name: 🇸🇬 新加坡节点, type: url-test, tolerance: 50, include-all: true, filter: '(?i)(🇸🇬|坡|狮城|\b(sg|sin|xsp)\b)'}
 
-  - {name: 👑 高级节点, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: "(?i)(专线|专用|高级|直连|急速|高速|高倍率|游戏|铂金|钻石|企业|VIP|Ultra|Game|IEPL|IPLC|AIA|BGP|GIA|CN2|CMI|HGC|HKT|CTM|CC|AC|x([2-9]|\d{2,}))"}
+  - {name: 👑 高级节点, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: '(?i)(专线|专用|高级|直连|急速|高速|高倍率|游戏|铂金|钻石|企业|VIP|Ultra|Game|IEPL|IPLC|AIA|BGP|GIA|CN2|CMI|HGC|HKT|CTM|CC|AC|x([2-9]|\d{2,}))'}
   - {name: 📉 省流节点, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: '(?i)(0\.[1-6][倍|x]|低倍率|省流|大流量|闲时|Low)'}
 
 #规则提供者（更新mrs格式）
