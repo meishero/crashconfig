@@ -9,6 +9,7 @@ proxy-providers:
       lazy: true
       url: "https://www.gstatic.com/generate_204"
       interval: 300
+      concurrency: 10
     override:
       udp: true
       skip-cert-verify: true
