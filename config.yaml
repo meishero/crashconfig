@@ -76,7 +76,7 @@ proxy-groups:
 
   - {name: 🇺🇸 美国节点, type: url-test, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(美|🇺🇸|US|USA|unitedstates|united states|SJC|JFK|LAX|ORD|ATL|DFW|SFO|MIA|SEA|IAD|洛杉矶|圣何塞|西雅图|纽约|波特兰|旧金山|休斯|达拉斯|硅谷|堪萨斯|迈阿密|凤凰城|芝加哥|奥勒姆))(?!.*(南美|中美|拉美|亚美尼亚|美属|dev|Mia优选)).*$'}
 
-  - {name: 🇪🇺 欧洲节点, type: url-test, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(🇪🇺|欧|欧洲|奥|比|保|克罗地亚|塞|捷|丹|爱沙|芬|法|德|希|匈|爱尔|意|拉|立|卢|马其它|荷|波|葡|罗|斯洛伐|斯洛文|西|瑞|英|🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|🇬🇧|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU))(?!.*(欧巴|马来|node)).*$'}
+  - {name: 🇪🇺 欧洲节点, type: url-test, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(🇪🇺|欧|欧洲|奥|比|保|克罗地亚|塞|捷|丹|爱沙|芬|法|德|希|匈|爱尔|意|拉|立|卢|马其它|荷|波|葡|罗|斯洛伐|斯洛文|西|瑞|英|摩|🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|🇬🇧|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU|MD))(?!.*(欧巴|马来|node)).*$'}
 
   - {name: 🇯🇵 日本节点, type: url-test, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(日|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK|东京|大阪|埼玉|九州|仙台))(?!.*(尼日利亚|尼日尔|日内瓦)).*$'}
 
