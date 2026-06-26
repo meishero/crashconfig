@@ -183,7 +183,7 @@ proxy-providers:
       enable: true
       lazy: true
       url: "https://www.gstatic.com/generate_204"
-      interval: 300
+      interval: 900
 #并发测速为10
       concurrency: 10
 #超时时间为2.5s
@@ -198,24 +198,24 @@ proxy-providers:
 proxy-groups:
   - {name: 🚀 节点选择, type: select, proxies: [♻️ 自动选择, ✨ 自动选择（去高倍率）, 🛠️ 手动切换, ⚖️ 负载均衡, 🚑 故障转移, 🎯 本地直连, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡马来节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
   - {name: 🛠️ 手动切换, type: select, include-all: true, filter: '(?i)^(?!.*(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev)).*$', proxies: [🎯 本地直连, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡马来节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
-  - {name: ♻️ 自动选择, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: '(?i)^(?!.*(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev)).*$'}
-  - {name: ✨ 自动选择（去高倍率）, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: '(?i)^(?!.*(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev|专线|专用|高级|直连|急速|高速|高倍率|游戏|铂金|钻石|企业|VIP|Ultra|Game|IEPL|IPLC|AIA|BGP|GIA|CN2|CMI|HGC|HKT|CTM|CC|AC|x([2-9]|\\d{2,}))).*$'}
-  - {name: ⚖️ 负载均衡, type: load-balance, interval: 300, tolerance: 150, include-all: true, filter: '(?i)^(?!.*(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev)).*$'}
-  - {name: 🚑 故障转移, type: fallback, interval: 300, include-all: true, filter: '(?i)^(?!.*(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev)).*$'}
+  - {name: ♻️ 自动选择, type: url-test, interval: 900, tolerance: 50, include-all: true, filter: '(?i)^(?!.*(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev)).*$'}
+  - {name: ✨ 自动选择（去高倍率）, type: url-test, interval: 900, tolerance: 50, include-all: true, filter: '(?i)^(?!.*(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev|专线|专用|高级|直连|急速|高速|高倍率|游戏|铂金|钻石|企业|VIP|Ultra|Game|IEPL|IPLC|AIA|BGP|GIA|CN2|CMI|HGC|HKT|CTM|CC|AC|x([2-9]|\\d{2,}))).*$'}
+  - {name: ⚖️ 负载均衡, type: load-balance, interval: 900, tolerance: 150, include-all: true, filter: '(?i)^(?!.*(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev)).*$'}
+  - {name: 🚑 故障转移, type: fallback, interval: 900, include-all: true, filter: '(?i)^(?!.*(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev)).*$'}
 
   - {name: 🤖 AI 平台, type: select, proxies: [🚀 节点选择, 🤖 AI节点（过滤港澳）, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡马来节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
-  - {name: 🤖 AI节点（过滤港澳）, type: url-test, interval: 300, tolerance: 50, include-all: true, hidden: true, filter: '(?i)^(?!.*(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev|🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
+  - {name: 🤖 AI节点（过滤港澳）, type: url-test, interval: 900, tolerance: 50, include-all: true, hidden: true, filter: '(?i)^(?!.*(剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev|🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
 
   - {name: 🎥 奈飞视频, type: select, proxies: [🚀 节点选择, 🎥 奈飞节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡马来节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
-  - {name: 🎥 奈飞节点, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(NF|奈飞|解锁|Netflix|Media))(?!.*(排除1|排除2)).*$', hidden: true} 
+  - {name: 🎥 奈飞节点, type: url-test, interval: 900, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(NF|奈飞|解锁|Netflix|Media))(?!.*(排除1|排除2)).*$', hidden: true} 
   - {name: 📽️ 迪士尼+, type: select, proxies: [🚀 节点选择, 📽️ 迪士尼+节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡马来节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
-  - {name: 📽️ 迪士尼+节点, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(解锁|disney|迪士尼|Media))(?!.*(排除1|排除2)).*$', hidden: true}
+  - {name: 📽️ 迪士尼+节点, type: url-test, interval: 900, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(解锁|disney|迪士尼|Media))(?!.*(排除1|排除2)).*$', hidden: true}
   - {name: 🎞️ Max, type: select, proxies: [🚀 节点选择, 🎞️ Max节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡马来节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
-  - {name: 🎞️ Max节点, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(解锁|max|Media))(?!.*(排除1|排除2)).*$', hidden: true}
+  - {name: 🎞️ Max节点, type: url-test, interval: 900, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(解锁|max|Media))(?!.*(排除1|排除2)).*$', hidden: true}
   - {name: 🎬 Prime Video, type: select, proxies: [🚀 节点选择, 🎬 Prime Video节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡马来节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
-  - {name: 🎬 Prime Video节点, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(解锁|Prime|Media))(?!.*(排除1|排除2)).*$', hidden: true}
+  - {name: 🎬 Prime Video节点, type: url-test, interval: 900, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(解锁|Prime|Media))(?!.*(排除1|排除2)).*$', hidden: true}
   - {name: 🍎 Apple TV+, type: select, proxies: [🚀 节点选择, 🍎 Apple TV+节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡马来节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
-  - {name: 🍎 Apple TV+节点, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(解锁|apple tv|appletv|Media))(?!.*(排除1|排除2)).*$', hidden: true}
+  - {name: 🍎 Apple TV+节点, type: url-test, interval: 900, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(解锁|apple tv|appletv|Media))(?!.*(排除1|排除2)).*$', hidden: true}
   - {name: ▶️ 油管视频, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡马来节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
 
   - {name: 🎬 TikTok, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳节点, 🇹🇼 台湾节点, 🇺🇸 美国节点, 🇯🇵 日本节点, 🇪🇺 欧洲节点, 🇰🇷 韩国节点, 🇸🇬 新加坡马来节点, 👑 高级节点, 📉 省流节点, edgetunnel]}
@@ -263,8 +263,8 @@ proxy-groups:
 
   - {name: 🇸🇬 新加坡马来节点, type: url-test, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(坡|🇸🇬|SG|Sing|SIN|XSP|马来|my|狮城))(?!.*(排除1|排除2)).*$'}
 
-  - {name: 👑 高级节点, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(专线|专用|高级|直连|急速|高速|高倍率|游戏|铂金|钻石|企业|VIP|Ultra|Game|IEPL|IPLC|AIA|BGP|GIA|CN2|CMI|HGC|HKT|CTM|CC|AC|x([2-9]|\\d{2,})))(?!.*(排除1|排除2)).*$'}
-  - {name: 📉 省流节点, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(0\.[1-6][倍|x]|低倍率|省流|大流量|闲时|Low)).*$'}
+  - {name: 👑 高级节点, type: url-test, interval: 900, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(专线|专用|高级|直连|急速|高速|高倍率|游戏|铂金|钻石|企业|VIP|Ultra|Game|IEPL|IPLC|AIA|BGP|GIA|CN2|CMI|HGC|HKT|CTM|CC|AC|x([2-9]|\\d{2,})))(?!.*(排除1|排除2)).*$'}
+  - {name: 📉 省流节点, type: url-test, interval: 900, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(0\.[1-6][倍|x]|低倍率|省流|大流量|闲时|Low)).*$'}
 
 #规则提供者（更新mrs格式）
   - {name: edgetunnel, type: url-test, tolerance: 50, lazy: true, use: [edgetunnel]}
