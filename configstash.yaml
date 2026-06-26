@@ -17,7 +17,7 @@ dns:
   ipv6: false                           # 👈 保持为 false，彻底解决移动端 v6 断流卡顿
   enhanced-mode: fake-ip
   fake-ip-range: 28.0.0.0/8
-  
+  fake-ip-range6: fc00::/16
   # ⚡ 核心防污染开关：让解析严格匹配本地规则，防止死锁
   respect-rules: true
 
@@ -26,20 +26,20 @@ dns:
   default-nameserver:
     - 223.5.5.5
     - 114.114.114.114
-    - system
+#    - system
 
   # ✈️ 2. 主要 DNS 服务器（对应 nameserver）
   # 融合了你原版的 Cloudflare/Google 加密 DoH（带 ECS 大陆网段伪装加速）与系统兜底
   nameserver:
     - https://cloudflare-dns.com/dns-query#ecs-override=true&ecs=211.137.130.0/24
     - https://dns.google/dns-query#ecs-override=true&ecs=211.137.130.0/24
-    - https://doh.opendns.com/dns-query#ecs-override=true&ecs=211.137.130.0/24
-    - system
+#    - system
 
+  skip-cert-verify: true
   # 🇨🇳 3. 特定域名服务（对应 direct-nameserver / proxy-server-nameserver 合并）
   # Stash 专用：节点域名解析与国内直连解析双保险
   proxy-server-nameserver:
-    - https://dns.alidns.com/dns-query
+    - https://223.5.5.5/dns-query
     - https://doh.pub/dns-query
   direct-nameserver:
     - https://dns.alidns.com/dns-query
@@ -50,15 +50,12 @@ dns:
   nameserver-policy:
     'www.baidu.com': 114.114.114.114
     '+.internal.crop.com': system
-    '*.example.com':
-      - https://dns.alidns.com/dns-query
-      - https://doh.pub/dns-query
     'rule-set:cn':
       - https://dns.alidns.com/dns-query
       - https://doh.pub/dns-query
     'geosite:cn':
-      - 223.5.5.5
-      - 119.29.29.29
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
 
   # 🛡️ 5. Fake IP 过滤器（对应 fake-ip-filter）
   # 完整融入了你的网易云、QQ音乐、主机游戏（Switch、Xbox、PlayStation）、微软等所有免 Fake-IP 白名单
