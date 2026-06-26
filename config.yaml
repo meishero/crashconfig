@@ -9,8 +9,10 @@ proxy-providers:
       lazy: true
       url: "https://www.gstatic.com/generate_204"
       interval: 300
-#并发测速为15
-      concurrency: 15
+#并发测速为10
+      concurrency: 10
+#超时时间为2.5s
+      timeout: 2500
     override:
       udp: true
       skip-cert-verify: true
