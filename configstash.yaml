@@ -45,7 +45,7 @@ dns:
     'www.baidu.com': 114.114.114.114
     '+.internal.crop.com': system
     'rule-set:cn': https://dns.alidns.com/dns-query
-    'geosite:cn': https://doh.pub/dns-query
+#    'geosite:cn': https://doh.pub/dns-query
 
   # 🛡️ 4. Fake IP 过滤器（你那一长串无损保留）
   fake-ip-filter:
