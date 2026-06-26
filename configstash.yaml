@@ -20,10 +20,10 @@ dns:
   fake-ip-range: 198.18.0.1/16
   
   # ⚡ 速度外挂 1：强迫内核严格遵循本地规则，防止国内流量乱跑
-  respect-rules: true
+#  respect-rules: true
   follow-rule: true
   # ⚡ 速度外挂 2：让 Stash 在后台启动独立缓存，即使开关代理、换 Wi-Fi，解析依然秒开
-  cache-style: check
+#  cache-style: check
 
   # 🔍 1. 默认探路 DNS（规范化恢复 system 兜底）
   default-nameserver:
@@ -34,8 +34,9 @@ dns:
   # ✈️ 2. 主要 DNS 服务器
   nameserver:
     - https://dns.alidns.com/dns-query
-    - https://cloudflare-dns.com/dns-query#ecs-override=true&ecs=211.137.130.0/24
-    - system
+    - https://cloudflare-dns.com/dns-query
+#    - https://cloudflare-dns.com/dns-query#ecs-override=true&ecs=211.137.130.0/24
+#    - system
 
   skip-cert-verify: true
 
