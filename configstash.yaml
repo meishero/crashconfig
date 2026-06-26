@@ -1,6 +1,5 @@
-# ------------------ STASH 官方规范：完美融合配置 ------------------
+# ------------------ STASH 官方规范：极限速度融合版 ------------------
 
-# 🛠️ 系统级域名映射模块
 use-system-hosts: true
 hosts:
   '*.clash.dev': 127.0.0.1
@@ -11,54 +10,43 @@ hosts:
   'services.googleapis.cn': services.googleapis.com
   'localhost': 127.0.0.1
 
-#混合端口
-#mixed-port: 7890
-#允许局域网
-#allow-lan: true
-#绑定地址
-#bind-address: '*'
-#模式:rule（规则） / global（全局代理）/ direct（全局直连）
 mode: Rule
-#日志级别（日志输出级别：分级如后silent / info / warning / error / debug级别越高日志输出量越大）
 log-level: silent
-#外部控制器
-#external-controller: 127.0.0.1:9090
 
-# 🌐 DNS 核心控制台
 dns:
   enable: true
-  ipv6: false                           # 👈 保持为 false，彻底解决移动端 v6 断流卡顿
+  ipv6: false
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
-#  fake-ip-range6: fc00::/16
-  # ⚡ 核心防污染开关：让解析严格匹配本地规则，防止死锁
-#  respect-rules: true
+  
+  # ⚡ 速度外挂 1：强迫内核严格遵循本地规则，防止国内流量乱跑
+  respect-rules: true
   follow-rule: true
-  # 🔍 1. 默认 DNS 服务器（对应 default-nameserver）
-  # 用于基础探路，解析主要 DoH 服务器本身的域名 IP
+  # ⚡ 速度外挂 2：让 Stash 在后台启动独立缓存，即使开关代理、换 Wi-Fi，解析依然秒开
+  cache-style: check
+
+  # 🔍 1. 默认探路 DNS（规范化恢复 system 兜底）
   default-nameserver:
     - 223.5.5.5
     - 114.114.114.114
-#    - system
+    - system
 
-  # ✈️ 2. 主要 DNS 服务器（对应 nameserver）
-  # 融合了你原版的 Cloudflare/Google 加密 DoH（带 ECS 大陆网段伪装加速）与系统兜底
+  # ✈️ 2. 主要 DNS 服务器
   nameserver:
     - https://dns.alidns.com/dns-query
     - https://cloudflare-dns.com/dns-query#ecs-override=true&ecs=211.137.130.0/24
-#    - system
+    - system
 
-  # 🎯 4. 高级 DNS 策略（对应 nameserver-policy）
-  # 完美继承官方的高级策略，并融合了你的规则集强制加密直连
+  skip-cert-verify: true
+
+  # 🎯 3. 高级 DNS 策略（完美修复语法报错，改回标准缩进格式）
   nameserver-policy:
     'www.baidu.com': 114.114.114.114
     '+.internal.crop.com': system
     'rule-set:cn': https://dns.alidns.com/dns-query
     'geosite:cn': https://doh.pub/dns-query
 
-  skip-cert-verify: true
-  # 🛡️ 5. Fake IP 过滤器（对应 fake-ip-filter）
-  # 完整融入了你的网易云、QQ音乐、主机游戏（Switch、Xbox、PlayStation）、微软等所有免 Fake-IP 白名单
+  # 🛡️ 4. Fake IP 过滤器（你那一长串无损保留）
   fake-ip-filter:
     - '*'
     - '*.lan'
@@ -182,7 +170,7 @@ dns:
     - '+.dynv6.net'
     - "rule-set:cn"
 
-# ------------------ STASH 官方规范：完美融合配置结束 ------------------
+# ------------------ STASH 官方规范：极限速度融合版结束 ------------------
 
 proxy-providers:
   edgetunnel:
