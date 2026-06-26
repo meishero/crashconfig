@@ -45,21 +45,18 @@ dns:
   # 融合了你原版的 Cloudflare/Google 加密 DoH（带 ECS 大陆网段伪装加速）与系统兜底
   nameserver:
     - https://dns.alidns.com/dns-query
-    - https://223.5.5.5/dns-query
+    - https://cloudflare-dns.com/dns-query#ecs-override=true&ecs=211.137.130.0/24
 #    - system
-
-  skip-cert-verify: true
 
   # 🎯 4. 高级 DNS 策略（对应 nameserver-policy）
   # 完美继承官方的高级策略，并融合了你的规则集强制加密直连
   nameserver-policy:
     'www.baidu.com': 114.114.114.114
     '+.internal.crop.com': system
-    'rule-set:cn':
-      - https://dns.alidns.com/dns-query,https://doh.pub/dns-query
-    'geosite:cn':
-      - https://dns.alidns.com/dns-query,https://doh.pub/dns-query
+    'rule-set:cn': https://dns.alidns.com/dns-query
+    'geosite:cn': https://doh.pub/dns-query
 
+  skip-cert-verify: true
   # 🛡️ 5. Fake IP 过滤器（对应 fake-ip-filter）
   # 完整融入了你的网易云、QQ音乐、主机游戏（Switch、Xbox、PlayStation）、微软等所有免 Fake-IP 白名单
   fake-ip-filter:
