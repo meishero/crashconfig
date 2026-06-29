@@ -13,8 +13,8 @@ proxy-providers:
       interval: 600
 #并发测速为5
       concurrency: 5
-#超时时间为2.5s  改成1.7  如果存在丢包重传 时间肯定比较大 扔掉那些丢包严重的
-      timeout: 1700
+#超时时间为2.5s  改成1.5  如果存在丢包重传 时间肯定比较大 扔掉那些丢包严重的
+      timeout: 1500
     override:
       udp: true
       skip-cert-verify: true
