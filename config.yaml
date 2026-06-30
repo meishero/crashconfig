@@ -54,7 +54,7 @@ proxy-groups:
   - {name: ⚖️ 负载均衡(轮询), type: load-balance, strategy: round-robin, interval: 900, tolerance: 1500, include-all: true} 
   - {name: 🚑 故障转移, type: fallback, interval: 900, include-all: true}
 
-  - {name: 🤖 AI 平台, type: select, proxies: [🚀 节点选择, AI节点(过滤港澳-自动测速), 🤖 AI节点(过滤港澳-负载均衡-散列), 🤖 AI节点(过滤港澳-负载均衡-轮询), 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel]}
+  - {name: 🤖 AI 平台, type: select, proxies: [🚀 节点选择, 🤖 AI节点(过滤港澳-自动测速), 🤖 AI节点(过滤港澳-负载均衡-散列), 🤖 AI节点(过滤港澳-负载均衡-轮询), 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel]}
   - {name: 🤖 AI节点(过滤港澳-自动测速), type: url-test, interval: 900, tolerance: 50, include-all: true, filter: '(?i)^(?!.*(🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
   - {name: 🤖 AI节点(过滤港澳-负载均衡-散列), type: load-balance, strategy: consistent-hashing, interval: 900, tolerance: 1500, include-all: true, filter: '(?i)^(?!.*(🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
   - {name: 🤖 AI节点(过滤港澳-负载均衡-轮询), type: load-balance, strategy: round-robin, interval: 900, tolerance: 1500, include-all: true, filter: '(?i)^(?!.*(🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
