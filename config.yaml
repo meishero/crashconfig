@@ -49,7 +49,7 @@ proxy-providers:
     filter: '(?i)^(?!.*(官方|剩余|重置|到期|防失联|官网|导航|客服|http|www|群|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|软件|装新|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|分享|bestcf.pages.dev)).*$'
   edgetunnel3:
     type: http
-    url: "https://ddd08023.meishero.qzz.io/sub?token=47b1f9163404ef2860bfbe5bed2007fc"
+    url: "https://ddd08023.meishero.qzz.io/sub?token=5895144dee0da21e7d7399f5076dcebf"
     path: "./providers/edgetunnel3.yaml"
     interval: 7200
     proxy: DIRECT
