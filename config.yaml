@@ -32,18 +32,18 @@ proxy-groups:
   - {name: 🚑 故障转移, type: fallback, interval: 600, include-all: true}
 
   - {name: 🤖 AI 平台, type: select, proxies: [🚀 节点选择, 🤖 AI节点（过滤港澳）, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel]}
-  - {name: 🤖 AI节点（过滤港澳）, type: url-test, interval: 600, tolerance: 50, include-all: true, filter: '(?i)^(?!.*(|🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
+  - {name: 🤖 AI节点（过滤港澳）, type: url-test, interval: 600, tolerance: 50, include-all: true, filter: '(?i)^(?!.*(🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
 
   - {name: 🎥 奈飞视频, type: select, proxies: [🚀 节点选择, 🎥 奈飞节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel]}
   - {name: 🎥 奈飞节点, type: url-test, interval: 600, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(NF|奈飞|解锁|Netflix|Media))(?!.*(排除1|排除2)).*$', hidden: true} 
-  - {name: 📽️ 迪士尼+, type: select, proxies: [🚀 节点选择, 📽️ 迪士尼+节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel]}
-  - {name: 📽️ 迪士尼+节点, type: url-test, interval: 600, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(解锁|disney|迪士尼|Media))(?!.*(排除1|排除2)).*$', hidden: true}
-  - {name: 🎞️ Max, type: select, proxies: [🚀 节点选择, 🎞️ Max节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel]}
-  - {name: 🎞️ Max节点, type: url-test, interval: 600, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(解锁|max|Media))(?!.*(排除1|排除2)).*$', hidden: true}
-  - {name: 🎬 Prime Video, type: select, proxies: [🚀 节点选择, 🎬 Prime Video节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel]}
-  - {name: 🎬 Prime Video节点, type: url-test, interval: 600, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(解锁|Prime|Media))(?!.*(排除1|排除2)).*$', hidden: true}
-  - {name: 🍎 Apple TV+, type: select, proxies: [🚀 节点选择, 🍎 Apple TV+节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel]}
-  - {name: 🍎 Apple TV+节点, type: url-test, interval: 600, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(解锁|apple tv|appletv|Media))(?!.*(排除1|排除2)).*$', hidden: true}
+#  - {name: 📽️ 迪士尼+, type: select, proxies: [🚀 节点选择, 📽️ 迪士尼+节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel]}
+#  - {name: 📽️ 迪士尼+节点, type: url-test, interval: 600, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(解锁|disney|迪士尼|Media))(?!.*(排除1|排除2)).*$', hidden: true}
+#  - {name: 🎞️ Max, type: select, proxies: [🚀 节点选择, 🎞️ Max节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel]}
+#  - {name: 🎞️ Max节点, type: url-test, interval: 600, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(解锁|max|Media))(?!.*(排除1|排除2)).*$', hidden: true}
+#  - {name: 🎬 Prime Video, type: select, proxies: [🚀 节点选择, 🎬 Prime Video节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel]}
+#  - {name: 🎬 Prime Video节点, type: url-test, interval: 600, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(解锁|Prime|Media))(?!.*(排除1|排除2)).*$', hidden: true}
+#  - {name: 🍎 Apple TV+, type: select, proxies: [🚀 节点选择, 🍎 Apple TV+节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel]}
+#  - {name: 🍎 Apple TV+节点, type: url-test, interval: 600, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(解锁|apple tv|appletv|Media))(?!.*(排除1|排除2)).*$', hidden: true}
   - {name: ▶️ 油管视频, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel]}
 
   - {name: 🎬 TikTok, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel]}
@@ -162,34 +162,34 @@ rule-providers:
     proxy: DIRECT
     url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/netflix.mrs"
     path: "./ruleset/netflix.mrs"     
-  disney:
-    type: http
-    behavior: domain
-    format: mrs
-    path: ./ruleset/disney.mrs
-    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/disney.mrs"
-    interval: 86400
-  max:
-    type: http
-    behavior: domain
-    format: mrs
-    path: ./ruleset/max.mrs
-    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/max.mrs"
-    interval: 86400
-  primevideo:
-    type: http
-    behavior: domain
-    format: mrs
-    path: ./ruleset/primevideo.mrs
-    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/primevideo.mrs"
-    interval: 86400
-  appletv:
-    type: http
-    behavior: domain
-    format: mrs
-    path: ./ruleset/appletv.mrs
-    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/appletv.mrs"
-    interval: 86400
+#  disney:
+#    type: http
+#    behavior: domain
+#    format: mrs
+#    path: ./ruleset/disney.mrs
+#    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/disney.mrs"
+#    interval: 86400
+#  max:
+#    type: http
+#    behavior: domain
+#    format: mrs
+#    path: ./ruleset/max.mrs
+#    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/max.mrs"
+#    interval: 86400
+#  primevideo:
+#    type: http
+#    behavior: domain
+#    format: mrs
+#    path: ./ruleset/primevideo.mrs
+#    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/primevideo.mrs"
+#    interval: 86400
+#  appletv:
+#    type: http
+#    behavior: domain
+#    format: mrs
+#    path: ./ruleset/appletv.mrs
+#    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/appletv.mrs"
+#    interval: 86400
   tiktok:
     type: http
     behavior: domain
@@ -542,7 +542,7 @@ rules:
 #闪电
   - DOMAIN,sd.sduc.site,🎯 本地直连
   
-  
+
  
 #JULI  按自己理解分流 itdog测试了
   - DOMAIN-SUFFIX,php.jdshipin.com,🇺🇸 美国策略
@@ -585,16 +585,18 @@ rules:
   - DOMAIN,api.github.com,🚀 节点选择 
 # --------------------------------------------------------------------------
 
-  - DOMAIN-SUFFIX,captive.apple.com,🍎 苹果服务
-  - DOMAIN-SUFFIX,kamo.teracloud.jp,🀄️ 国内流量
-
   # - RULE-SET,fakeip-filter,📌 fakeip 过滤,no-resolve
   
+  # ==========================================
+  # 第一层：绝对控制与安全防线（局域网、本地、去广告）
+  # ==========================================
   - RULE-SET,privateip,🔒 私有网络,no-resolve
   - RULE-SET,private,🔒 私有网络
-  - RULE-SET,telegramip,📲 电报消息,no-resolve
   - RULE-SET,ads,🛑 广告拦截
 
+  # ==========================================
+  # 第二层：秒开及低延迟直连（本地高频应用、测速、国内软件、微软苹果）
+  # ==========================================
   - RULE-SET,networktest,📈 网络测速
   - RULE-SET,applications,↔️ 直连软件
   - RULE-SET,apple-cn,🍎 苹果服务
@@ -603,25 +605,45 @@ rules:
   - RULE-SET,steamcn,🦾 Steam平台
   - RULE-SET,games-cn,🕹 国服游戏
 
-  - RULE-SET,googlefcm,📢 谷歌推送
-  - RULE-SET,netflix,🎥 奈飞视频
-  - RULE-SET,disney,📽️ 迪士尼+
-  - RULE-SET,max,🎞️ Max
-  - RULE-SET,primevideo,🎬 Prime Video
-  - RULE-SET,appletv,🍎 Apple TV+
-  - RULE-SET,tiktok,🎬 TikTok
-  - RULE-SET,trackerslist,⬇️ BT trackerslist
-  
+  # ==========================================
+  # 第三层：高能敏感直连（BT下载 - 必须放在国际流量之前，防止代理彻底瘫痪）
+  # ==========================================
+  - RULE-SET,trackerslist,⬇️ BT trackerslist  # 移动到这里：确保BT下载流量绝对走直连，不污染你的CF优选IP！
+
+  # ==========================================
+  # 第四层：特定海外高频高稳定性应用（推送、电报、AI）
+  # ==========================================
+  - RULE-SET,googlefcm,📢 谷歌推送           # 移动到这里：确保谷歌后台推送永远不因大盘分流断连
+  - RULE-SET,telegramip,📲 电报消息,no-resolve # 移动到这里：电报IP段规则，放在流媒体和通用国际流量上方
+  - RULE-SET,ai,🤖 AI 平台                   # AI大模型，高优先级，单独走特定的优质代理机制
+
+  # ==========================================
+  # 第五层：国际特定大型流媒体（油管、奈飞、综合媒体）
+  # ==========================================
   - RULE-SET,youtube,▶️ 油管视频
-  - RULE-SET,ai,🤖 AI 平台
+  - RULE-SET,netflix,🎥 奈飞视频
+# - RULE-SET,disney,📽️ 迪士尼+
+# - RULE-SET,max,🎞️ Max
+# - RULE-SET,primevideo,🎬 Prime Video
+# - RULE-SET,appletv,🍎 Apple TV+
+# - RULE-SET,tiktok,🎬 TikTok
   - RULE-SET,media,🌍 国际媒体
   - RULE-SET,games,🎮 外服游戏
 
+  # ==========================================
+  # 第六层：大盘宏观分流（国别与域名集 - 核心优化层）
+  # ==========================================
   - RULE-SET,proxy,🌐 国际流量
   - RULE-SET,gfw,🌐 国际域名
-  - RULE-SET,cn,🀄️ 国内流量
+  - RULE-SET,cn,🀄️ 国内流量                  # 域名大合集，在这把国内绝大多数网页全部干掉走直连
+  
+  # ==========================================
+  # 第七层：最后的 IP 兜底防线（此时域名已经全部过滤完了，只剩纯 IP 请求）
+  # ==========================================
   - RULE-SET,mediaip,🌍 国际媒体
-  - RULE-SET,cnip,🀄️ 国内流量
+  - RULE-SET,cnip,🀄️ 国内流量                # 中国大陆 IP 最终兜底，漏掉的国内 IP 在这直连
 
-
+  # ==========================================
+  # 第八层：终极无条件捕手
+  # ==========================================
   - MATCH,🐟 漏网之鱼
