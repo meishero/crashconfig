@@ -9,6 +9,7 @@ proxy-providers:
     # 匹配规则：匹配从 @ 开始一直到名字末尾的所有字符
     proxy-name-regex: '@.*$'
     # 替换规则：把匹配到的部分直接替换为空（等于直接删掉）
+    proxy-name-replace: ''
     health-check:
       enable: true
       lazy: true
@@ -36,6 +37,7 @@ proxy-providers:
     # 匹配规则：匹配从 @ 开始一直到名字末尾的所有字符
     proxy-name-regex: '@.*$'
     # 替换规则：把匹配到的部分直接替换为空（等于直接删掉）
+    proxy-name-replace: ''
     health-check:
       enable: true
       lazy: true
