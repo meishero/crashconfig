@@ -144,7 +144,7 @@ proxy-groups:
   - {name: 🇸🇬 新加坡马来节点(故障转移), type: fallback, interval: 300, include-all: true, hidden: true, filter: '(?i)^(?=.*(坡|🇸🇬|SG|Sing|SIN|XSP|马来|my|狮城))(?!.*(排除1|排除2)).*$'}
 
 
-  - {name: 👑 高级节点, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(专线|专用|高级|直连|急速|高速|高倍率|游戏|铂金|钻石|企业|VIP|Ultra|Game|IEPL|IPLC|AIA|BGP|GIA|CN2|CMI|HGC|HKT|CTM|CC|AC|x([2-9]|\\d{2,})))(?!.*(排除1|排除2)).*$'}
+  - {name: 👑 高级节点, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(专线|专用|高级|直连|急速|高速|高倍率|游戏|铂金|钻石|企业|VIP|Ultra|Game|IEPL|IPLC|AIA|BGP|GIA|CN2|CMI|HGC|HKT|CTM|CC|AC|x([2-9]|\\d{2,})))(?!.*(miachat|排除2)).*$'}
   - {name: 📉 省流节点, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(0\.[1-6][倍|x]|低倍率|省流|大流量|闲时|Low)).*$'}
 
 #规则提供者(更新mrs格式)
