@@ -52,14 +52,14 @@ proxy-groups:
   - {name: 🛠️ 手动切换, type: select, include-all: true, proxies: [🎯 本地直连, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel, edgetunnel4]}
   - {name: ♻️ 自动选择, type: url-test, interval: 300, tolerance: 50, include-all: true}
   - {name: ✨ 自动选择(去高倍率), type: url-test, interval: 300, tolerance: 50, include-all: true, filter: '(?i)^(?!.*(专线|专用|高级|直连|急速|高速|高倍率|游戏|铂金|钻石|企业|VIP|Ultra|Game|IEPL|IPLC|AIA|BGP|GIA|CN2|CMI|HGC|HKT|CTM|CC|AC|x([2-9]|\\d{2,}))).*$'}
-  - {name: ⚖️ 负载均衡(散列), type: load-balance, strategy: consistent-hashing, interval: 1200, tolerance: 500, include-all: true}
-  - {name: ⚖️ 负载均衡(轮询), type: load-balance, strategy: round-robin, interval: 1200, tolerance: 500, include-all: true} 
+  - {name: ⚖️ 负载均衡(散列), type: load-balance, strategy: consistent-hashing, interval: 900, tolerance: 500, include-all: true}
+  - {name: ⚖️ 负载均衡(轮询), type: load-balance, strategy: round-robin, interval: 900, tolerance: 500, include-all: true} 
   - {name: 🚑 故障转移, type: fallback, interval: 300, include-all: true}
 
   - {name: 🤖 AI 平台, type: select, proxies: [🚀 节点选择, 🤖 AI节点(过滤港澳-自动测速), 🤖 AI节点(过滤港澳-负载均衡-散列), 🤖 AI节点(过滤港澳-负载均衡-轮询), 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel, edgetunnel4]}
   - {name: 🤖 AI节点(过滤港澳-自动测速), type: url-test, interval: 300, tolerance: 50, include-all: true, filter: '(?i)^(?!.*(🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
-  - {name: 🤖 AI节点(过滤港澳-负载均衡-散列), type: load-balance, strategy: consistent-hashing, interval: 1200, tolerance: 500, include-all: true, filter: '(?i)^(?!.*(🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
-  - {name: 🤖 AI节点(过滤港澳-负载均衡-轮询), type: load-balance, strategy: round-robin, interval: 1200, tolerance: 500, include-all: true, filter: '(?i)^(?!.*(🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
+  - {name: 🤖 AI节点(过滤港澳-负载均衡-散列), type: load-balance, strategy: consistent-hashing, interval: 900, tolerance: 500, include-all: true, filter: '(?i)^(?!.*(🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
+  - {name: 🤖 AI节点(过滤港澳-负载均衡-轮询), type: load-balance, strategy: round-robin, interval: 900, tolerance: 500, include-all: true, filter: '(?i)^(?!.*(🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
   - {name: 🎥 奈飞视频, type: select, proxies: [🚀 节点选择, 🎥 奈飞节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel, edgetunnel4]}
   - {name: 🎥 奈飞节点, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(NF|奈飞|解锁|Netflix|Media))(?!.*(排除1|排除2)).*$', hidden: true} 
 #  - {name: 📽️ 迪士尼+, type: select, proxies: [🚀 节点选择, 📽️ 迪士尼+节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel, edgetunnel4]}
@@ -119,21 +119,21 @@ proxy-groups:
   - {name: 🇰🇷 韩国节点(自动测速), type: url-test, interval: 300, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(韩|🇰🇷|韓|首尔|南朝鲜|欧巴|泡菜|KR|KOR|Korea|South))(?!.*(kristi|排除2)).*$' }
   - {name: 🇸🇬 新加坡马来节点(自动测速), type: url-test, interval: 300, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(坡|🇸🇬|SG|Sing|SIN|XSP|马来|my|狮城))(?!.*(排除1|排除2)).*$'}
   
-  - {name: 🇭🇰 港澳节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, interval: 1200, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(港|🇭🇰|HK|Hong|HKG|🇲🇴|澳|澳门))(?!.*(澳大利亚|澳洲)).*$'}
-  - {name: 🇹🇼 台湾节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, interval: 1200, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(台|🇹🇼|TW|tai|TPE|TSA|KHH|宝岛))(?!.*(仙台|排除2)).*$'}
-  - {name: 🇺🇸 美国节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, interval: 1200, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(美|🇺🇸|US|USA|unitedstates|united states|SJC|JFK|LAX|ORD|ATL|DFW|SFO|MIA|SEA|IAD|洛杉矶|圣何塞|西雅图|纽约|波特兰|旧金山|休斯|达拉斯|硅谷|堪萨斯|迈阿密|凤凰城|芝加哥|奥勒姆))(?!.*(南美|中美|拉美|亚美尼亚|美属|dev|MiaChat)).*$'}
-  - {name: 🇪🇺 欧洲节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, interval: 1200, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(🇪🇺|欧|欧洲|奥|比|保|克罗地亚|塞|捷|丹|爱沙|芬|法|德|希|匈|爱尔|意|拉|立|卢|马其它|荷|波|葡|罗|斯洛伐|斯洛文|西|瑞|英|摩|🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|🇬🇧|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU|MD))(?!.*(欧巴|马来|node)).*$'}
-  - {name: 🇯🇵 日本节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, interval: 1200, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(日|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK|东京|大阪|埼玉|九州|仙台))(?!.*(尼日利亚|尼日尔|日内瓦)).*$'}
-  - {name: 🇰🇷 韩国节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, interval: 1200, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(韩|🇰🇷|韓|首尔|南朝鲜|欧巴|泡菜|KR|KOR|Korea|South))(?!.*(kristi|排除2)).*$' }
-  - {name: 🇸🇬 新加坡马来节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, interval: 1200, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(坡|🇸🇬|SG|Sing|SIN|XSP|马来|my|狮城))(?!.*(排除1|排除2)).*$'}
+  - {name: 🇭🇰 港澳节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, interval: 900, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(港|🇭🇰|HK|Hong|HKG|🇲🇴|澳|澳门))(?!.*(澳大利亚|澳洲)).*$'}
+  - {name: 🇹🇼 台湾节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, interval: 900, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(台|🇹🇼|TW|tai|TPE|TSA|KHH|宝岛))(?!.*(仙台|排除2)).*$'}
+  - {name: 🇺🇸 美国节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, interval: 900, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(美|🇺🇸|US|USA|unitedstates|united states|SJC|JFK|LAX|ORD|ATL|DFW|SFO|MIA|SEA|IAD|洛杉矶|圣何塞|西雅图|纽约|波特兰|旧金山|休斯|达拉斯|硅谷|堪萨斯|迈阿密|凤凰城|芝加哥|奥勒姆))(?!.*(南美|中美|拉美|亚美尼亚|美属|dev|MiaChat)).*$'}
+  - {name: 🇪🇺 欧洲节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, interval: 900, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(🇪🇺|欧|欧洲|奥|比|保|克罗地亚|塞|捷|丹|爱沙|芬|法|德|希|匈|爱尔|意|拉|立|卢|马其它|荷|波|葡|罗|斯洛伐|斯洛文|西|瑞|英|摩|🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|🇬🇧|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU|MD))(?!.*(欧巴|马来|node)).*$'}
+  - {name: 🇯🇵 日本节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, interval: 900, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(日|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK|东京|大阪|埼玉|九州|仙台))(?!.*(尼日利亚|尼日尔|日内瓦)).*$'}
+  - {name: 🇰🇷 韩国节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, interval: 900, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(韩|🇰🇷|韓|首尔|南朝鲜|欧巴|泡菜|KR|KOR|Korea|South))(?!.*(kristi|排除2)).*$' }
+  - {name: 🇸🇬 新加坡马来节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, interval: 900, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(坡|🇸🇬|SG|Sing|SIN|XSP|马来|my|狮城))(?!.*(排除1|排除2)).*$'}
 
-  - {name: 🇭🇰 港澳节点(负载均衡-轮询), type: load-balance, strategy: round-robin, interval: 1200, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(港|🇭🇰|HK|Hong|HKG|🇲🇴|澳|澳门))(?!.*(澳大利亚|澳洲)).*$'}
-  - {name: 🇹🇼 台湾节点(负载均衡-轮询), type: load-balance, strategy: round-robin, interval: 1200, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(台|🇹🇼|TW|tai|TPE|TSA|KHH|宝岛))(?!.*(仙台|排除2)).*$'}
-  - {name: 🇺🇸 美国节点(负载均衡-轮询), type: load-balance, strategy: round-robin, interval: 1200, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(美|🇺🇸|US|USA|unitedstates|united states|SJC|JFK|LAX|ORD|ATL|DFW|SFO|MIA|SEA|IAD|洛杉矶|圣何塞|西雅图|纽约|波特兰|旧金山|休斯|达拉斯|硅谷|堪萨斯|迈阿密|凤凰城|芝加哥|奥勒姆))(?!.*(南美|中美|拉美|亚美尼亚|美属|dev|MiaChat)).*$'}
-  - {name: 🇪🇺 欧洲节点(负载均衡-轮询), type: load-balance, strategy: round-robin, interval: 1200, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(🇪🇺|欧|欧洲|奥|比|保|克罗地亚|塞|捷|丹|爱沙|芬|法|德|希|匈|爱尔|意|拉|立|卢|马其它|荷|波|葡|罗|斯洛伐|斯洛文|西|瑞|英|摩|🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|🇬🇧|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU|MD))(?!.*(欧巴|马来|node)).*$'}
-  - {name: 🇯🇵 日本节点(负载均衡-轮询), type: load-balance, strategy: round-robin, interval: 1200, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(日|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK|东京|大阪|埼玉|九州|仙台))(?!.*(尼日利亚|尼日尔|日内瓦)).*$'}
-  - {name: 🇰🇷 韩国节点(负载均衡-轮询), type: load-balance, strategy: round-robin, interval: 1200, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(韩|🇰🇷|韓|首尔|南朝鲜|欧巴|泡菜|KR|KOR|Korea|South))(?!.*(kristi|排除2)).*$' }
-  - {name: 🇸🇬 新加坡马来节点(负载均衡-轮询), type: load-balance, strategy: round-robin, interval: 1200, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(坡|🇸🇬|SG|Sing|SIN|XSP|马来|my|狮城))(?!.*(排除1|排除2)).*$'}
+  - {name: 🇭🇰 港澳节点(负载均衡-轮询), type: load-balance, strategy: round-robin, interval: 900, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(港|🇭🇰|HK|Hong|HKG|🇲🇴|澳|澳门))(?!.*(澳大利亚|澳洲)).*$'}
+  - {name: 🇹🇼 台湾节点(负载均衡-轮询), type: load-balance, strategy: round-robin, interval: 900, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(台|🇹🇼|TW|tai|TPE|TSA|KHH|宝岛))(?!.*(仙台|排除2)).*$'}
+  - {name: 🇺🇸 美国节点(负载均衡-轮询), type: load-balance, strategy: round-robin, interval: 900, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(美|🇺🇸|US|USA|unitedstates|united states|SJC|JFK|LAX|ORD|ATL|DFW|SFO|MIA|SEA|IAD|洛杉矶|圣何塞|西雅图|纽约|波特兰|旧金山|休斯|达拉斯|硅谷|堪萨斯|迈阿密|凤凰城|芝加哥|奥勒姆))(?!.*(南美|中美|拉美|亚美尼亚|美属|dev|MiaChat)).*$'}
+  - {name: 🇪🇺 欧洲节点(负载均衡-轮询), type: load-balance, strategy: round-robin, interval: 900, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(🇪🇺|欧|欧洲|奥|比|保|克罗地亚|塞|捷|丹|爱沙|芬|法|德|希|匈|爱尔|意|拉|立|卢|马其它|荷|波|葡|罗|斯洛伐|斯洛文|西|瑞|英|摩|🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|🇬🇧|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU|MD))(?!.*(欧巴|马来|node)).*$'}
+  - {name: 🇯🇵 日本节点(负载均衡-轮询), type: load-balance, strategy: round-robin, interval: 900, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(日|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK|东京|大阪|埼玉|九州|仙台))(?!.*(尼日利亚|尼日尔|日内瓦)).*$'}
+  - {name: 🇰🇷 韩国节点(负载均衡-轮询), type: load-balance, strategy: round-robin, interval: 900, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(韩|🇰🇷|韓|首尔|南朝鲜|欧巴|泡菜|KR|KOR|Korea|South))(?!.*(kristi|排除2)).*$' }
+  - {name: 🇸🇬 新加坡马来节点(负载均衡-轮询), type: load-balance, strategy: round-robin, interval: 900, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(坡|🇸🇬|SG|Sing|SIN|XSP|马来|my|狮城))(?!.*(排除1|排除2)).*$'}
 
   - {name: 🇭🇰 港澳节点(故障转移), type: fallback, interval: 300, include-all: true, hidden: true, filter: '(?i)^(?=.*(港|🇭🇰|HK|Hong|HKG|🇲🇴|澳|澳门))(?!.*(澳大利亚|澳洲)).*$'}
   - {name: 🇹🇼 台湾节点(故障转移), type: fallback, interval: 300, include-all: true, hidden: true, filter: '(?i)^(?=.*(台|🇹🇼|TW|tai|TPE|TSA|KHH|宝岛))(?!.*(仙台|排除2)).*$'}
