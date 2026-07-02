@@ -575,7 +575,7 @@ rules:
 #JULI  按自己理解分流 itdog测试了
   - DOMAIN-SUFFIX,php.jdshipin.com,🇺🇸 美国策略
   - DOMAIN-SUFFIX,163189.xyz,🇺🇸 美国策略 #直连就可以  不一定要代理
-  - DOMAIN-SUFFIX,1678520.xyz,🇪🇺 美国策略 #🇺🇸 美国策略 #直连就可以  不一定要代理 #捷克 #德国最快
+  - DOMAIN-SUFFIX,1678520.xyz,🇺🇸 美国策略 #🇺🇸 美国策略 #直连就可以  不一定要代理 #捷克 #德国最快
   - DOMAIN-SUFFIX,178.indevs.in,🇺🇸 美国策略 #直连就可以  不一定要代理
 #  - DOMAIN-SUFFIX,veryfast.filegear-sg.me,🇹🇼 台湾策略  #失效
   - DOMAIN-SUFFIX,cdn.loc.cc,🇺🇸 美国策略 #直连就可以  不一定要代理
