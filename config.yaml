@@ -3,7 +3,7 @@ proxy-providers:
     type: http
     url: "https://ddd08022.meishero.qzz.io/sub?token=cf4c9bb6dc1e05f35142bfc568f70980"
     path: "./providers/edgetunnel2.yaml"
-    interval: 7200
+    interval: 46800
     proxy: DIRECT
     empty-fallback: REJECT
     health-check:
@@ -27,7 +27,7 @@ proxy-providers:
     type: http
     url: "https://ddd08023.meishero.qzz.io/sub?token=5895144dee0da21e7d7399f5076dcebf"
     path: "./providers/edgetunnel3.yaml"
-    interval: 7200
+    interval: 46800
     proxy: DIRECT
     empty-fallback: REJECT
     health-check:
@@ -56,10 +56,11 @@ proxy-groups:
   - {name: ⚖️ 负载均衡(轮询), type: load-balance, strategy: round-robin, interval: 900, tolerance: 500, include-all: true} 
   - {name: 🚑 故障转移, type: fallback, interval: 300, include-all: true}
 
-  - {name: 🤖 AI 平台, type: select, proxies: [🚀 节点选择, 🤖 AI节点(过滤港澳-自动测速), 🤖 AI节点(过滤港澳-负载均衡-散列), 🤖 AI节点(过滤港澳-负载均衡-轮询), 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2, edgetunnel3]}
+  - {name: 🤖 AI 平台, type: select, proxies: [🚀 节点选择, 🤖 AI节点(过滤港澳-自动测速), 🤖 AI节点(过滤港澳-负载均衡-散列), 🤖 AI节点(过滤港澳-负载均衡-轮询), 🤖 AI节点(过滤港澳-故障转移), 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2, edgetunnel3]}
   - {name: 🤖 AI节点(过滤港澳-自动测速), type: url-test, interval: 300, tolerance: 50, include-all: true, filter: '(?i)^(?!.*(🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
   - {name: 🤖 AI节点(过滤港澳-负载均衡-散列), type: load-balance, strategy: consistent-hashing, interval: 900, tolerance: 500, include-all: true, filter: '(?i)^(?!.*(🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
   - {name: 🤖 AI节点(过滤港澳-负载均衡-轮询), type: load-balance, strategy: round-robin, interval: 900, tolerance: 500, include-all: true, filter: '(?i)^(?!.*(🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
+  - {name: 🤖 AI节点(过滤港澳-故障转移), type: fallback, interval: 300, include-all: true, include-all: true, filter: '(?i)^(?!.*(🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
   - {name: 🎥 奈飞视频, type: select, proxies: [🚀 节点选择, 🎥 奈飞节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2, edgetunnel3]}
   - {name: 🎥 奈飞节点, type: url-test, interval: 300, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(NF|奈飞|解锁|Netflix|Media))(?!.*(排除1|排除2)).*$', hidden: true} 
 #  - {name: 📽️ 迪士尼+, type: select, proxies: [🚀 节点选择, 📽️ 迪士尼+节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2, edgetunnel3]}
@@ -405,33 +406,33 @@ rules:
 #  - DOMAIN-SUFFIX,cloudflare.com,🇭🇰 港澳策略
   - DOMAIN-SUFFIX,cloudflaremirrors.com,🇭🇰 港澳策略
   - DOMAIN-SUFFIX,claude.ai,🤖 AI 平台
-  - DOMAIN-SUFFIX,litv.tv,🇹🇼 台湾策略
-  - DOMAIN-SUFFIX,hinet.net,🇹🇼 台湾策略
-  - DOMAIN-SUFFIX,4gtv.tv,🇹🇼 台湾策略
-  - DOMAIN-SUFFIX,api2.4gtv.tv,🇹🇼 台湾策略
-  - DOMAIN-SUFFIX,ofiii.com,🇹🇼 台湾策略
+  # - DOMAIN-SUFFIX,litv.tv,🇹🇼 台湾策略
+  # - DOMAIN-SUFFIX,hinet.net,🇹🇼 台湾策略
+  # - DOMAIN-SUFFIX,4gtv.tv,🇹🇼 台湾策略
+  # - DOMAIN-SUFFIX,api2.4gtv.tv,🇹🇼 台湾策略
+  # - DOMAIN-SUFFIX,ofiii.com,🇹🇼 台湾策略
 #  - DOMAIN-SUFFIX,docker.com,🇺🇸 美国策略
   - DOMAIN-SUFFIX,goiptv.de5.net,🇺🇸 美国策略
   - DOMAIN-SUFFIX,goiptv.us.ci,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,starhubgo.com,🇸🇬 新加坡马来策略
+  # - DOMAIN-SUFFIX,starhubgo.com,🇸🇬 新加坡马来策略
 #  - DOMAIN-SUFFIX,workers.dev,🇹🇼 台湾策略
   - DOMAIN-SUFFIX,veloxmedia.co.uk,🇺🇸 美国策略
   - DOMAIN-SUFFIX,newtvsuper.com,🇺🇸 美国策略
   - DOMAIN-SUFFIX,catvod.com,🇺🇸 美国策略
-  - IP-CIDR,50.7.158.194/32,🇯🇵 日本策略
+  # - IP-CIDR,50.7.158.194/32,🇯🇵 日本策略
   - IP-CIDR,103.102.135.231/24,🇺🇸 美国策略
-  - IP-CIDR,123.51.231.132/32,🇹🇼 台湾策略
-  - IP-CIDR,60.250.121.103/32,🇹🇼 台湾策略
+  # - IP-CIDR,123.51.231.132/32,🇹🇼 台湾策略
+  # - IP-CIDR,60.250.121.103/32,🇹🇼 台湾策略
 #  - DOMAIN-SUFFIX,163189.xyz,🇺🇸 美国策略
   - DOMAIN-SUFFIX,z2u.com,🇺🇸 美国策略
   - DOMAIN-SUFFIX,amazonaws.com,🇺🇸 美国策略
   - DOMAIN-SUFFIX,nodeseek.com,🇺🇸 美国策略
   - DOMAIN-SUFFIX,go-iptv.ggff.net,🇺🇸 美国策略
   - DOMAIN-SUFFIX,tvb.com,🇭🇰 港澳策略
-  - DOMAIN-SUFFIX,stream-link.org,🇸🇬 新加坡马来策略
+  # - DOMAIN-SUFFIX,stream-link.org,🇸🇬 新加坡马来策略
   - DOMAIN-SUFFIX,lioncdn.net,🇺🇸 美国策略
   - DOMAIN-SUFFIX,edgeware.tvb.com,🇭🇰 港澳策略
-  - DOMAIN-SUFFIX,cdn.hinet.net,🇹🇼 台湾策略
+  # - DOMAIN-SUFFIX,cdn.hinet.net,🇹🇼 台湾策略
   - DOMAIN-SUFFIX,858.qzz.io,🇺🇸 美国策略
   - DOMAIN-SUFFIX,bee.tzh911.qzz.io,🇺🇸 美国策略
   - DOMAIN-SUFFIX,cluster-cz5nqyh5nreq6ua6gaqd7okl7o.cloudworkstations.dev,🇺🇸 美国策略
@@ -445,10 +446,10 @@ rules:
   - DOMAIN-SUFFIX,ru8.dpdns.org,🇺🇸 美国策略
   - DOMAIN-SUFFIX,vip-tptv.xyz,🇺🇸 美国策略
   - DOMAIN-SUFFIX,passwdword.xyz,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,infini.money,🇹🇼 台湾策略
+  # - DOMAIN-SUFFIX,infini.money,🇹🇼 台湾策略
   - DOMAIN-SUFFIX,hudsonvalleyhost.com,🇺🇸 美国策略
-  - DOMAIN-KEYWORD,astro,🇸🇬 新加坡马来策略
-  - DOMAIN-KEYWORD,wavve,🇸🇬 新加坡马来策略
+  # - DOMAIN-KEYWORD,astro,🇸🇬 新加坡马来策略
+  # - DOMAIN-KEYWORD,wavve,🇸🇬 新加坡马来策略
   - DOMAIN-SUFFIX,r2.hfyrw.com,🇺🇸 美国策略
 
 # NAME: PanVod
@@ -574,7 +575,7 @@ rules:
 #JULI  按自己理解分流 itdog测试了
   - DOMAIN-SUFFIX,php.jdshipin.com,🇺🇸 美国策略
   - DOMAIN-SUFFIX,163189.xyz,🇺🇸 美国策略 #直连就可以  不一定要代理
-  - DOMAIN-SUFFIX,1678520.xyz,🇪🇺 欧洲策略 #🇺🇸 美国策略 #直连就可以  不一定要代理 #捷克 #德国最快
+  - DOMAIN-SUFFIX,1678520.xyz,🇪🇺 美国策略 #🇺🇸 美国策略 #直连就可以  不一定要代理 #捷克 #德国最快
   - DOMAIN-SUFFIX,178.indevs.in,🇺🇸 美国策略 #直连就可以  不一定要代理
 #  - DOMAIN-SUFFIX,veryfast.filegear-sg.me,🇹🇼 台湾策略  #失效
   - DOMAIN-SUFFIX,cdn.loc.cc,🇺🇸 美国策略 #直连就可以  不一定要代理
