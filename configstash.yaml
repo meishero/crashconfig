@@ -1,9 +1,5 @@
-mixed-port: 7890
-allow-lan: true
 mode: rule
 log-level: info
-ipv6: true
-unified-delay: true
 sniffer:
   enable: true
   parse-pure-ip: true
@@ -31,14 +27,14 @@ dns:
     - 223.5.5.5
     - 119.29.29.29
     - system
-  proxy-server-nameserver:
-    - 223.5.5.5
-  direct-nameserver:
-    - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query   
+  # proxy-server-nameserver:
+    # - 223.5.5.5
+  # direct-nameserver:
+    # - https://dns.alidns.com/dns-query
+    # - https://doh.pub/dns-query   
   nameserver:
     - https://cloudflare-dns.com/dns-query#ecs-override=true&ecs=211.137.130.0/24
-    - https://dns.google/dns-query#ecs-override=true&ecs=211.137.130.0/24
+    - https://dns.alidns.com/dns-query
   respect-rules: true
   follow-rule: true
   # nameserver-policy:
@@ -170,7 +166,7 @@ dns:
     - '+.gcloudcs.com'
     - '+.gcloudsdk.com'
     - '+.dynv6.net'
-use-system-hosts: true
+# use-system-hosts: true
 hosts:
   'time.android.com': 203.107.6.88
   'time.facebook.com': 203.107.6.88
