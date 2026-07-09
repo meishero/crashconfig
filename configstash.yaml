@@ -47,8 +47,10 @@ dns:
   respect-rules: true
   follow-rule: true
   nameserver-policy:
-   'geosite:cn': [ https://dns.alidns.com/dns-query, https://doh.pub/dns-query ]
-
+    geosite:cn:
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+  skip-cert-verify: true
   fake-ip-filter:
     - '*'
     - '*.lan'
