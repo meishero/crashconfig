@@ -46,7 +46,7 @@ dns:
 
   respect-rules: true
   nameserver-policy:
-    'rule-set:cn': [ https://dns.alidns.com/dns-query, https://doh.pub/dns-query ]
+   'geosite:cn': [ https://dns.alidns.com/dns-query, https://doh.pub/dns-query ]
 
   fake-ip-filter:
     - '*'
@@ -170,7 +170,6 @@ dns:
     - '+.gcloudcs.com'
     - '+.gcloudsdk.com'
     - '+.dynv6.net'
-    - "rule-set:cn"
 use-system-hosts: true
 hosts:
   'time.android.com': 203.107.6.88
