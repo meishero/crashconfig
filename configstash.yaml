@@ -30,20 +30,22 @@ dns:
   default-nameserver:
     - 223.5.5.5
     - 119.29.29.29
-  proxy-server-nameserver:
-    - 223.5.5.5
-  direct-nameserver:
-    - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query    
+  # proxy-server-nameserver:
+    # - 223.5.5.5
+  # direct-nameserver:
+    # - https://dns.alidns.com/dns-query
+    # - https://doh.pub/dns-query    
   nameserver:
     - https://cloudflare-dns.com/dns-query#ecs-override=true&ecs=211.137.130.0/24
     - https://dns.google/dns-query#ecs-override=true&ecs=211.137.130.0/24
   respect-rules: true
   follow-rule: true
-  # nameserver-policy:
-    # geosite:cn:
-      # - https://dns.alidns.com/dns-query
-      # - https://doh.pub/dns-query
+  nameserver-policy:
+    'www.baidu.com': 114.114.114.114
+    '+.internal.crop.com': system
+    'geosite:cn':
+      - 223.5.5.5
+      - 119.29.29.29
   skip-cert-verify: true
   fake-ip-filter:
     - '*'
@@ -829,4 +831,5 @@ rules:
   # ==========================================
   # 第八层：终极无条件捕手
   # ==========================================
+  - GEOIP,CN,DIRECT
   - MATCH,🐟 漏网之鱼
