@@ -1,19 +1,19 @@
 mode: rule
 log-level: info
-sniffer:
-  enable: true
-  parse-pure-ip: true
-  skip-domain:
-    - '+.push.apple.com'
-    - 'Mijia Cloud'
-  sniff:
-    http:
-      ports: [80, 8080-8880]
-      override-destination: true
-    tls:
-      ports: [443, 8443]
-    quic:
-      ports: [443, 8443]
+# sniffer:
+  # enable: true
+  # parse-pure-ip: true
+  # skip-domain:
+    # - '+.push.apple.com'
+    # - 'Mijia Cloud'
+  # sniff:
+    # http:
+      # ports: [80, 8080-8880]
+      # override-destination: true
+    # tls:
+      # ports: [443, 8443]
+    # quic:
+      # ports: [443, 8443]
 dns:
   enable: true
   # listen: :1053
@@ -33,8 +33,8 @@ dns:
     # - https://dns.alidns.com/dns-query
     # - https://doh.pub/dns-query   
   nameserver:
-    - https://cloudflare-dns.com/dns-query#ecs-override=true&ecs=211.137.130.0/24
     - https://dns.alidns.com/dns-query
+    - https://cloudflare-dns.com/dns-query#ecs-override=true&ecs=211.137.130.0/24
   respect-rules: true
   follow-rule: true
   # nameserver-policy:
