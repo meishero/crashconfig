@@ -20,32 +20,33 @@ sniffer:
       ports: [443, 8443]
 dns:
   enable: true
-  listen: :1053
-  use-hosts: true
-  ipv6: false
-  enhanced-mode: fake-ip
-  fake-ip-range: 28.0.0.0/8
-  fake-ip-range6: fc00::/16
+  # listen: :1053
+  # use-hosts: true
+  # ipv6: false
+  # enhanced-mode: fake-ip
+  # fake-ip-range: 28.0.0.0/8
+  # fake-ip-range6: fc00::/16
   
   default-nameserver:
     - 223.5.5.5
     - 119.29.29.29
-  # proxy-server-nameserver:
-    # - 223.5.5.5
-  # direct-nameserver:
-    # - https://dns.alidns.com/dns-query
-    # - https://doh.pub/dns-query    
+    - system
+  proxy-server-nameserver:
+    - 223.5.5.5
+  direct-nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query   
   nameserver:
     - https://cloudflare-dns.com/dns-query#ecs-override=true&ecs=211.137.130.0/24
     - https://dns.google/dns-query#ecs-override=true&ecs=211.137.130.0/24
   respect-rules: true
   follow-rule: true
-  nameserver-policy:
-    'www.baidu.com': 114.114.114.114
-    '+.internal.crop.com': system
-    'geosite:cn':
-      - 223.5.5.5
-      - 119.29.29.29
+  # nameserver-policy:
+    # 'www.baidu.com': 114.114.114.114
+    # '+.internal.crop.com': system
+    # 'geosite:cn':
+      # - 223.5.5.5
+      # - 119.29.29.29
   skip-cert-verify: true
   fake-ip-filter:
     - '*'
@@ -831,5 +832,5 @@ rules:
   # ==========================================
   # 第八层：终极无条件捕手
   # ==========================================
-  - GEOIP,CN,DIRECT,no-resolve
+  # - GEOIP,CN,DIRECT,no-resolve
   - MATCH,🐟 漏网之鱼
