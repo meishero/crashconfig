@@ -1,6 +1,6 @@
 mixed-port: 7890
 allow-lan: true
-mode: Rule
+mode: rule
 log-level: info
 ipv6: true
 unified-delay: true
@@ -45,6 +45,7 @@ dns:
     - https://doh.opendns.com/dns-query#ecs-override=true&ecs=211.137.130.0/24
 
   respect-rules: true
+  follow-rule: true
   nameserver-policy:
    'geosite:cn': [ https://dns.alidns.com/dns-query, https://doh.pub/dns-query ]
 
