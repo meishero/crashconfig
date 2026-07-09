@@ -23,78 +23,58 @@ proxy-providers:
     # filter: '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}(:(443|8443|2053|2083|2087|2096))?(?![0-9:])'
     # filter: '(?i)^(?=.*(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}(:(443|8443|2096))?(?![0-9:])))(?!.*(官方|剩余|重置|到期|防失联|官网|导航|客服|http|www|群|t.me|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|软件|装新|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Author|分享|bestcf.pages.dev)).*$'
     filter: '(?i)^(?!.*(官方|剩余|重置|到期|防失联|官网|导航|客服|http|www|群|t.me|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|软件|装新|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Author|分享|bestcf.pages.dev)).*$'
-  edgetunnel3:
-    type: http
-    url: "https://ddd08023.meishero.qzz.io/sub?token=5895144dee0da21e7d7399f5076dcebf"
-    path: "./providers/edgetunnel3.yaml"
-    interval: 43200
-    proxy: DIRECT
-    empty-fallback: REJECT
-    health-check:
-      enable: true
-      lazy: true
-      url: "https://www.gstatic.com/generate_204"
-      interval: 600
-# #并发测速为16
-      # concurrency: 16
-# #超时时间为1.5s   如果存在丢包重传 时间肯定比较大 扔掉那些丢包严重的
-      # timeout: 1500
-    override:
-      udp: true
-      skip-cert-verify: true
-#控制在150个内 方便测速
-#筛选TLS常见端口 防止被ISP拦截了2053、2083、2087在 CF 里一般是给非常特定的边缘脚本、API 接口或者小微服务临时使用容易被运营商当作“异类”限速 可能被部分路由器固件/防火墙误杀
-    # filter: '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}(:(443|8443|2053|2083|2087|2096))?(?![0-9:])'
-    # filter: '(?i)^(?=.*(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}(:(443|8443|2096))?(?![0-9:])))(?!.*(官方|剩余|重置|到期|防失联|官网|导航|客服|http|www|群|t.me|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|软件|装新|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Author|分享|bestcf.pages.dev)).*$'
-    filter: '(?i)^(?!.*(官方|剩余|重置|到期|防失联|官网|导航|客服|http|www|群|t.me|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|软件|装新|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Author|分享|bestcf.pages.dev)).*$'
 proxy-groups:
-  - {name: 🚀 节点选择, type: select, proxies: [♻️ 自动选择, ✨ 自动选择(去高倍率), 🛠️ 手动切换, ⚖️ 负载均衡(散列), ⚖️ 负载均衡(轮询), 🚑 故障转移, 🎯 本地直连, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2, edgetunnel3]}
-  - {name: 🛠️ 手动切换, type: select, include-all: true, proxies: [🎯 本地直连, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2, edgetunnel3]}
+  - {name: 🚀 节点选择, type: select, proxies: [♻️ 自动选择, ✨ 自动选择(去高倍率), 🛠️ 手动切换, ⚖️ 负载均衡(散列), ⚖️ 负载均衡(轮询), 🚑 故障转移, 🎯 本地直连, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2]}
+  - {name: 🛠️ 手动切换, type: select, include-all: true, proxies: [🎯 本地直连, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2]}
   - {name: ♻️ 自动选择, type: url-test, interval: 600, timeout: 2000, tolerance: 50, include-all: true}
   - {name: ✨ 自动选择(去高倍率), type: url-test, interval: 600, timeout: 2000, tolerance: 50, include-all: true, filter: '(?i)^(?!.*(专线|专用|高级|直连|急速|高速|高倍率|游戏|铂金|钻石|企业|VIP|Ultra|Game|IEPL|IPLC|AIA|BGP|GIA|CN2|CMI|HGC|HKT|CTM|CC|AC|x([2-9]|\\d{2,}))).*$'}
   - {name: ⚖️ 负载均衡(散列), type: load-balance, strategy: consistent-hashing, interval: 600, timeout: 2000, tolerance: 500, include-all: true}
   - {name: ⚖️ 负载均衡(轮询), type: load-balance, strategy: round-robin, interval: 600, timeout: 2000, tolerance: 500, include-all: true} 
   - {name: 🚑 故障转移, type: fallback, interval: 600, timeout: 2000, include-all: true}
 
-  - {name: 🤖 AI 平台, type: select, proxies: [🚀 节点选择, 🤖 AI节点(过滤港澳-自动测速), 🤖 AI节点(过滤港澳-负载均衡-散列), 🤖 AI节点(过滤港澳-负载均衡-轮询), 🤖 AI节点(过滤港澳-故障转移), 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2, edgetunnel3]}
-  - {name: 🤖 AI节点(过滤港澳-自动测速), type: url-test, interval: 600, timeout: 2000, tolerance: 50, include-all: true, filter: '(?i)^(?!.*(🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
-  - {name: 🤖 AI节点(过滤港澳-负载均衡-散列), type: load-balance, strategy: consistent-hashing, interval: 600, timeout: 2000, tolerance: 500, include-all: true, filter: '(?i)^(?!.*(🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
-  - {name: 🤖 AI节点(过滤港澳-负载均衡-轮询), type: load-balance, strategy: round-robin, interval: 600, timeout: 2000, tolerance: 500, include-all: true, filter: '(?i)^(?!.*(🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
-  - {name: 🤖 AI节点(过滤港澳-故障转移), type: fallback, interval: 600, timeout: 2000, include-all: true, filter: '(?i)^(?!.*(🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
-  - {name: 🎥 奈飞视频, type: select, proxies: [🚀 节点选择, 🎥 奈飞节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2, edgetunnel3]}
+  - {name: 🤖 AI 平台, type: select, proxies: [🚀 节点选择, 🤖 AI节点(自动测速), 🤖 AI节点(负载均衡-散列), 🤖 AI节点(负载均衡-轮询), 🤖 AI节点(故障转移), 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2]}
+  - {name: 🤖 AI节点(自动测速), type: url-test, interval: 600, timeout: 2000, tolerance: 50, include-all: true}
+  - {name: 🤖 AI节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, interval: 600, timeout: 2000, tolerance: 500, include-all: true}
+  - {name: 🤖 AI节点(负载均衡-轮询), type: load-balance, strategy: round-robin, interval: 600, timeout: 2000, tolerance: 500, include-all: true}
+  - {name: 🤖 AI节点(故障转移), type: fallback, interval: 600, timeout: 2000, include-all: true}
+  # - {name: 🤖 AI节点(过滤港澳-自动测速), type: url-test, interval: 600, timeout: 2000, tolerance: 50, include-all: true, filter: '(?i)^(?!.*(🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
+  # - {name: 🤖 AI节点(过滤港澳-负载均衡-散列), type: load-balance, strategy: consistent-hashing, interval: 600, timeout: 2000, tolerance: 500, include-all: true, filter: '(?i)^(?!.*(🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
+  # - {name: 🤖 AI节点(过滤港澳-负载均衡-轮询), type: load-balance, strategy: round-robin, interval: 600, timeout: 2000, tolerance: 500, include-all: true, filter: '(?i)^(?!.*(🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
+  # - {name: 🤖 AI节点(过滤港澳-故障转移), type: fallback, interval: 600, timeout: 2000, include-all: true, filter: '(?i)^(?!.*(🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
+  - {name: 🎥 奈飞视频, type: select, proxies: [🚀 节点选择, 🎥 奈飞节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2]}
   - {name: 🎥 奈飞节点, type: url-test, interval: 600, timeout: 2000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(NF|奈飞|解锁|Netflix|Media))(?!.*(排除1|排除2)).*$', hidden: true} 
-#  - {name: 📽️ 迪士尼+, type: select, proxies: [🚀 节点选择, 📽️ 迪士尼+节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2, edgetunnel3]}
+#  - {name: 📽️ 迪士尼+, type: select, proxies: [🚀 节点选择, 📽️ 迪士尼+节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2]}
 #  - {name: 📽️ 迪士尼+节点, type: url-test, interval: 600, timeout: 2000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(解锁|disney|迪士尼|Media))(?!.*(排除1|排除2)).*$', hidden: true}
-#  - {name: 🎞️ Max, type: select, proxies: [🚀 节点选择, 🎞️ Max节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2, edgetunnel3]}
+#  - {name: 🎞️ Max, type: select, proxies: [🚀 节点选择, 🎞️ Max节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2]}
 #  - {name: 🎞️ Max节点, type: url-test, interval: 600, timeout: 2000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(解锁|max|Media))(?!.*(排除1|排除2)).*$', hidden: true}
-#  - {name: 🎬 Prime Video, type: select, proxies: [🚀 节点选择, 🎬 Prime Video节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2, edgetunnel3]}
+#  - {name: 🎬 Prime Video, type: select, proxies: [🚀 节点选择, 🎬 Prime Video节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2]}
 #  - {name: 🎬 Prime Video节点, type: url-test, interval: 600, timeout: 2000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(解锁|Prime|Media))(?!.*(排除1|排除2)).*$', hidden: true}
-#  - {name: 🍎 Apple TV+, type: select, proxies: [🚀 节点选择, 🍎 Apple TV+节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2, edgetunnel3]}
+#  - {name: 🍎 Apple TV+, type: select, proxies: [🚀 节点选择, 🍎 Apple TV+节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2]}
 #  - {name: 🍎 Apple TV+节点, type: url-test, interval: 600, timeout: 2000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(解锁|apple tv|appletv|Media))(?!.*(排除1|排除2)).*$', hidden: true}
-  - {name: ▶️ 油管视频, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2, edgetunnel3]}
+  - {name: ▶️ 油管视频, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2]}
 
-  - {name: 🎬 TikTok, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2, edgetunnel3]}
-  - {name: ⬇️ BT trackerslist, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2, edgetunnel3]}
+  - {name: 🎬 TikTok, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2]}
+  - {name: ⬇️ BT trackerslist, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2]}
 
-  - {name: 📢 谷歌推送, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2, edgetunnel3]}
-  - {name: 📲 电报消息, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2, edgetunnel3]}
-  - {name: 🌍 国际媒体, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2, edgetunnel3]}
-  - {name: 🌐 国际流量, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2, edgetunnel3]}
-  - {name: 🌐 国际域名, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2, edgetunnel3]}
+  - {name: 📢 谷歌推送, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2]}
+  - {name: 📲 电报消息, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2]}
+  - {name: 🌍 国际媒体, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2]}
+  - {name: 🌐 国际流量, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2]}
+  - {name: 🌐 国际域名, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2]}
 
-  - {name: 🎮 外服游戏, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2, edgetunnel3]}
-  - {name: 🕹 国服游戏, type: select, proxies: [🎯 本地直连, 🚀 节点选择, ♻️ 自动选择, 🛠️ 手动切换, edgetunnel2, edgetunnel3]}
-  - {name: 🦾 Steam平台, type: select, proxies: [🎯 本地直连, 🚀 节点选择, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2, edgetunnel3]}
+  - {name: 🎮 外服游戏, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2]}
+  - {name: 🕹 国服游戏, type: select, proxies: [🎯 本地直连, 🚀 节点选择, ♻️ 自动选择, 🛠️ 手动切换, edgetunnel2]}
+  - {name: 🦾 Steam平台, type: select, proxies: [🎯 本地直连, 🚀 节点选择, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2]}
 
-  - {name: 🪟 微软服务, type: select, proxies: [🎯 本地直连, 🚀 节点选择, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2, edgetunnel3]}
-  - {name: 🍎 苹果服务, type: select, proxies: [🎯 本地直连, 🚀 节点选择, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2, edgetunnel3]}
-  - {name: 🇬 谷歌服务, type: select, proxies: [🎯 本地直连, 🚀 节点选择, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2, edgetunnel3]}
+  - {name: 🪟 微软服务, type: select, proxies: [🎯 本地直连, 🚀 节点选择, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2]}
+  - {name: 🍎 苹果服务, type: select, proxies: [🎯 本地直连, 🚀 节点选择, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2]}
+  - {name: 🇬 谷歌服务, type: select, proxies: [🎯 本地直连, 🚀 节点选择, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2]}
 
-  - {name: 📈 网络测速, type: select, proxies: [🎯 本地直连, 🚀 节点选择, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2, edgetunnel3]}
-  - {name: ↔️ 直连软件, type: select, proxies: [🎯 本地直连, 🚀 节点选择, ♻️ 自动选择, 🛠️ 手动切换, edgetunnel2, edgetunnel3]}
-  - {name: 🀄️ 国内流量, type: select, proxies: [🎯 本地直连, 🚀 节点选择, ♻️ 自动选择, 🛠️ 手动切换, edgetunnel2, edgetunnel3]}
+  - {name: 📈 网络测速, type: select, proxies: [🎯 本地直连, 🚀 节点选择, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2]}
+  - {name: ↔️ 直连软件, type: select, proxies: [🎯 本地直连, 🚀 节点选择, ♻️ 自动选择, 🛠️ 手动切换, edgetunnel2]}
+  - {name: 🀄️ 国内流量, type: select, proxies: [🎯 本地直连, 🚀 节点选择, ♻️ 自动选择, 🛠️ 手动切换, edgetunnel2]}
 
-  - {name: 🐟 漏网之鱼, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2, edgetunnel3]}
+  - {name: 🐟 漏网之鱼, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel2]}
 
   - {name: 🛑 广告拦截, type: select, proxies: [🔴 拦截, 🟢 放行]}
   - {name: 🔒 私有网络, type: select, proxies: [DIRECT]}
@@ -150,7 +130,6 @@ proxy-groups:
 
 #规则提供者(更新mrs格式)
   - {name: edgetunnel2, type: url-test, interval: 600, timeout: 2000, tolerance: 50, lazy: true, use: [edgetunnel2]}
-  - {name: edgetunnel3, type: url-test, interval: 600, timeout: 2000, tolerance: 50, lazy: true, use: [edgetunnel3]}
 rule-providers:
   # fakeip-filter:
     # type: http
@@ -388,69 +367,69 @@ rule-providers:
 rules:
 # -------------------你新提供的手动自定义规则(置顶最高优先级)--------------------
   - DOMAIN-SUFFIX,todesk.com,🎯 本地直连
-  - DOMAIN-SUFFIX,now.com,🇭🇰 港澳策略
-  - DOMAIN-SUFFIX,now-tv.com,🇭🇰 港澳策略
-  - DOMAIN-SUFFIX,ovhcloud.com,🇭🇰 港澳策略
-  - DOMAIN-SUFFIX,852851.xyz,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,cdnipcs.com,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,tuta.com,🇺🇸 美国策略
-  - IP-CIDR,38.58.176.207/32,🇺🇸 美国策略
-  - IP-CIDR,51.77.133.124/32,🇺🇸 美国策略
+  - DOMAIN-SUFFIX,now.com,🚀 节点选择
+  - DOMAIN-SUFFIX,now-tv.com,🚀 节点选择
+  - DOMAIN-SUFFIX,ovhcloud.com,🚀 节点选择
+  - DOMAIN-SUFFIX,852851.xyz,🚀 节点选择
+  - DOMAIN-SUFFIX,cdnipcs.com,🚀 节点选择
+  - DOMAIN-SUFFIX,tuta.com,🚀 节点选择
+  - IP-CIDR,38.58.176.207/32,🚀 节点选择
+  - IP-CIDR,51.77.133.124/32,🚀 节点选择
   - DOMAIN-SUFFIX,789505.xyz,🎯 本地直连
-  - DOMAIN-SUFFIX,707626.xyz,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,newl.zenfit.cfd,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,pixman.passwdwork.cc.cd,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,mpd.cc.cd,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,pixman.us.ci,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,test96.178.indevs.in,🇺🇸 美国策略
-#  - DOMAIN-SUFFIX,cloudflare.com,🇭🇰 港澳策略
-  - DOMAIN-SUFFIX,cloudflaremirrors.com,🇭🇰 港澳策略
+  - DOMAIN-SUFFIX,707626.xyz,🚀 节点选择
+  - DOMAIN-SUFFIX,newl.zenfit.cfd,🚀 节点选择
+  - DOMAIN-SUFFIX,pixman.passwdwork.cc.cd,🚀 节点选择
+  - DOMAIN-SUFFIX,mpd.cc.cd,🚀 节点选择
+  - DOMAIN-SUFFIX,pixman.us.ci,🚀 节点选择
+  - DOMAIN-SUFFIX,test96.178.indevs.in,🚀 节点选择
+#  - DOMAIN-SUFFIX,cloudflare.com,🚀 节点选择
+  - DOMAIN-SUFFIX,cloudflaremirrors.com,🚀 节点选择
   - DOMAIN-SUFFIX,claude.ai,🤖 AI 平台
-  # - DOMAIN-SUFFIX,litv.tv,🇹🇼 台湾策略
-  # - DOMAIN-SUFFIX,hinet.net,🇹🇼 台湾策略
-  # - DOMAIN-SUFFIX,4gtv.tv,🇹🇼 台湾策略
-  # - DOMAIN-SUFFIX,api2.4gtv.tv,🇹🇼 台湾策略
-  # - DOMAIN-SUFFIX,ofiii.com,🇹🇼 台湾策略
-#  - DOMAIN-SUFFIX,docker.com,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,goiptv.de5.net,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,goiptv.us.ci,🇺🇸 美国策略
-  # - DOMAIN-SUFFIX,starhubgo.com,🇸🇬 新加坡马来策略
-#  - DOMAIN-SUFFIX,workers.dev,🇹🇼 台湾策略
-  - DOMAIN-SUFFIX,veloxmedia.co.uk,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,newtvsuper.com,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,catvod.com,🇺🇸 美国策略
-  # - IP-CIDR,50.7.158.194/32,🇯🇵 日本策略
-  - IP-CIDR,103.102.135.231/24,🇺🇸 美国策略
-  # - IP-CIDR,123.51.231.132/32,🇹🇼 台湾策略
-  # - IP-CIDR,60.250.121.103/32,🇹🇼 台湾策略
-#  - DOMAIN-SUFFIX,163189.xyz,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,z2u.com,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,amazonaws.com,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,nodeseek.com,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,go-iptv.ggff.net,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,tvb.com,🇭🇰 港澳策略
-  # - DOMAIN-SUFFIX,stream-link.org,🇸🇬 新加坡马来策略
-  - DOMAIN-SUFFIX,lioncdn.net,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,edgeware.tvb.com,🇭🇰 港澳策略
-  # - DOMAIN-SUFFIX,cdn.hinet.net,🇹🇼 台湾策略
-  - DOMAIN-SUFFIX,858.qzz.io,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,bee.tzh911.qzz.io,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,cluster-cz5nqyh5nreq6ua6gaqd7okl7o.cloudworkstations.dev,🇺🇸 美国策略
-#  - DOMAIN-SUFFIX,qzz.io,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,hrtn.net,🇭🇰 港澳策略
-  - DOMAIN-SUFFIX,pendy.dpdns.org,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,diver.eu.org,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,wrod.diver.eu.org,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,judy.xx.kg,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,8plus.eu.org,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,ru8.dpdns.org,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,vip-tptv.xyz,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,passwdword.xyz,🇺🇸 美国策略
-  # - DOMAIN-SUFFIX,infini.money,🇹🇼 台湾策略
-  - DOMAIN-SUFFIX,hudsonvalleyhost.com,🇺🇸 美国策略
-  # - DOMAIN-KEYWORD,astro,🇸🇬 新加坡马来策略
-  # - DOMAIN-KEYWORD,wavve,🇸🇬 新加坡马来策略
-  - DOMAIN-SUFFIX,r2.hfyrw.com,🇺🇸 美国策略
+  # - DOMAIN-SUFFIX,litv.tv,🚀 节点选择
+  # - DOMAIN-SUFFIX,hinet.net,🚀 节点选择
+  # - DOMAIN-SUFFIX,4gtv.tv,🚀 节点选择
+  # - DOMAIN-SUFFIX,api2.4gtv.tv,🚀 节点选择
+  # - DOMAIN-SUFFIX,ofiii.com,🚀 节点选择
+#  - DOMAIN-SUFFIX,docker.com,🚀 节点选择
+  - DOMAIN-SUFFIX,goiptv.de5.net,🚀 节点选择
+  - DOMAIN-SUFFIX,goiptv.us.ci,🚀 节点选择
+  # - DOMAIN-SUFFIX,starhubgo.com,🚀 节点选择
+#  - DOMAIN-SUFFIX,workers.dev,🚀 节点选择
+  - DOMAIN-SUFFIX,veloxmedia.co.uk,🚀 节点选择
+  - DOMAIN-SUFFIX,newtvsuper.com,🚀 节点选择
+  - DOMAIN-SUFFIX,catvod.com,🚀 节点选择
+  # - IP-CIDR,50.7.158.194/32,🇯🇵 🚀 节点选择
+  - IP-CIDR,103.102.135.231/24,🚀 节点选择
+  # - IP-CIDR,123.51.231.132/32,🚀 节点选择
+  # - IP-CIDR,60.250.121.103/32,🚀 节点选择
+#  - DOMAIN-SUFFIX,163189.xyz,🚀 节点选择
+  - DOMAIN-SUFFIX,z2u.com,🚀 节点选择
+  - DOMAIN-SUFFIX,amazonaws.com,🚀 节点选择
+  - DOMAIN-SUFFIX,nodeseek.com,🚀 节点选择
+  - DOMAIN-SUFFIX,go-iptv.ggff.net,🚀 节点选择
+  - DOMAIN-SUFFIX,tvb.com,🚀 节点选择
+  # - DOMAIN-SUFFIX,stream-link.org,🚀 节点选择
+  - DOMAIN-SUFFIX,lioncdn.net,🚀 节点选择
+  - DOMAIN-SUFFIX,edgeware.tvb.com,🚀 节点选择
+  # - DOMAIN-SUFFIX,cdn.hinet.net,🚀 节点选择
+  - DOMAIN-SUFFIX,858.qzz.io,🚀 节点选择
+  - DOMAIN-SUFFIX,bee.tzh911.qzz.io,🚀 节点选择
+  - DOMAIN-SUFFIX,cluster-cz5nqyh5nreq6ua6gaqd7okl7o.cloudworkstations.dev,🚀 节点选择
+#  - DOMAIN-SUFFIX,qzz.io,🚀 节点选择
+  - DOMAIN-SUFFIX,hrtn.net,🚀 节点选择
+  - DOMAIN-SUFFIX,pendy.dpdns.org,🚀 节点选择
+  - DOMAIN-SUFFIX,diver.eu.org,🚀 节点选择
+  - DOMAIN-SUFFIX,wrod.diver.eu.org,🚀 节点选择
+  - DOMAIN-SUFFIX,judy.xx.kg,🚀 节点选择
+  - DOMAIN-SUFFIX,8plus.eu.org,🚀 节点选择
+  - DOMAIN-SUFFIX,ru8.dpdns.org,🚀 节点选择
+  - DOMAIN-SUFFIX,vip-tptv.xyz,🚀 节点选择
+  - DOMAIN-SUFFIX,passwdword.xyz,🚀 节点选择
+  # - DOMAIN-SUFFIX,infini.money,🚀 节点选择
+  - DOMAIN-SUFFIX,hudsonvalleyhost.com,🚀 节点选择
+  # - DOMAIN-KEYWORD,astro,🚀 节点选择
+  # - DOMAIN-KEYWORD,wavve,🚀 节点选择
+  - DOMAIN-SUFFIX,r2.hfyrw.com,🚀 节点选择
 
 # NAME: PanVod
 # AUTHOR: eulac-dev
@@ -573,31 +552,31 @@ rules:
 
  
 #JULI  按自己理解分流 itdog测试了
-  - DOMAIN-SUFFIX,php.jdshipin.com,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,163189.xyz,🇺🇸 美国策略 #直连就可以  不一定要代理
-  - DOMAIN-SUFFIX,1678520.xyz,🇺🇸 美国策略 #🇺🇸 美国策略 #直连就可以  不一定要代理 #捷克 #德国最快
-  - DOMAIN-SUFFIX,178.indevs.in,🇺🇸 美国策略 #直连就可以  不一定要代理
-#  - DOMAIN-SUFFIX,veryfast.filegear-sg.me,🇹🇼 台湾策略  #失效
-  - DOMAIN-SUFFIX,cdn.loc.cc,🇺🇸 美国策略 #直连就可以  不一定要代理
+  - DOMAIN-SUFFIX,php.jdshipin.com,🚀 节点选择
+  - DOMAIN-SUFFIX,163189.xyz,🚀 节点选择 #直连就可以  不一定要代理
+  - DOMAIN-SUFFIX,1678520.xyz,🚀 节点选择 #🚀 节点选择 #直连就可以  不一定要代理 #捷克 #德国最快
+  - DOMAIN-SUFFIX,178.indevs.in,🚀 节点选择 #直连就可以  不一定要代理
+#  - DOMAIN-SUFFIX,veryfast.filegear-sg.me,🚀 节点选择  #失效
+  - DOMAIN-SUFFIX,cdn.loc.cc,🚀 节点选择 #直连就可以  不一定要代理
 
 #jacktv
-  - DOMAIN-SUFFIX,filegear-sg.me,🇺🇸 美国策略 #直连就可以  不一定要代理
+  - DOMAIN-SUFFIX,filegear-sg.me,🚀 节点选择 #直连就可以  不一定要代理
 
 #chinatvlive.264788.xyz
-  - DOMAIN-SUFFIX,live.264788.xyz,🇺🇸 美国策略 #直连就可以  不一定要代理
+  - DOMAIN-SUFFIX,live.264788.xyz,🚀 节点选择 #直连就可以  不一定要代理
   
 #iptv总部
-  - IP-CIDR,82.156.243.185/32,🇺🇸 美国策略
+  - IP-CIDR,82.156.243.185/32,🚀 节点选择
   
   
 #hameni
-  - DOMAIN-SUFFIX,hanime1.me,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,hanimeone.me,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,hanime1.biz,🇺🇸 美国策略
-  - DOMAIN-SUFFIX,hanime1.info,🇺🇸 美国策略
+  - DOMAIN-SUFFIX,hanime1.me,🚀 节点选择
+  - DOMAIN-SUFFIX,hanimeone.me,🚀 节点选择
+  - DOMAIN-SUFFIX,hanime1.biz,🚀 节点选择
+  - DOMAIN-SUFFIX,hanime1.info,🚀 节点选择
   
 #ha.msbot.dpdns.org
-  - DOMAIN-SUFFIX,ha.msbot.dpdns.org,🇺🇸 美国策略  #直连就可以  不一定要代理
+  - DOMAIN-SUFFIX,ha.msbot.dpdns.org,🚀 节点选择  #直连就可以  不一定要代理
 
   - DOMAIN,ghfast.top,🎯 本地直连 
   - DOMAIN,github-proxy.memory-echoes.cn,🎯 本地直连 
