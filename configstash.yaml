@@ -45,7 +45,7 @@ dns:
       # - 119.29.29.29
   skip-cert-verify: true
   fake-ip-filter:
-    - '*'
+    # - '*'
     - '*.lan'
     - '*.localdomain'
     - '*.example'
