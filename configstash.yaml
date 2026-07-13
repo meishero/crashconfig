@@ -33,12 +33,11 @@ dns:
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query   
   nameserver:
-    - https://dns.alidns.com/dns-query#ecs-override=true&ecs=211.137.130.0/24
-    - https://doh.pub/dns-query#ecs-override=true&ecs=211.137.130.0/24
+    - https://cloudflare-dns.com/dns-query#ecs-override=true&ecs=211.137.130.0/24
+    - https://dns.google/dns-query#ecs-override=true&ecs=211.137.130.0/24
   respect-rules: true
   follow-rule: true
   nameserver-policy:
-    'www.baidu.com': 114.114.114.114
     '+.internal.crop.com': system
     'rule-set:cn': https://dns.alidns.com/dns-query
   skip-cert-verify: true
@@ -164,6 +163,7 @@ dns:
     - '+.gcloudcs.com'
     - '+.gcloudsdk.com'
     - '+.dynv6.net'
+    - rule-set:cn
 use-system-hosts: true
 hosts:
   'time.android.com': 203.107.6.88
