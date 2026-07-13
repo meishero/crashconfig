@@ -25,8 +25,7 @@ dns:
   
   default-nameserver:
     - 223.5.5.5
-    - 119.29.29.29
-    - system
+    - 2400:3200::1
   proxy-server-nameserver:
     - 1.1.1.1
     - 9.9.9.9
@@ -34,16 +33,14 @@ dns:
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query   
   nameserver:
-    - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query#ecs-override=true&ecs=211.137.130.0/24
+    - https://doh.pub/dns-query#ecs-override=true&ecs=211.137.130.0/24
   respect-rules: true
   follow-rule: true
-  # nameserver-policy:
-    # 'www.baidu.com': 114.114.114.114
-    # '+.internal.crop.com': system
-    # 'geosite:cn':
-      # - 223.5.5.5
-      # - 119.29.29.29
+  nameserver-policy:
+    'www.baidu.com': 114.114.114.114
+    '+.internal.crop.com': system
+    'rule-set:cn': https://dns.alidns.com/dns-query
   skip-cert-verify: true
   fake-ip-filter:
     # - '*'
