@@ -40,6 +40,7 @@ dns:
   nameserver-policy:
     '+.internal.crop.com': system
     'rule-set:cn': https://dns.alidns.com/dns-query
+    'geosite:cn': https://dns.alidns.com/dns-query
   skip-cert-verify: true
   fake-ip-filter:
     # - '*'
@@ -164,6 +165,7 @@ dns:
     - '+.gcloudsdk.com'
     - '+.dynv6.net'
     - rule-set:cn
+    - geosite:cn
 use-system-hosts: true
 hosts:
   'time.android.com': 203.107.6.88
