@@ -366,6 +366,8 @@ rule-providers:
 
 #规则顺序
 rules:
+  - DST-PORT,3478,REJECT #webrtc泄露 拒绝所有通过 3478 端口的 STUN 探测
+  - DST-PORT,19302,REJECT  #webrtc泄露 拒绝谷歌专用的 STUN 端口
 # -------------------你新提供的手动自定义规则(置顶最高优先级)--------------------
   - DOMAIN-SUFFIX,todesk.com,🎯 本地直连
   - DOMAIN-SUFFIX,now.com,🚀 节点选择
