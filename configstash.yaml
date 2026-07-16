@@ -304,7 +304,7 @@ proxy-groups:
   - {name: 📉 省流节点, type: url-test, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(0\.[1-6][倍|x]|低倍率|省流|大流量|闲时|Low)).*$'}
 
 #规则提供者(更新mrs格式)
-  - {name: edgetunnel, type: url-test, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 50, lazy: true, use: [edgetunnel]}
+  - {name: edgetunnel, type: url-test, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 50, use: [edgetunnel]}
 rule-providers:
   # fakeip-filter:
     # type: http
