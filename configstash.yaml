@@ -184,7 +184,7 @@ proxy-providers:
       enable: true
       lazy: true
       url: "https://www.gstatic.com/generate_204"
-      interval: 600
+      interval: 420
 # #并发测速为16
       # concurrency: 16
 # #超时时间为1.5s   如果存在丢包重传 时间肯定比较大 扔掉那些丢包严重的
@@ -200,32 +200,32 @@ proxy-providers:
 proxy-groups:
   - {name: 🚀 节点选择, type: select, proxies: [♻️ 自动选择, ✨ 自动选择(去高倍率), 🛠️ 手动切换, ⚖️ 负载均衡(散列), ⚖️ 负载均衡(轮询), 🚑 故障转移, 🎯 本地直连, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel]}
   - {name: 🛠️ 手动切换, type: select, include-all: true, proxies: [🎯 本地直连, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel]}
-  - {name: ♻️ 自动选择, type: url-test, interval: 600, timeout: 2000, tolerance: 50, include-all: true}
-  - {name: ✨ 自动选择(去高倍率), type: url-test, interval: 600, timeout: 2000, tolerance: 50, include-all: true, filter: '(?i)^(?!.*(专线|专用|高级|直连|急速|高速|高倍率|游戏|铂金|钻石|企业|VIP|Ultra|Game|IEPL|IPLC|AIA|BGP|GIA|CN2|CMI|HGC|HKT|CTM|CC|AC|x([2-9]|\\d{2,}))).*$'}
-  - {name: ⚖️ 负载均衡(散列), type: load-balance, strategy: consistent-hashing, interval: 600, timeout: 2000, tolerance: 500, include-all: true}
-  - {name: ⚖️ 负载均衡(轮询), type: load-balance, strategy: round-robin, interval: 600, timeout: 2000, tolerance: 500, include-all: true} 
-  - {name: 🚑 故障转移, type: fallback, interval: 600, timeout: 2000, include-all: true}
+  - {name: ♻️ 自动选择, type: url-test, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 50, include-all: true}
+  - {name: ✨ 自动选择(去高倍率), type: url-test, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 50, include-all: true, filter: '(?i)^(?!.*(专线|专用|高级|直连|急速|高速|高倍率|游戏|铂金|钻石|企业|VIP|Ultra|Game|IEPL|IPLC|AIA|BGP|GIA|CN2|CMI|HGC|HKT|CTM|CC|AC|x([2-9]|\\d{2,}))).*$'}
+  - {name: ⚖️ 负载均衡(散列), type: load-balance, strategy: consistent-hashing, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 500, include-all: true}
+  - {name: ⚖️ 负载均衡(轮询), type: load-balance, strategy: round-robin, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 500, include-all: true} 
+  - {name: 🚑 故障转移, type: fallback, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, include-all: true}
 
   - {name: 🤖 AI 平台, type: select, proxies: [🚀 节点选择, 🤖 AI节点(自动测速), 🤖 AI节点(负载均衡-散列), 🤖 AI节点(负载均衡-轮询), 🤖 AI节点(故障转移), 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel]}
-  - {name: 🤖 AI节点(自动测速), type: url-test, interval: 600, timeout: 2000, tolerance: 50, include-all: true}
-  - {name: 🤖 AI节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, interval: 600, timeout: 2000, tolerance: 500, include-all: true}
-  - {name: 🤖 AI节点(负载均衡-轮询), type: load-balance, strategy: round-robin, interval: 600, timeout: 2000, tolerance: 500, include-all: true}
-  - {name: 🤖 AI节点(故障转移), type: fallback, interval: 600, timeout: 2000, include-all: true}
+  - {name: 🤖 AI节点(自动测速), type: url-test, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 50, include-all: true}
+  - {name: 🤖 AI节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 500, include-all: true}
+  - {name: 🤖 AI节点(负载均衡-轮询), type: load-balance, strategy: round-robin, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 500, include-all: true}
+  - {name: 🤖 AI节点(故障转移), type: fallback, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, include-all: true}
   # - {name: 🤖 AI 平台, type: select, proxies: [🚀 节点选择, 🤖 AI节点(过滤港澳-自动测速), 🤖 AI节点(过滤港澳-负载均衡-散列), 🤖 AI节点(过滤港澳-负载均衡-轮询), 🤖 AI节点(过滤港澳-故障转移), 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel]}
-  # - {name: 🤖 AI节点(过滤港澳-自动测速), type: url-test, interval: 600, timeout: 2000, tolerance: 50, include-all: true, filter: '(?i)^(?!.*(🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
-  # - {name: 🤖 AI节点(过滤港澳-负载均衡-散列), type: load-balance, strategy: consistent-hashing, interval: 600, timeout: 2000, tolerance: 500, include-all: true, filter: '(?i)^(?!.*(🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
-  # - {name: 🤖 AI节点(过滤港澳-负载均衡-轮询), type: load-balance, strategy: round-robin, interval: 600, timeout: 2000, tolerance: 500, include-all: true, filter: '(?i)^(?!.*(🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
-  # - {name: 🤖 AI节点(过滤港澳-故障转移), type: fallback, interval: 600, timeout: 2000, include-all: true, filter: '(?i)^(?!.*(🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
+  # - {name: 🤖 AI节点(过滤港澳-自动测速), type: url-test, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 50, include-all: true, filter: '(?i)^(?!.*(🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
+  # - {name: 🤖 AI节点(过滤港澳-负载均衡-散列), type: load-balance, strategy: consistent-hashing, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 500, include-all: true, filter: '(?i)^(?!.*(🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
+  # - {name: 🤖 AI节点(过滤港澳-负载均衡-轮询), type: load-balance, strategy: round-robin, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 500, include-all: true, filter: '(?i)^(?!.*(🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
+  # - {name: 🤖 AI节点(过滤港澳-故障转移), type: fallback, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, include-all: true, filter: '(?i)^(?!.*(🇭🇰|🇲🇴|港|澳|澳门|hk|hongkong|hong kong)).*$'}
   - {name: 🎥 奈飞视频, type: select, proxies: [🚀 节点选择, 🎥 奈飞节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel]}
-  - {name: 🎥 奈飞节点, type: url-test, interval: 600, timeout: 2000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(NF|奈飞|解锁|Netflix|Media))(?!.*(排除1|排除2)).*$', hidden: true} 
+  - {name: 🎥 奈飞节点, type: url-test, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(NF|奈飞|解锁|Netflix|Media))(?!.*(排除1|排除2)).*$', hidden: true} 
 #  - {name: 📽️ 迪士尼+, type: select, proxies: [🚀 节点选择, 📽️ 迪士尼+节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel]}
-#  - {name: 📽️ 迪士尼+节点, type: url-test, interval: 600, timeout: 2000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(解锁|disney|迪士尼|Media))(?!.*(排除1|排除2)).*$', hidden: true}
+#  - {name: 📽️ 迪士尼+节点, type: url-test, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(解锁|disney|迪士尼|Media))(?!.*(排除1|排除2)).*$', hidden: true}
 #  - {name: 🎞️ Max, type: select, proxies: [🚀 节点选择, 🎞️ Max节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel]}
-#  - {name: 🎞️ Max节点, type: url-test, interval: 600, timeout: 2000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(解锁|max|Media))(?!.*(排除1|排除2)).*$', hidden: true}
+#  - {name: 🎞️ Max节点, type: url-test, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(解锁|max|Media))(?!.*(排除1|排除2)).*$', hidden: true}
 #  - {name: 🎬 Prime Video, type: select, proxies: [🚀 节点选择, 🎬 Prime Video节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel]}
-#  - {name: 🎬 Prime Video节点, type: url-test, interval: 600, timeout: 2000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(解锁|Prime|Media))(?!.*(排除1|排除2)).*$', hidden: true}
+#  - {name: 🎬 Prime Video节点, type: url-test, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(解锁|Prime|Media))(?!.*(排除1|排除2)).*$', hidden: true}
 #  - {name: 🍎 Apple TV+, type: select, proxies: [🚀 节点选择, 🍎 Apple TV+节点, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel]}
-#  - {name: 🍎 Apple TV+节点, type: url-test, interval: 600, timeout: 2000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(解锁|apple tv|appletv|Media))(?!.*(排除1|排除2)).*$', hidden: true}
+#  - {name: 🍎 Apple TV+节点, type: url-test, url: "https://www.gstatic.com/generate_204", lazy: true,  interval: 420, timeout: 1500, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(解锁|apple tv|appletv|Media))(?!.*(排除1|排除2)).*$', hidden: true}
   - {name: ▶️ 油管视频, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel]}
 
   - {name: 🎬 TikTok, type: select, proxies: [🚀 节点选择, 🎯 本地直连, ♻️ 自动选择, 🛠️ 手动切换, 🇭🇰 港澳策略, 🇹🇼 台湾策略, 🇺🇸 美国策略, 🇯🇵 日本策略, 🇪🇺 欧洲策略, 🇰🇷 韩国策略, 🇸🇬 新加坡马来策略, 👑 高级节点, 📉 省流节点, edgetunnel]}
@@ -267,44 +267,44 @@ proxy-groups:
   - {name: 🇰🇷 韩国策略, type: select, proxies: [🇰🇷 韩国节点(自动测速), 🇰🇷 韩国节点(负载均衡-散列), 🇰🇷 韩国节点(负载均衡-轮询), 🇰🇷 韩国节点(故障转移)]}
   - {name: 🇸🇬 新加坡马来策略, type: select, proxies: [🇸🇬 新加坡马来节点(自动测速), 🇸🇬 新加坡马来节点(负载均衡-散列), 🇸🇬 新加坡马来节点(负载均衡-轮询), 🇸🇬 新加坡马来节点(故障转移)]}
 
-  - {name: 🇭🇰 港澳节点(自动测速), type: url-test, interval: 600, timeout: 2000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(港|🇭🇰|HK|Hong|HKG|🇲🇴|澳|澳门))(?!.*(澳大利亚|澳洲)).*$'}
-  - {name: 🇹🇼 台湾节点(自动测速), type: url-test, interval: 600, timeout: 2000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(台|🇹🇼|TW|tai|TPE|TSA|KHH|宝岛))(?!.*(仙台|排除2)).*$'}
-  - {name: 🇺🇸 美国节点(自动测速), type: url-test, interval: 600, timeout: 2000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(美|🇺🇸|US|USA|unitedstates|united states|SJC|JFK|LAX|ORD|ATL|DFW|SFO|SEA|IAD|洛杉矶|圣何塞|西雅图|纽约|波特兰|旧金山|休斯|达拉斯|硅谷|堪萨斯|迈阿密|凤凰城|芝加哥|奥勒姆))(?!.*(南美|中美|拉美|亚美尼亚|美属|dev)).*$'}
-  - {name: 🇪🇺 欧洲节点(自动测速), type: url-test, interval: 600, timeout: 2000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(🇪🇺|欧|欧洲|奥|比|保|克罗地亚|塞|捷|丹|爱沙|芬|法|德|希|匈|爱尔|意|拉|立|卢|马其它|荷|波|葡|罗|斯洛伐|斯洛文|西|瑞|英|摩|🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|🇬🇧|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU|MD))(?!.*(欧巴|马来|node)).*$'}
-  - {name: 🇯🇵 日本节点(自动测速), type: url-test, interval: 600, timeout: 2000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(日|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK|东京|大阪|埼玉|九州|仙台))(?!.*(尼日利亚|尼日尔|日内瓦)).*$'}
-  - {name: 🇰🇷 韩国节点(自动测速), type: url-test, interval: 600, timeout: 2000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(韩|🇰🇷|韓|首尔|南朝鲜|欧巴|泡菜|KOR|Korea|South))(?!.*(排除1|排除2)).*$' }
-  - {name: 🇸🇬 新加坡马来节点(自动测速), type: url-test, interval: 600, timeout: 2000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(坡|🇸🇬|SG|Sing|SIN|XSP|马来|my|狮城))(?!.*(排除1|排除2)).*$'}
+  - {name: 🇭🇰 港澳节点(自动测速), type: url-test, url: "https://www.gstatic.com/generate_204" interval: 420, timeout: 1500, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(港|🇭🇰|HK|Hong|HKG|🇲🇴|澳|澳门))(?!.*(澳大利亚|澳洲)).*$'}
+  - {name: 🇹🇼 台湾节点(自动测速), type: url-test, url: "https://www.gstatic.com/generate_204" interval: 420, timeout: 1500, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(台|🇹🇼|TW|tai|TPE|TSA|KHH|宝岛))(?!.*(仙台|排除2)).*$'}
+  - {name: 🇺🇸 美国节点(自动测速), type: url-test, url: "https://www.gstatic.com/generate_204" interval: 420, timeout: 1500, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(美|🇺🇸|US|USA|unitedstates|united states|SJC|JFK|LAX|ORD|ATL|DFW|SFO|SEA|IAD|洛杉矶|圣何塞|西雅图|纽约|波特兰|旧金山|休斯|达拉斯|硅谷|堪萨斯|迈阿密|凤凰城|芝加哥|奥勒姆))(?!.*(南美|中美|拉美|亚美尼亚|美属|dev)).*$'}
+  - {name: 🇪🇺 欧洲节点(自动测速), type: url-test, url: "https://www.gstatic.com/generate_204" interval: 420, timeout: 1500, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(🇪🇺|欧|欧洲|奥|比|保|克罗地亚|塞|捷|丹|爱沙|芬|法|德|希|匈|爱尔|意|拉|立|卢|马其它|荷|波|葡|罗|斯洛伐|斯洛文|西|瑞|英|摩|🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|🇬🇧|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU|MD))(?!.*(欧巴|马来|node)).*$'}
+  - {name: 🇯🇵 日本节点(自动测速), type: url-test, url: "https://www.gstatic.com/generate_204" interval: 420, timeout: 1500, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(日|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK|东京|大阪|埼玉|九州|仙台))(?!.*(尼日利亚|尼日尔|日内瓦)).*$'}
+  - {name: 🇰🇷 韩国节点(自动测速), type: url-test, url: "https://www.gstatic.com/generate_204" interval: 420, timeout: 1500, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(韩|🇰🇷|韓|首尔|南朝鲜|欧巴|泡菜|KOR|Korea|South))(?!.*(排除1|排除2)).*$' }
+  - {name: 🇸🇬 新加坡马来节点(自动测速), type: url-test, url: "https://www.gstatic.com/generate_204" interval: 420, timeout: 1500, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(坡|🇸🇬|SG|Sing|SIN|XSP|马来|my|狮城))(?!.*(排除1|排除2)).*$'}
   
-  - {name: 🇭🇰 港澳节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, interval: 600, timeout: 2000, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(港|🇭🇰|HK|Hong|HKG|🇲🇴|澳|澳门))(?!.*(澳大利亚|澳洲)).*$'}
-  - {name: 🇹🇼 台湾节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, interval: 600, timeout: 2000, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(台|🇹🇼|TW|tai|TPE|TSA|KHH|宝岛))(?!.*(仙台|排除2)).*$'}
-  - {name: 🇺🇸 美国节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, interval: 600, timeout: 2000, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(美|🇺🇸|US|USA|unitedstates|united states|SJC|JFK|LAX|ORD|ATL|DFW|SFO|SEA|IAD|洛杉矶|圣何塞|西雅图|纽约|波特兰|旧金山|休斯|达拉斯|硅谷|堪萨斯|迈阿密|凤凰城|芝加哥|奥勒姆))(?!.*(南美|中美|拉美|亚美尼亚|美属|dev)).*$'}
-  - {name: 🇪🇺 欧洲节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, interval: 600, timeout: 2000, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(🇪🇺|欧|欧洲|奥|比|保|克罗地亚|塞|捷|丹|爱沙|芬|法|德|希|匈|爱尔|意|拉|立|卢|马其它|荷|波|葡|罗|斯洛伐|斯洛文|西|瑞|英|摩|🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|🇬🇧|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU|MD))(?!.*(欧巴|马来|node)).*$'}
-  - {name: 🇯🇵 日本节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, interval: 600, timeout: 2000, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(日|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK|东京|大阪|埼玉|九州|仙台))(?!.*(尼日利亚|尼日尔|日内瓦)).*$'}
-  - {name: 🇰🇷 韩国节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, interval: 600, timeout: 2000, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(韩|🇰🇷|韓|首尔|南朝鲜|欧巴|泡菜|KOR|Korea|South))(?!.*(排除1|排除2)).*$' }
-  - {name: 🇸🇬 新加坡马来节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, interval: 600, timeout: 2000, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(坡|🇸🇬|SG|Sing|SIN|XSP|马来|my|狮城))(?!.*(排除1|排除2)).*$'}
+  - {name: 🇭🇰 港澳节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(港|🇭🇰|HK|Hong|HKG|🇲🇴|澳|澳门))(?!.*(澳大利亚|澳洲)).*$'}
+  - {name: 🇹🇼 台湾节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(台|🇹🇼|TW|tai|TPE|TSA|KHH|宝岛))(?!.*(仙台|排除2)).*$'}
+  - {name: 🇺🇸 美国节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(美|🇺🇸|US|USA|unitedstates|united states|SJC|JFK|LAX|ORD|ATL|DFW|SFO|SEA|IAD|洛杉矶|圣何塞|西雅图|纽约|波特兰|旧金山|休斯|达拉斯|硅谷|堪萨斯|迈阿密|凤凰城|芝加哥|奥勒姆))(?!.*(南美|中美|拉美|亚美尼亚|美属|dev)).*$'}
+  - {name: 🇪🇺 欧洲节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(🇪🇺|欧|欧洲|奥|比|保|克罗地亚|塞|捷|丹|爱沙|芬|法|德|希|匈|爱尔|意|拉|立|卢|马其它|荷|波|葡|罗|斯洛伐|斯洛文|西|瑞|英|摩|🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|🇬🇧|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU|MD))(?!.*(欧巴|马来|node)).*$'}
+  - {name: 🇯🇵 日本节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(日|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK|东京|大阪|埼玉|九州|仙台))(?!.*(尼日利亚|尼日尔|日内瓦)).*$'}
+  - {name: 🇰🇷 韩国节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(韩|🇰🇷|韓|首尔|南朝鲜|欧巴|泡菜|KOR|Korea|South))(?!.*(排除1|排除2)).*$' }
+  - {name: 🇸🇬 新加坡马来节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(坡|🇸🇬|SG|Sing|SIN|XSP|马来|my|狮城))(?!.*(排除1|排除2)).*$'}
 
-  - {name: 🇭🇰 港澳节点(负载均衡-轮询), type: load-balance, strategy: round-robin, interval: 600, timeout: 2000, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(港|🇭🇰|HK|Hong|HKG|🇲🇴|澳|澳门))(?!.*(澳大利亚|澳洲)).*$'}
-  - {name: 🇹🇼 台湾节点(负载均衡-轮询), type: load-balance, strategy: round-robin, interval: 600, timeout: 2000, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(台|🇹🇼|TW|tai|TPE|TSA|KHH|宝岛))(?!.*(仙台|排除2)).*$'}
-  - {name: 🇺🇸 美国节点(负载均衡-轮询), type: load-balance, strategy: round-robin, interval: 600, timeout: 2000, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(美|🇺🇸|US|USA|unitedstates|united states|SJC|JFK|LAX|ORD|ATL|DFW|SFO|SEA|IAD|洛杉矶|圣何塞|西雅图|纽约|波特兰|旧金山|休斯|达拉斯|硅谷|堪萨斯|迈阿密|凤凰城|芝加哥|奥勒姆))(?!.*(南美|中美|拉美|亚美尼亚|美属|dev)).*$'}
-  - {name: 🇪🇺 欧洲节点(负载均衡-轮询), type: load-balance, strategy: round-robin, interval: 600, timeout: 2000, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(🇪🇺|欧|欧洲|奥|比|保|克罗地亚|塞|捷|丹|爱沙|芬|法|德|希|匈|爱尔|意|拉|立|卢|马其它|荷|波|葡|罗|斯洛伐|斯洛文|西|瑞|英|摩|🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|🇬🇧|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU|MD))(?!.*(欧巴|马来|node)).*$'}
-  - {name: 🇯🇵 日本节点(负载均衡-轮询), type: load-balance, strategy: round-robin, interval: 600, timeout: 2000, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(日|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK|东京|大阪|埼玉|九州|仙台))(?!.*(尼日利亚|尼日尔|日内瓦)).*$'}
-  - {name: 🇰🇷 韩国节点(负载均衡-轮询), type: load-balance, strategy: round-robin, interval: 600, timeout: 2000, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(韩|🇰🇷|韓|首尔|南朝鲜|欧巴|泡菜|KOR|Korea|South))(?!.*(排除1|排除2)).*$' }
-  - {name: 🇸🇬 新加坡马来节点(负载均衡-轮询), type: load-balance, strategy: round-robin, interval: 600, timeout: 2000, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(坡|🇸🇬|SG|Sing|SIN|XSP|马来|my|狮城))(?!.*(排除1|排除2)).*$'}
+  - {name: 🇭🇰 港澳节点(负载均衡-轮询), type: load-balance, strategy: round-robin, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(港|🇭🇰|HK|Hong|HKG|🇲🇴|澳|澳门))(?!.*(澳大利亚|澳洲)).*$'}
+  - {name: 🇹🇼 台湾节点(负载均衡-轮询), type: load-balance, strategy: round-robin, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(台|🇹🇼|TW|tai|TPE|TSA|KHH|宝岛))(?!.*(仙台|排除2)).*$'}
+  - {name: 🇺🇸 美国节点(负载均衡-轮询), type: load-balance, strategy: round-robin, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(美|🇺🇸|US|USA|unitedstates|united states|SJC|JFK|LAX|ORD|ATL|DFW|SFO|SEA|IAD|洛杉矶|圣何塞|西雅图|纽约|波特兰|旧金山|休斯|达拉斯|硅谷|堪萨斯|迈阿密|凤凰城|芝加哥|奥勒姆))(?!.*(南美|中美|拉美|亚美尼亚|美属|dev)).*$'}
+  - {name: 🇪🇺 欧洲节点(负载均衡-轮询), type: load-balance, strategy: round-robin, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(🇪🇺|欧|欧洲|奥|比|保|克罗地亚|塞|捷|丹|爱沙|芬|法|德|希|匈|爱尔|意|拉|立|卢|马其它|荷|波|葡|罗|斯洛伐|斯洛文|西|瑞|英|摩|🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|🇬🇧|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU|MD))(?!.*(欧巴|马来|node)).*$'}
+  - {name: 🇯🇵 日本节点(负载均衡-轮询), type: load-balance, strategy: round-robin, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(日|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK|东京|大阪|埼玉|九州|仙台))(?!.*(尼日利亚|尼日尔|日内瓦)).*$'}
+  - {name: 🇰🇷 韩国节点(负载均衡-轮询), type: load-balance, strategy: round-robin, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(韩|🇰🇷|韓|首尔|南朝鲜|欧巴|泡菜|KOR|Korea|South))(?!.*(排除1|排除2)).*$' }
+  - {name: 🇸🇬 新加坡马来节点(负载均衡-轮询), type: load-balance, strategy: round-robin, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 500, include-all: true, hidden: true, filter: '(?i)^(?=.*(坡|🇸🇬|SG|Sing|SIN|XSP|马来|my|狮城))(?!.*(排除1|排除2)).*$'}
 
-  - {name: 🇭🇰 港澳节点(故障转移), type: fallback, interval: 600, timeout: 2000, include-all: true, hidden: true, filter: '(?i)^(?=.*(港|🇭🇰|HK|Hong|HKG|🇲🇴|澳|澳门))(?!.*(澳大利亚|澳洲)).*$'}
-  - {name: 🇹🇼 台湾节点(故障转移), type: fallback, interval: 600, timeout: 2000, include-all: true, hidden: true, filter: '(?i)^(?=.*(台|🇹🇼|TW|tai|TPE|TSA|KHH|宝岛))(?!.*(仙台|排除2)).*$'}
-  - {name: 🇺🇸 美国节点(故障转移), type: fallback, interval: 600, timeout: 2000, include-all: true, hidden: true, filter: '(?i)^(?=.*(美|🇺🇸|US|USA|unitedstates|united states|SJC|JFK|LAX|ORD|ATL|DFW|SFO|SEA|IAD|洛杉矶|圣何塞|西雅图|纽约|波特兰|旧金山|休斯|达拉斯|硅谷|堪萨斯|迈阿密|凤凰城|芝加哥|奥勒姆))(?!.*(南美|中美|拉美|亚美尼亚|美属|dev)).*$'}
-  - {name: 🇪🇺 欧洲节点(故障转移), type: fallback, interval: 600, timeout: 2000, include-all: true, hidden: true, filter: '(?i)^(?=.*(🇪🇺|欧|欧洲|奥|比|保|克罗地亚|塞|捷|丹|爱沙|芬|法|德|希|匈|爱尔|意|拉|立|卢|马其它|荷|波|葡|罗|斯洛伐|斯洛文|西|瑞|英|摩|🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|🇬🇧|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU|MD))(?!.*(欧巴|马来|node)).*$'}
-  - {name: 🇯🇵 日本节点(故障转移), type: fallback, interval: 600, timeout: 2000, include-all: true, hidden: true, filter: '(?i)^(?=.*(日|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK|东京|大阪|埼玉|九州|仙台))(?!.*(尼日利亚|尼日尔|日内瓦)).*$'}
-  - {name: 🇰🇷 韩国节点(故障转移), type: fallback, interval: 600, timeout: 2000, include-all: true, hidden: true, filter: '(?i)^(?=.*(韩|🇰🇷|韓|首尔|南朝鲜|欧巴|泡菜|KOR|Korea|South))(?!.*(排除1|排除2)).*$' }
-  - {name: 🇸🇬 新加坡马来节点(故障转移), type: fallback, interval: 600, timeout: 2000, include-all: true, hidden: true, filter: '(?i)^(?=.*(坡|🇸🇬|SG|Sing|SIN|XSP|马来|my|狮城))(?!.*(排除1|排除2)).*$'}
+  - {name: 🇭🇰 港澳节点(故障转移), type: fallback, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, include-all: true, hidden: true, filter: '(?i)^(?=.*(港|🇭🇰|HK|Hong|HKG|🇲🇴|澳|澳门))(?!.*(澳大利亚|澳洲)).*$'}
+  - {name: 🇹🇼 台湾节点(故障转移), type: fallback, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, include-all: true, hidden: true, filter: '(?i)^(?=.*(台|🇹🇼|TW|tai|TPE|TSA|KHH|宝岛))(?!.*(仙台|排除2)).*$'}
+  - {name: 🇺🇸 美国节点(故障转移), type: fallback, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, include-all: true, hidden: true, filter: '(?i)^(?=.*(美|🇺🇸|US|USA|unitedstates|united states|SJC|JFK|LAX|ORD|ATL|DFW|SFO|SEA|IAD|洛杉矶|圣何塞|西雅图|纽约|波特兰|旧金山|休斯|达拉斯|硅谷|堪萨斯|迈阿密|凤凰城|芝加哥|奥勒姆))(?!.*(南美|中美|拉美|亚美尼亚|美属|dev)).*$'}
+  - {name: 🇪🇺 欧洲节点(故障转移), type: fallback, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, include-all: true, hidden: true, filter: '(?i)^(?=.*(🇪🇺|欧|欧洲|奥|比|保|克罗地亚|塞|捷|丹|爱沙|芬|法|德|希|匈|爱尔|意|拉|立|卢|马其它|荷|波|葡|罗|斯洛伐|斯洛文|西|瑞|英|摩|🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|🇬🇧|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU|MD))(?!.*(欧巴|马来|node)).*$'}
+  - {name: 🇯🇵 日本节点(故障转移), type: fallback, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, include-all: true, hidden: true, filter: '(?i)^(?=.*(日|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK|东京|大阪|埼玉|九州|仙台))(?!.*(尼日利亚|尼日尔|日内瓦)).*$'}
+  - {name: 🇰🇷 韩国节点(故障转移), type: fallback, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, include-all: true, hidden: true, filter: '(?i)^(?=.*(韩|🇰🇷|韓|首尔|南朝鲜|欧巴|泡菜|KOR|Korea|South))(?!.*(排除1|排除2)).*$' }
+  - {name: 🇸🇬 新加坡马来节点(故障转移), type: fallback, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, include-all: true, hidden: true, filter: '(?i)^(?=.*(坡|🇸🇬|SG|Sing|SIN|XSP|马来|my|狮城))(?!.*(排除1|排除2)).*$'}
 
 
-  - {name: 👑 高级节点, type: url-test, interval: 600, timeout: 2000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(专线|专用|高级|直连|急速|高速|高倍率|游戏|铂金|钻石|企业|VIP|Ultra|Game|IEPL|IPLC|AIA|BGP|GIA|CN2|CMI|HGC|HKT|CTM|CC|AC|x([2-9]|\\d{2,})))(?!.*(miachat|排除2)).*$'}
-  - {name: 📉 省流节点, type: url-test, interval: 600, timeout: 2000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(0\.[1-6][倍|x]|低倍率|省流|大流量|闲时|Low)).*$'}
+  - {name: 👑 高级节点, type: url-test, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(专线|专用|高级|直连|急速|高速|高倍率|游戏|铂金|钻石|企业|VIP|Ultra|Game|IEPL|IPLC|AIA|BGP|GIA|CN2|CMI|HGC|HKT|CTM|CC|AC|x([2-9]|\\d{2,})))(?!.*(miachat|排除2)).*$'}
+  - {name: 📉 省流节点, type: url-test, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(0\.[1-6][倍|x]|低倍率|省流|大流量|闲时|Low)).*$'}
 
 #规则提供者(更新mrs格式)
-  - {name: edgetunnel, type: url-test, interval: 600, timeout: 2000, tolerance: 50, lazy: true, use: [edgetunnel]}
+  - {name: edgetunnel, type: url-test, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 50, lazy: true, use: [edgetunnel]}
 rule-providers:
   # fakeip-filter:
     # type: http
@@ -830,5 +830,6 @@ rules:
   # ==========================================
   # 第八层：终极无条件捕手
   # ==========================================
+  # - GEOSITE,CN,DIRECT
   # - GEOIP,CN,DIRECT,no-resolve
   - MATCH,🐟 漏网之鱼
