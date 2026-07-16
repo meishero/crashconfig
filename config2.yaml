@@ -79,7 +79,7 @@ proxy-groups:
 
   - {name: 🛑 广告拦截, type: select, proxies: [🔴 拦截, 🟢 放行]}
   - {name: 🔒 私有网络, type: select, proxies: [DIRECT]}
-  # - {name: 📌 fakeip 过滤, type: select, proxies: [DIRECT], hidden: true}
+  - {name: 📌 fakeip 过滤, type: select, proxies: [DIRECT], hidden: true}
   - {name: 🔴 拦截, type: select, proxies: [REJECT], hidden: true}
 #PASS的改造-clash没有mihome的pass的写法
   - {name: 🟢 放行, type: select, proxies: [🚀 节点选择, 🎯 本地直连]}
@@ -132,13 +132,13 @@ proxy-groups:
 #规则提供者(更新mrs格式)
   - {name: edgetunnel, type: url-test, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 420, timeout: 1500, tolerance: 50, use: [edgetunnel]}
 rule-providers:
-  # fakeip-filter:
-    # type: http
-    # behavior: domain
-    # format: mrs
-    # path: ./ruleset/fakeip-filter.mrs
-    # url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/fakeip-filter.mrs"
-    # interval: 86400
+  fakeip-filter:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/fakeip-filter.mrs
+    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/fakeip-filter.mrs"
+    interval: 86400
   trackerslist:
     type: http
     behavior: domain
@@ -594,12 +594,11 @@ rules:
   - DOMAIN,cdn.gh-proxy.com,🎯 本地直连
   - DOMAIN,api.github.com,🚀 节点选择 
 # --------------------------------------------------------------------------
-
-  # - RULE-SET,fakeip-filter,📌 fakeip 过滤,no-resolve
-  
+ 
   # ==========================================
   # 第一层：绝对控制与安全防线(局域网、本地、去广告)
   # ==========================================
+  - RULE-SET,fakeip-filter,📌 fakeip 过滤,no-resolve
   - RULE-SET,privateip,🔒 私有网络,no-resolve
   - RULE-SET,private,🔒 私有网络
   - RULE-SET,ads,🛑 广告拦截
