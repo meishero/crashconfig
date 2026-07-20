@@ -177,7 +177,7 @@ proxy-providers:
     type: http
     url: "https://ddd0802.meishero.qzz.io/sub?token=3f9c77e61bbda33864b06f3c962047b8"
     path: "./providers/edgetunnel.yaml"
-    interval: 3600
+    interval: 2400
     proxy: DIRECT
     empty-fallback: REJECT
     health-check:
