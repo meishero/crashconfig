@@ -165,7 +165,7 @@ dns:
     - '+.gcloudsdk.com'
     - '+.dynv6.net'
     - rule-set:cn
-    - geosite:cn
+#    - geosite:cn
 use-system-hosts: true
 hosts:
   'time.android.com': 203.107.6.88
@@ -177,7 +177,7 @@ proxy-providers:
     type: http
     url: "https://ddd0802.meishero.qzz.io/sub?token=3f9c77e61bbda33864b06f3c962047b8"
     path: "./providers/edgetunnel.yaml"
-    interval: 43200
+    interval: 3600
     proxy: DIRECT
     empty-fallback: REJECT
     health-check:
@@ -268,13 +268,13 @@ proxy-groups:
   - {name: 🇰🇷 韩国策略, type: select, proxies: [🇰🇷 韩国节点(自动测速), 🇰🇷 韩国节点(负载均衡-散列), 🇰🇷 韩国节点(负载均衡-轮询), 🇰🇷 韩国节点(故障转移)]}
   - {name: 🇸🇬 新加坡马来策略, type: select, proxies: [🇸🇬 新加坡马来节点(自动测速), 🇸🇬 新加坡马来节点(负载均衡-散列), 🇸🇬 新加坡马来节点(负载均衡-轮询), 🇸🇬 新加坡马来节点(故障转移)]}
 
-  - {name: 🇭🇰 港澳节点(自动测速), type: url-test, url: "https://www.gstatic.com/generate_204", interval: 333, timeout: 1000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(港|🇭🇰|HK|Hong|HKG|🇲🇴|澳|澳门))(?!.*(澳大利亚|澳洲)).*$'}
-  - {name: 🇹🇼 台湾节点(自动测速), type: url-test, url: "https://www.gstatic.com/generate_204", interval: 333, timeout: 1000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(台|🇹🇼|TW|tai|TPE|TSA|KHH|宝岛))(?!.*(仙台|排除2)).*$'}
-  - {name: 🇺🇸 美国节点(自动测速), type: url-test, url: "https://www.gstatic.com/generate_204", interval: 333, timeout: 1000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(美|🇺🇸|US|USA|unitedstates|united states|SJC|JFK|LAX|ORD|ATL|DFW|SFO|SEA|IAD|洛杉矶|圣何塞|西雅图|纽约|波特兰|旧金山|休斯|达拉斯|硅谷|堪萨斯|迈阿密|凤凰城|芝加哥|奥勒姆))(?!.*(南美|中美|拉美|亚美尼亚|美属|dev)).*$'}
-  - {name: 🇪🇺 欧洲节点(自动测速), type: url-test, url: "https://www.gstatic.com/generate_204", interval: 333, timeout: 1000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(🇪🇺|欧|欧洲|奥|比|保|克罗地亚|塞|捷|丹|爱沙|芬|法|德|希|匈|爱尔|意|拉|立|卢|马其它|荷|波|葡|罗|斯洛伐|斯洛文|西|瑞|英|摩|🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|🇬🇧|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU|MD))(?!.*(欧巴|马来|node)).*$'}
-  - {name: 🇯🇵 日本节点(自动测速), type: url-test, url: "https://www.gstatic.com/generate_204", interval: 333, timeout: 1000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(日|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK|东京|大阪|埼玉|九州|仙台))(?!.*(尼日利亚|尼日尔|日内瓦)).*$'}
-  - {name: 🇰🇷 韩国节点(自动测速), type: url-test, url: "https://www.gstatic.com/generate_204", interval: 333, timeout: 1000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(韩|🇰🇷|韓|首尔|南朝鲜|欧巴|泡菜|KOR|Korea|South))(?!.*(排除1|排除2)).*$' }
-  - {name: 🇸🇬 新加坡马来节点(自动测速), type: url-test, url: "https://www.gstatic.com/generate_204", interval: 333, timeout: 1000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(坡|🇸🇬|SG|Sing|SIN|XSP|马来|my|狮城))(?!.*(排除1|排除2)).*$'}
+  - {name: 🇭🇰 港澳节点(自动测速), type: url-test, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 333, timeout: 1000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(港|🇭🇰|HK|Hong|HKG|🇲🇴|澳|澳门))(?!.*(澳大利亚|澳洲)).*$'}
+  - {name: 🇹🇼 台湾节点(自动测速), type: url-test, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 333, timeout: 1000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(台|🇹🇼|TW|tai|TPE|TSA|KHH|宝岛))(?!.*(仙台|排除2)).*$'}
+  - {name: 🇺🇸 美国节点(自动测速), type: url-test, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 333, timeout: 1000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(美|🇺🇸|US|USA|unitedstates|united states|SJC|JFK|LAX|ORD|ATL|DFW|SFO|SEA|IAD|洛杉矶|圣何塞|西雅图|纽约|波特兰|旧金山|休斯|达拉斯|硅谷|堪萨斯|迈阿密|凤凰城|芝加哥|奥勒姆))(?!.*(南美|中美|拉美|亚美尼亚|美属|dev)).*$'}
+  - {name: 🇪🇺 欧洲节点(自动测速), type: url-test, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 333, timeout: 1000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(🇪🇺|欧|欧洲|奥|比|保|克罗地亚|塞|捷|丹|爱沙|芬|法|德|希|匈|爱尔|意|拉|立|卢|马其它|荷|波|葡|罗|斯洛伐|斯洛文|西|瑞|英|摩|🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|🇬🇧|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU|MD))(?!.*(欧巴|马来|node)).*$'}
+  - {name: 🇯🇵 日本节点(自动测速), type: url-test, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 333, timeout: 1000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(日|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK|东京|大阪|埼玉|九州|仙台))(?!.*(尼日利亚|尼日尔|日内瓦)).*$'}
+  - {name: 🇰🇷 韩国节点(自动测速), type: url-test, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 333, timeout: 1000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(韩|🇰🇷|韓|首尔|南朝鲜|欧巴|泡菜|KOR|Korea|South))(?!.*(排除1|排除2)).*$' }
+  - {name: 🇸🇬 新加坡马来节点(自动测速), type: url-test, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 333, timeout: 1000, tolerance: 50, include-all: true, filter: '(?i)^(?=.*(坡|🇸🇬|SG|Sing|SIN|XSP|马来|my|狮城))(?!.*(排除1|排除2)).*$'}
   
   - {name: 🇭🇰 港澳节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 333, timeout: 1000, tolerance: 666, include-all: true, hidden: true, filter: '(?i)^(?=.*(港|🇭🇰|HK|Hong|HKG|🇲🇴|澳|澳门))(?!.*(澳大利亚|澳洲)).*$'}
   - {name: 🇹🇼 台湾节点(负载均衡-散列), type: load-balance, strategy: consistent-hashing, url: "https://www.gstatic.com/generate_204", lazy: true, interval: 333, timeout: 1000, tolerance: 666, include-all: true, hidden: true, filter: '(?i)^(?=.*(台|🇹🇼|TW|tai|TPE|TSA|KHH|宝岛))(?!.*(仙台|排除2)).*$'}
