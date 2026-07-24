@@ -563,11 +563,11 @@ rules:
 #  - DOMAIN-SUFFIX,cloudflare.com,🚀 节点选择
   - DOMAIN-SUFFIX,cloudflaremirrors.com,🚀 节点选择
   - DOMAIN-SUFFIX,claude.ai,🤖 AI 平台
-  # - DOMAIN-SUFFIX,litv.tv,🚀 节点选择
-  # - DOMAIN-SUFFIX,hinet.net,🚀 节点选择
-  # - DOMAIN-SUFFIX,4gtv.tv,🚀 节点选择
-  # - DOMAIN-SUFFIX,api2.4gtv.tv,🚀 节点选择
-  # - DOMAIN-SUFFIX,ofiii.com,🚀 节点选择
+# - DOMAIN-SUFFIX,litv.tv,🚀 节点选择
+# - DOMAIN-SUFFIX,hinet.net,🚀 节点选择
+# - DOMAIN-SUFFIX,4gtv.tv,🚀 节点选择
+# - DOMAIN-SUFFIX,api2.4gtv.tv,🚀 节点选择
+# - DOMAIN-SUFFIX,ofiii.com,🚀 节点选择
 #  - DOMAIN-SUFFIX,docker.com,🚀 节点选择
   - DOMAIN-SUFFIX,goiptv.de5.net,🚀 节点选择
   - DOMAIN-SUFFIX,goiptv.us.ci,🚀 节点选择
@@ -578,8 +578,8 @@ rules:
   - DOMAIN-SUFFIX,catvod.com,🚀 节点选择
   - IP-CIDR,50.7.158.194/32,🚀 节点选择
   - IP-CIDR,103.102.135.231/24,🚀 节点选择
-  # - IP-CIDR,123.51.231.132/32,🚀 节点选择
-  # - IP-CIDR,60.250.121.103/32,🚀 节点选择
+# - IP-CIDR,123.51.231.132/32,🚀 节点选择
+# - IP-CIDR,60.250.121.103/32,🚀 节点选择
   - DOMAIN-SUFFIX,163189.xyz,🚀 节点选择
   - DOMAIN-SUFFIX,z2u.com,🚀 节点选择
   - DOMAIN-SUFFIX,amazonaws.com,🚀 节点选择
@@ -616,116 +616,110 @@ rules:
 # TOTAL: 44
 
 #115
-  - DOMAIN,fhnfile.oss-cn-shenzhen.aliyuncs.com,🎯 本地直连
-  - DOMAIN-SUFFIX,115.com,🎯 本地直连
-  - DOMAIN-SUFFIX,115cdn.com,🎯 本地直连
-  - DOMAIN-SUFFIX,115cdn.net,🎯 本地直连
-  - DOMAIN-SUFFIX,115img.com,🎯 本地直连
-  - DOMAIN-SUFFIX,116cd.cn,🎯 本地直连
-  - DOMAIN-SUFFIX,116cd.com,🎯 本地直连
-  - DOMAIN-SUFFIX,116cd.net,🎯 本地直连
-  - DOMAIN-SUFFIX,anxia.com,🎯 本地直连
-  - DOMAIN-SUFFIX,sq.cc,🎯 本地直连
-  
+  - DOMAIN,fhnfile.oss-cn-shenzhen.aliyuncs.com,🎯 本地直连 
+  - DOMAIN-SUFFIX,115.com,🎯 本地直连 
+  - DOMAIN-SUFFIX,115cdn.com,🎯 本地直连 
+  - DOMAIN-SUFFIX,115cdn.net,🎯 本地直连 
+  - DOMAIN-SUFFIX,115img.com,🎯 本地直连 
+  - DOMAIN-SUFFIX,116cd.cn,🎯 本地直连 
+  - DOMAIN-SUFFIX,116cd.com,🎯 本地直连 
+  - DOMAIN-SUFFIX,116cd.net,🎯 本地直连 
+  - DOMAIN-SUFFIX,anxia.com,🎯 本地直连 
+  - DOMAIN-SUFFIX,sq.cc,🎯 本地直连 
+   
 #阿里/夸克/UC
-  - DOMAIN,cf.aliyun.com,🎯 本地直连
-  - DOMAIN,ynuf.aliapp.org,🎯 本地直连
-  - DOMAIN-SUFFIX,alipan.com,🎯 本地直连
-  - DOMAIN-SUFFIX,alicdn.com,🎯 本地直连
-  - DOMAIN-SUFFIX,aliyundrive.com,🎯 本地直连
-  - DOMAIN-SUFFIX,aliyundrive.net,🎯 本地直连
-  - DOMAIN-SUFFIX,alibaba.com,🎯 本地直连
-  - DOMAIN-SUFFIX,quark.cn,🎯 本地直连
-  - DOMAIN-SUFFIX,uc.cn,🎯 本地直连
-  - DOMAIN-SUFFIX,taobao.com,🎯 本地直连
-  - DOMAIN-SUFFIX,aliyuncs.com,🎯 本地直连
-  
+  - DOMAIN,cf.aliyun.com,🎯 本地直连 
+  - DOMAIN,ynuf.aliapp.org,🎯 本地直连 
+  - DOMAIN-SUFFIX,alipan.com,🎯 本地直连 
+  - DOMAIN-SUFFIX,alicdn.com,🎯 本地直连 
+  - DOMAIN-SUFFIX,aliyundrive.com,🎯 本地直连 
+  - DOMAIN-SUFFIX,aliyundrive.net,🎯 本地直连 
+  - DOMAIN-SUFFIX,alibaba.com,🎯 本地直连 
+  - DOMAIN-SUFFIX,quark.cn,🎯 本地直连 
+  - DOMAIN-SUFFIX,uc.cn,🎯 本地直连 
+  - DOMAIN-SUFFIX,taobao.com,🎯 本地直连 
+  - DOMAIN-SUFFIX,aliyuncs.com,🎯 本地直连 
+   
 #百度
-  - DOMAIN,himg.bdimg.com,🎯 本地直连
-  - DOMAIN,staticiot.cdn.bcebos.com,🎯 本地直连
-  - DOMAIN,thumbnail0.baidupcs.com,🎯 本地直连
-  - DOMAIN-SUFFIX,baidu.com,🎯 本地直连
-  - DOMAIN-SUFFIX,bdstatic.com,🎯 本地直连
-  
+  - DOMAIN,himg.bdimg.com,🎯 本地直连 
+  - DOMAIN,staticiot.cdn.bcebos.com,🎯 本地直连 
+  - DOMAIN,thumbnail0.baidupcs.com,🎯 本地直连 
+  - DOMAIN-SUFFIX,baidu.com,🎯 本地直连 
+  - DOMAIN-SUFFIX,bdstatic.com,🎯 本地直连 
+   
 #天翼
-  - DOMAIN,ux.21cn.com,🎯 本地直连
-  - DOMAIN-SUFFIX,189.cn,🎯 本地直连
-  - DOMAIN-SUFFIX,dlife.cn,🎯 本地直连
-  
+  - DOMAIN,ux.21cn.com,🎯 本地直连 
+  - DOMAIN-SUFFIX,189.cn,🎯 本地直连 
+  - DOMAIN-SUFFIX,dlife.cn,🎯 本地直连 
+   
 #迅雷
-  - DOMAIN,static.xbase.cloud,🎯 本地直连
-  - DOMAIN-SUFFIX,xunlei.com,🎯 本地直连
-  - DOMAIN-SUFFIX,a.88cdn.com,🎯 本地直连
-  
+  - DOMAIN,static.xbase.cloud,🎯 本地直连 
+  - DOMAIN-SUFFIX,xunlei.com,🎯 本地直连 
+  - DOMAIN-SUFFIX,a.88cdn.com,🎯 本地直连 
+   
 #123
-  - DOMAIN,www.123912.com,🎯 本地直连
-  - DOMAIN,www.123295.com,🎯 本地直连
-  - DOMAIN,www.123865.com,🎯 本地直连
-  - DOMAIN-SUFFIX,cjjd19.com,🎯 本地直连
-  - DOMAIN-SUFFIX,123pan.com,🎯 本地直连
-  - DOMAIN-SUFFIX,cnzz.com,🎯 本地直连
-  
+  - DOMAIN,www.123912.com,🎯 本地直连 
+  - DOMAIN,www.123295.com,🎯 本地直连 
+  - DOMAIN,www.123865.com,🎯 本地直连 
+  - DOMAIN-SUFFIX,cjjd19.com,🎯 本地直连 
+  - DOMAIN-SUFFIX,123pan.com,🎯 本地直连 
+  - DOMAIN-SUFFIX,cnzz.com,🎯 本地直连 
+   
 #移动云盘
-  - DOMAIN-SUFFIX,cmicapm.com,🎯 本地直连
-  - DOMAIN-SUFFIX,10086.cn,🎯 本地直连
-  - DOMAIN-SUFFIX,139.com,🎯 本地直连
-  - DOMAIN-SUFFIX,cmecloud.cn,🎯 本地直连
-  
+  - DOMAIN-SUFFIX,cmicapm.com,🎯 本地直连 
+  - DOMAIN-SUFFIX,10086.cn,🎯 本地直连 
+  - DOMAIN-SUFFIX,139.com,🎯 本地直连 
+  - DOMAIN-SUFFIX,cmecloud.cn,🎯 本地直连 
+   
 #光鸭
-  - DOMAIN-SUFFIX,guangyacdn.com,🎯 本地直连
-  - DOMAIN-SUFFIX,guangyapan.com,🎯 本地直连
-
+  - DOMAIN-SUFFIX,guangyacdn.com,🎯 本地直连 
+  - DOMAIN-SUFFIX,guangyapan.com,🎯 本地直连 
 
 # NAME: ResourceSite
 # AUTHOR: eulac-dev
 # REPO: https://github.com/eulac-dev/Proxy
-# UPDATED: 2026-03-15  00:26
-# TOTAL: 25
+# UPDATED: 2026-07-15  19:11
+# TOTAL: 22
 
 #玩偶哥哥
-  - DOMAIN-KEYWORD,wogg,🎯 本地直连
+  - DOMAIN-KEYWORD,wogg,🎯 本地直连 
 
 #木偶
-  - DOMAIN,666.666291.xyz,🎯 本地直连
-  - DOMAIN,www.muou.asia,🎯 本地直连
-  - DOMAIN,www.muou.site,🎯 本地直连
+  - DOMAIN-SUFFIX,666291.xyz,🎯 本地直连 
+  - DOMAIN,www.muou.asia,🎯 本地直连 
+  - DOMAIN,www.muou.site,🎯 本地直连 
 
 #蜡笔
-  - DOMAIN,fmao.shop,🎯 本地直连
+  - DOMAIN,fmao.fun,🎯 本地直连 
+  - DOMAIN-SUFFIX,xiaocgege.shop,🎯 本地直连 
 
 #至臻
-  - DOMAIN,www.miqk.cc,🎯 本地直连
-  - DOMAIN,xiaomi666.fun,🎯 本地直连
-  - DOMAIN-SUFFIX,mihdr.top,🎯 本地直连
+  - DOMAIN,www.miqk.cc,🎯 本地直连 
+  - DOMAIN-SUFFIX,mihdr.top,🎯 本地直连 
 
 #多多
-  - DOMAIN,tv.214521.xyz,🎯 本地直连
-  - DOMAIN,duo.hidns.vip,🎯 本地直连
-  - DOMAIN-KEYWORD,yydsys,🎯 本地直连
+  - DOMAIN,tv.214521.xyz,🎯 本地直连 
+  - DOMAIN-KEYWORD,yydsys,🎯 本地直连 
 
 #二小
-  - DOMAIN,zhizhen1.top,🎯 本地直连
-  - DOMAIN-KEYWORD,erxiaopan,🎯 本地直连
-  - DOMAIN-KEYWORD,erixaopan,🎯 本地直连
-  - DOMAIN-KEYWORD,erxiaozhan,🎯 本地直连
-  - DOMAIN-KEYWORD,2xiaozhan,🎯 本地直连
-  - DOMAIN-KEYWORD,2xiaopan,🎯 本地直连
-  - DOMAIN-KEYWORD,wexwp,🎯 本地直连
-
-#虎斑
-  - DOMAIN,xhban.xyz,🎯 本地直连
-  - IP-CIDR,154.222.27.33/32,🎯 本地直连
-  - IP-CIDR,103.45.162.207/32,🎯 本地直连
-
-#小斑
-  - DOMAIN,xsayang.fun,🎯 本地直连
-  - IP-CIDR,154.201.83.50/32,🎯 本地直连
+  - DOMAIN-KEYWORD,erxiaopan,🎯 本地直连 
+  - DOMAIN-KEYWORD,erixaopan,🎯 本地直连 
+  - DOMAIN-KEYWORD,erxiaozhan,🎯 本地直连 
+  - DOMAIN-KEYWORD,2xiaozhan,🎯 本地直连 
+  - DOMAIN-KEYWORD,2xiaopan,🎯 本地直连 
+  - DOMAIN-KEYWORD,wexwp,🎯 本地直连 
+   
+#虎斑#小斑
+  - IP-CIDR,121.205.88.174/32,🎯 本地直连 ,no-resolve
 
 #欧歌
-  - DOMAIN,woog.nxog.eu.org,🎯 本地直连
+  - DOMAIN,woog.nxog.eu.org,🎯 本地直连 
+  - DOMAIN,woog.nxog.fun,🎯 本地直连 
+  - DOMAIN,woog.430520.xyz,🎯 本地直连 
 
 #闪电
-  - DOMAIN,sd.sduc.site,🎯 本地直连
+  - DOMAIN,sd.sduc.site,🎯 本地直连 
+  - DOMAIN,shandian.blog,🎯 本地直连 
   
 
  
