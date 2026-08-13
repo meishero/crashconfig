@@ -1,7 +1,7 @@
 proxy-providers:
   edgetunnel:
     type: http
-    url: "https://www08022.meishero.dpdns.org/sub?token=d1e0647f2f0d834d535ae925391fef36"
+    url: "https://www08022.meishero2.dpdns.org/sub?token=4b098f7027fb72e0927922fb8ecef88d"
     path: "./providers/edgetunnel.yaml"
     interval: 1500
     proxy: DIRECT
