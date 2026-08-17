@@ -1,3 +1,6 @@
+tun:
+  loopback-address: 
+    - 10.7.0.1
 mode: rule
 log-level: info
 sniffer:
