@@ -728,8 +728,6 @@ rules:
   - DOMAIN-SUFFIX,hlive.ktv.go.kr,🎯 本地直连 
   - DOMAIN-SUFFIX,mgugaklive.nowcdn.co.kr,🎯 本地直连 
 
-
- 
 #JULI  按自己理解分流 itdog测试了
   - DOMAIN-SUFFIX,php.jdshipin.com,🚀 节点选择
   - DOMAIN-SUFFIX,163189.xyz,🚀 节点选择 #直连就可以  不一定要代理
@@ -746,8 +744,11 @@ rules:
   
 #iptv总部
   - IP-CIDR,82.156.243.185/32,🚀 节点选择
-  
-  
+
+#4gtv免翻
+  - DOMAIN-SUFFIX,4gtv.cnlive.club,🎯 本地直连 
+ 
+ 
 #hameni
   - DOMAIN-SUFFIX,hanime1.me,🚀 节点选择
   - DOMAIN-SUFFIX,hanimeone.me,🚀 节点选择
