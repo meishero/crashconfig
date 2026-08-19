@@ -438,8 +438,8 @@ rules:
 # NAME: PanVod
 # AUTHOR: eulac-dev
 # REPO: https://github.com/eulac-dev/Proxy
-# UPDATED: 2026-04-21  08:34
-# TOTAL: 44
+# UPDATED: 2026-08-14  22:41
+# TOTAL: 47
 
 #115
   - DOMAIN,fhnfile.oss-cn-shenzhen.aliyuncs.com,🎯 本地直连 
@@ -454,8 +454,8 @@ rules:
   - DOMAIN-SUFFIX,sq.cc,🎯 本地直连 
    
 #阿里/夸克/UC
-  - DOMAIN,cf.aliyun.com,🎯 本地直连 
   - DOMAIN,ynuf.aliapp.org,🎯 本地直连 
+  - DOMAIN-SUFFIX,aliyun.com,🎯 本地直连 
   - DOMAIN-SUFFIX,alipan.com,🎯 本地直连 
   - DOMAIN-SUFFIX,alicdn.com,🎯 本地直连 
   - DOMAIN-SUFFIX,aliyundrive.com,🎯 本地直连 
@@ -468,10 +468,10 @@ rules:
    
 #百度
   - DOMAIN,himg.bdimg.com,🎯 本地直连 
-  - DOMAIN,staticiot.cdn.bcebos.com,🎯 本地直连 
-  - DOMAIN,thumbnail0.baidupcs.com,🎯 本地直连 
   - DOMAIN-SUFFIX,baidu.com,🎯 本地直连 
+  - DOMAIN-SUFFIX,bcebos.com,🎯 本地直连 
   - DOMAIN-SUFFIX,bdstatic.com,🎯 本地直连 
+  - DOMAIN-SUFFIX,baidupcs.com,🎯 本地直连 
    
 #天翼
   - DOMAIN,ux.21cn.com,🎯 本地直连 
@@ -484,22 +484,25 @@ rules:
   - DOMAIN-SUFFIX,a.88cdn.com,🎯 本地直连 
    
 #123
+  - DOMAIN,www.123684.com,🎯 本地直连 
   - DOMAIN,www.123912.com,🎯 本地直连 
-  - DOMAIN,www.123295.com,🎯 本地直连 
   - DOMAIN,www.123865.com,🎯 本地直连 
+  - DOMAIN,matomo4397.123245.com,🎯 本地直连 
+  - DOMAIN,umini.shujupie.com,🎯 本地直连 
+  - DOMAIN,123295.com,🎯 本地直连 
   - DOMAIN-SUFFIX,cjjd19.com,🎯 本地直连 
-  - DOMAIN-SUFFIX,123pan.com,🎯 本地直连 
   - DOMAIN-SUFFIX,cnzz.com,🎯 本地直连 
+  - DOMAIN-KEYWORD,123pan.com,🎯 本地直连 
    
 #移动云盘
-  - DOMAIN-SUFFIX,cmicapm.com,🎯 本地直连 
-  - DOMAIN-SUFFIX,10086.cn,🎯 本地直连 
   - DOMAIN-SUFFIX,139.com,🎯 本地直连 
+  - DOMAIN-SUFFIX,10086.cn,🎯 本地直连 
   - DOMAIN-SUFFIX,cmecloud.cn,🎯 本地直连 
+  - DOMAIN-SUFFIX,cmicapm.com,🎯 本地直连 
    
 #光鸭
-  - DOMAIN-SUFFIX,guangyacdn.com,🎯 本地直连 
   - DOMAIN-SUFFIX,guangyapan.com,🎯 本地直连 
+  - DOMAIN-SUFFIX,guangyacdn.com,🎯 本地直连 
 
 # NAME: ResourceSite
 # AUTHOR: eulac-dev
