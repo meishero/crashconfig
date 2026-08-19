@@ -547,6 +547,13 @@ rules:
   - DOMAIN,sd.sduc.site,🎯 本地直连 
   - DOMAIN,shandian.blog,🎯 本地直连 
   
+#RTHK
+  - DOMAIN-SUFFIX,webcast.hkstv.tv,🎯 本地直连 
+  - DOMAIN-SUFFIX,rthktv31-live.akamaized.net,🎯 本地直连 
+  - DOMAIN-SUFFIX,rthktv32-live.akamaized.net,🎯 本地直连 
+  - DOMAIN-SUFFIX,hlive.ktv.go.kr,🎯 本地直连 
+  - DOMAIN-SUFFIX,mgugaklive.nowcdn.co.kr,🎯 本地直连 
+
 
  
 #JULI  按自己理解分流 itdog测试了
@@ -587,6 +594,8 @@ rules:
   - DOMAIN,githubproxy.cc,🎯 本地直连 
   - DOMAIN,ghproxylist.com,🎯 本地直连
   - DOMAIN,cdn.gh-proxy.com,🎯 本地直连
+  - DOMAIN,cdn.gh-proxy.org,🎯 本地直连
+  - DOMAIN,v6.gh-proxy.org,🎯 本地直连
   - DOMAIN,api.github.com,🚀 节点选择 
 # --------------------------------------------------------------------------
  
