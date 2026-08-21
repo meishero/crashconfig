@@ -575,8 +575,9 @@ rules:
   - IP-CIDR,82.156.243.185/32,🚀 节点选择
 
 #4gtv免翻
-  - DOMAIN-SUFFIX,4gtv.cnlive.club,🎯 本地直连 
- 
+#  - DOMAIN-SUFFIX,4gtv.cnlive.club,🎯 本地直连 
+#ha.msbot.dpdns.org
+#  - DOMAIN-SUFFIX,ha.msbot.dpdns.org,🚀 节点选择  #直连就可以  不一定要代理
  
 #hameni
   - DOMAIN-SUFFIX,hanime1.me,🚀 节点选择
@@ -584,9 +585,7 @@ rules:
   - DOMAIN-SUFFIX,hanime1.biz,🚀 节点选择
   - DOMAIN-SUFFIX,hanime1.info,🚀 节点选择
   
-#ha.msbot.dpdns.org
-  - DOMAIN-SUFFIX,ha.msbot.dpdns.org,🚀 节点选择  #直连就可以  不一定要代理
-
+  
   - DOMAIN,ghfast.top,🎯 本地直连 
   - DOMAIN,github-proxy.memory-echoes.cn,🎯 本地直连 
   - DOMAIN,gh.927223.xyz,🎯 本地直连 
