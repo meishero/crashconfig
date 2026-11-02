@@ -311,6 +311,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
+    proxy: DIRECT
     path: ./ruleset/fakeip-filter.mrs
     url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/fakeip-filter.mrs"
     interval: 86400
@@ -318,6 +319,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
+    proxy: DIRECT
     path: ./ruleset/trackerslist.mrs
     url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/trackerslist.mrs"
     interval: 86400
@@ -349,6 +351,7 @@ rule-providers:
 #    type: http
 #    behavior: domain
 #    format: mrs
+#    proxy: DIRECT
 #    path: ./ruleset/disney.mrs
 #    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/disney.mrs"
 #    interval: 86400
@@ -356,12 +359,14 @@ rule-providers:
 #    type: http
 #    behavior: domain
 #    format: mrs
+#    proxy: DIRECT
 #    path: ./ruleset/max.mrs
 #    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/max.mrs"
 #    interval: 86400
 #  primevideo:
 #    type: http
 #    behavior: domain
+#    proxy: DIRECT
 #    format: mrs
 #    path: ./ruleset/primevideo.mrs
 #    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/primevideo.mrs"
@@ -369,6 +374,7 @@ rule-providers:
 #  appletv:
 #    type: http
 #    behavior: domain
+#    proxy: DIRECT
 #    format: mrs
 #    path: ./ruleset/appletv.mrs
 #    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/appletv.mrs"
@@ -377,6 +383,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
+    proxy: DIRECT
     path: ./ruleset/tiktok.mrs
     url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/tiktok.mrs"
     interval: 86400
@@ -480,6 +487,7 @@ rule-providers:
     # type: http
     # behavior: ipcidr
     # format: mrs
+    # proxy: DIRECT
     # path: ./ruleset/netflixip.mrs
     # url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/netflixip.mrs"
     # interval: 86400
@@ -511,6 +519,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
+    proxy: DIRECT
     path: ./ruleset/gfw.mrs
     url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/gfw.mrs"
     interval: 86400
@@ -774,6 +783,7 @@ rules:
   - DOMAIN,cdn.gh-proxy.org,🎯 本地直连
   - DOMAIN,v6.gh-proxy.org,🎯 本地直连
   - DOMAIN,api.github.com,🚀 节点选择 
+  - DOMAIN,cdn.jsdelivr.net,🎯 本地直连
 # --------------------------------------------------------------------------
  
   # ==========================================
