@@ -380,6 +380,20 @@ rules:
   - DST-PORT,19302,🎯 本地直连  #webrtc泄露 拒绝谷歌专用的 STUN 端口
 # -------------------你新提供的手动自定义规则(置顶最高优先级)--------------------
   - DOMAIN-SUFFIX,todesk.com,🎯 本地直连
+#常见微软服务
+  - DOMAIN-SUFFIX,livefilestore.com,🎯 本地直连
+  - DOMAIN-SUFFIX,docs.live.net,🎯 本地直连
+  - DOMAIN-SUFFIX,onedrive.live.com,🎯 本地直连
+  - DOMAIN-SUFFIX,skyapi.live.net,🎯 本地直连
+  - DOMAIN-SUFFIX,l.live.net,🎯 本地直连
+  - DOMAIN-SUFFIX,skyapi.onedrive.live.com,🎯 本地直连
+  - DOMAIN-SUFFIX,api.onedrive.com,🎯 本地直连
+  - DOMAIN-SUFFIX,docs.live.net,🎯 本地直连
+  - DOMAIN-SUFFIX,progdownload.zune.net,🎯 本地直连
+  - DOMAIN-SUFFIX,apps.microsoft.com,🎯 本地直连
+  - DOMAIN-SUFFIX,microsoft.com,🎯 本地直连
+  - DOMAIN-SUFFIX,storage.live.com,🎯 本地直连
+
   - DOMAIN-SUFFIX,now.com,🚀 节点选择
   - DOMAIN-SUFFIX,now-tv.com,🚀 节点选择
   - DOMAIN-SUFFIX,ovhcloud.com,🚀 节点选择
@@ -521,44 +535,39 @@ rules:
 
 #玩偶哥哥
   - DOMAIN-KEYWORD,wogg,🎯 本地直连 
-
+  - DOMAIN-KEYWORD,woggpan.888484.xyz,🎯 本地直连 
 #木偶
+  - DOMAIN,www.muoua.top,🎯 本地直连 
+  - DOMAIN-SUFFIX,333291.xyz,🎯 本地直连 
   - DOMAIN-SUFFIX,666291.xyz,🎯 本地直连 
-  - DOMAIN,www.muou.asia,🎯 本地直连 
-  - DOMAIN,www.muou.site,🎯 本地直连 
 
 #蜡笔
   - DOMAIN,fmao.fun,🎯 本地直连 
+  - DOMAIN,www.mmpanpan.site,🎯 本地直连 
   - DOMAIN-SUFFIX,xiaocgege.shop,🎯 本地直连 
-
-#至臻
-  - DOMAIN,www.miqk.cc,🎯 本地直连 
-  - DOMAIN-SUFFIX,mihdr.top,🎯 本地直连 
 
 #多多
   - DOMAIN,tv.214521.xyz,🎯 本地直连 
   - DOMAIN-KEYWORD,yydsys,🎯 本地直连 
-
-#二小
-  - DOMAIN-KEYWORD,erxiaopan,🎯 本地直连 
-  - DOMAIN-KEYWORD,erixaopan,🎯 本地直连 
-  - DOMAIN-KEYWORD,erxiaozhan,🎯 本地直连 
-  - DOMAIN-KEYWORD,2xiaozhan,🎯 本地直连 
-  - DOMAIN-KEYWORD,2xiaopan,🎯 本地直连 
-  - DOMAIN-KEYWORD,wexwp,🎯 本地直连 
    
 #虎斑#小斑
-  - IP-CIDR,121.205.88.174/32,🎯 本地直连 ,no-resolve
+  - DOMAIN-KEYWORD,xhban,🎯 本地直连 
+  - IP-CIDR,103.40.14.172/32,🎯 本地直连 ,no-resolve
+  - IP-CIDR,38.76.197.172/32,🎯 本地直连 ,no-resolve
 
 #欧歌
-  - DOMAIN,woog.nxog.eu.org,🎯 本地直连 
   - DOMAIN,woog.nxog.fun,🎯 本地直连 
   - DOMAIN,woog.430520.xyz,🎯 本地直连 
-
+  - DOMAIN,woog.nxog.eu.org,🎯 本地直连 
+  
 #闪电
   - DOMAIN,sd.sduc.site,🎯 本地直连 
   - DOMAIN,shandian.blog,🎯 本地直连 
   
+#花卷
+  - DOMAIN,www.hjzhencai.top,🎯 本地直连 
+  - DOMAIN,www.huanjuanwp.shop,🎯 本地直连 
+
 #RTHK
   - DOMAIN-SUFFIX,webcast.hkstv.tv,🎯 本地直连 
   - DOMAIN-SUFFIX,rthktv31-live.akamaized.net,🎯 本地直连 
