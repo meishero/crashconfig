@@ -568,6 +568,9 @@ rules:
   - DOMAIN-SUFFIX,microsoft.com,🎯 本地直连
   - DOMAIN-SUFFIX,storage.live.com,🎯 本地直连
   - DOMAIN-SUFFIX,bing.com,🎯 本地直连
+  - DOMAIN-SUFFIX,bing.net,🎯 本地直连
+  - DOMAIN-SUFFIX,live.net,🎯 本地直连
+  - DOMAIN-SUFFIX,live.com,🎯 本地直连
 
 
   - DOMAIN-SUFFIX,now.com,🚀 节点选择
