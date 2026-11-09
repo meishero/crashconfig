@@ -398,6 +398,8 @@ rules:
   - DOMAIN-SUFFIX,bing.net,🎯 本地直连
   - DOMAIN-SUFFIX,live.net,🎯 本地直连
   - DOMAIN-SUFFIX,live.com,🎯 本地直连
+  - DOMAIN-SUFFIX,microsoftonline.com,🎯 本地直连
+  - DOMAIN-SUFFIX,microsoftonline.net,🎯 本地直连
 
 
   - DOMAIN-SUFFIX,now.com,🚀 节点选择
