@@ -27,14 +27,14 @@ dns:
     - 223.5.5.5
     - 2400:3200::1
   proxy-server-nameserver:
-    - 1.1.1.1
-    - 9.9.9.9
+    - 223.5.5.5
+    - 119.29.29.29
   direct-nameserver:
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query   
   nameserver:
-    - https://cloudflare-dns.com/dns-query#ecs-override=true&ecs=211.137.130.0/24
-    - https://dns.google/dns-query#ecs-override=true&ecs=211.137.130.0/24
+    - https://cloudflare-dns.com/dns-query
+    - https://dns.google/dns-query
   respect-rules: true
   follow-rule: true
   nameserver-policy:
