@@ -47,7 +47,7 @@ proxies:
   #   password: password
 
 # 基础设置
-# mode: rule
+mode: rule
 mixed-port: 7890
 redir-port: 7892
 tproxy-port: 7893
@@ -61,11 +61,11 @@ bind-address: "*"
 ipv6: true
 unified-delay: true
 tcp-concurrent: true
-log-level: info
+log-level: warning
 keep-alive-idle: 600
 keep-alive-interval: 15
-experimental: {quic-go-disable-gso: true}
-find-process-mode: 'strict'
+#experimental: {quic-go-disable-gso: true} #默认false 只有 QUIC 节点异常时才设 true
+find-process-mode: 'off' #strict
 profile:
   store-selected: true
   store-fake-ip: true
@@ -92,7 +92,6 @@ hosts:
   'time.facebook.com': 203.107.6.88
   'services.googleapis.cn': services.googleapis.com
   'localhost': 127.0.0.1
-
 use-system-hosts: true
  
 # NTP 
@@ -143,17 +142,19 @@ dns:
   fake-ip-range6: 2001:2::/64
   fake-ip-filter-mode: blacklist
   respect-rules: true
-#  use-hosts: true # 查询 hosts
+  use-hosts: true # 查询 hosts
   default-nameserver:
-    - https://223.5.5.5/dns-query
+    - 223.5.5.5
+    - 119.29.29.29
     - 2400:3200::1
-    - system
+#    - system
   nameserver:
-    - https://8.8.8.8/dns-query
-#    - https://8.8.8.8/dns-query#默认代理&ecs=223.5.5.0/24
-  proxy-server-nameserver:
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
+#    - https://8.8.8.8/dns-query#默认代理&ecs=223.5.5.0/24
+  proxy-server-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
   direct-nameserver:
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
@@ -162,7 +163,8 @@ dns:
     - https://dns.alidns.com/dns-query#disable-qtype-65=true
     - https://doh.pub/dns-query#disable-qtype-65=true
     "rule-set:fakeipfilter_!cn":
-    - https://8.8.8.8/dns-query#disable-qtype-65=true
+    - https://cloudflare-dns.com/dns-query#disable-qtype-65=true
+    - https://dns.google/dns-query#disable-qtype-65=true
 #    - https://8.8.8.8/dns-query#默认代理&disable-qtype-65=true
   # fallback:
     # - https://8.8.8.8/dns-query#默认代理
@@ -330,25 +332,25 @@ proxy-groups:
   - { name: 负载均衡轮询,  type: load-balance, url: "https://cp.cloudflare.com/generate_204", interval: 188, empty-fallback: REJECT, include-all: true, lazy: true , strategy: round-robin, icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin.png }
 
   # 漏网之鱼
-  - { name: 漏网之鱼, type: select, proxies:  [自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/final.png"}
+  - { name: 漏网之鱼, type: select, proxies:  [DIRECT, 默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, REJECT-DROP, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/final.png"}
 
 
   # 路由策略
-  - {name: Ads, type: select, proxies:  [自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/ai.png"}
-  - {name: AI, type: select, proxies:  [自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/ai.png"}
-  - {name: NetWorkTest, type: select, proxies:  [自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/ai.png"}
-  - {name: YouTube, type: select, proxies:  [自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/youtube.png"}
-  - {name: Google, type: select, proxies:  [自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/google.png"}
-  - {name: GitHub, type: select, proxies:  [自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/github.png"}
-  - {name: Telegram, type: select, proxies:  [自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/telegram.png"}
-  - {name: TikTok, type: select, proxies:  [自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/douyin.png"}
-  - {name: NETFLIX, type: select, proxies:  [自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/netflix.png"}
-  - {name: Games, type: select, proxies:  [自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/netflix.png"}
-  - {name: Wallet, type: select, proxies:  [自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/wallet.png"}
-  - {name: Steam, type: select, proxies:  [自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/steam.png"}
-  - {name: Microsoft, type: select, proxies:  [自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/microsoft.png"}
-  - {name: OneDrive, type: select, proxies:  [自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/onedrive.png"}
-  - {name: Apple, type: select, proxies:  [自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/apple.png"}
+  - {name: Ads, type: select, proxies:  [REJECT-DROP, DIRECT, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/ai.png"}
+  - {name: AI, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/ai.png"}
+  - {name: NetWorkTest, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/ai.png"}
+  - {name: YouTube, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/youtube.png"}
+  - {name: Google, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/google.png"}
+  - {name: GitHub, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/github.png"}
+  - {name: Telegram, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/telegram.png"}
+  - {name: TikTok, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/douyin.png"}
+  - {name: NETFLIX, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/netflix.png"}
+  - {name: Games, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/netflix.png"}
+  - {name: Wallet, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/wallet.png"}
+  - {name: Steam, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/steam.png"}
+  - {name: Microsoft, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], default-selected:DIRECT, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/microsoft.png"}
+  - {name: OneDrive, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/onedrive.png"}
+  - {name: Apple, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/apple.png"}
  
 # 规则路由
 rules:
@@ -362,8 +364,8 @@ rules:
   - DOMAIN-SUFFIX,852851.xyz,默认代理
   - DOMAIN-SUFFIX,cdnipcs.com,默认代理
   - DOMAIN-SUFFIX,tuta.com,默认代理
-  - IP-CIDR,38.58.176.207/32,默认代理
-  - IP-CIDR,51.77.133.124/32,默认代理
+  - IP-CIDR,38.58.176.207/32,默认代理,no-resolve
+  - IP-CIDR,51.77.133.124/32,默认代理,no-resolve
   - DOMAIN-SUFFIX,789505.xyz,DIRECT
   - DOMAIN-SUFFIX,707626.xyz,默认代理
   - DOMAIN-SUFFIX,newl.zenfit.cfd,默认代理
@@ -387,11 +389,10 @@ rules:
   - DOMAIN-SUFFIX,veloxmedia.co.uk,默认代理
   - DOMAIN-SUFFIX,newtvsuper.com,默认代理
   - DOMAIN-SUFFIX,catvod.com,默认代理
-  - IP-CIDR,50.7.158.194/32,默认代理
-  - IP-CIDR,103.102.135.231/24,默认代理
-# - IP-CIDR,123.51.231.132/32,默认代理
-# - IP-CIDR,60.250.121.103/32,默认代理
-  - DOMAIN-SUFFIX,163189.xyz,默认代理
+  - IP-CIDR,50.7.158.194/32,默认代理,no-resolve
+  - IP-CIDR,103.102.135.231/24,默认代理,no-resolve
+# - IP-CIDR,123.51.231.132/32,默认代理,no-resolve
+# - IP-CIDR,60.250.121.103/32,默认代理,no-resolve
   - DOMAIN-SUFFIX,z2u.com,默认代理
   - DOMAIN-SUFFIX,amazonaws.com,默认代理
   - DOMAIN-SUFFIX,nodeseek.com,默认代理
@@ -553,7 +554,7 @@ rules:
   - DOMAIN-SUFFIX,live.264788.xyz,默认代理 #直连就可以  不一定要代理
   
 #iptv总部
-  - IP-CIDR,82.156.243.185/32,默认代理
+  - IP-CIDR,82.156.243.185/32,默认代理,no-resolve
 
 #4gtv免翻
 #  - DOMAIN-SUFFIX,4gtv.cnlive.club,DIRECT
@@ -610,12 +611,12 @@ rules:
   - RULE-SET,games-cn_domain,DIRECT
   - RULE-SET,games_domain,Games
   - RULE-SET,cn!_domain,默认代理
+  - RULE-SET,cn_domain,DIRECT
   - RULE-SET,google_ip,Google,no-resolve
   - RULE-SET,apple_ip,Apple,no-resolve
   - RULE-SET,telegram_ip,Telegram,no-resolve
   - RULE-SET,netflix_ip,NETFLIX,no-resolve
   - RULE-SET,cn_ip,DIRECT,no-resolve
-  
 
 
   - MATCH,漏网之鱼
@@ -653,9 +654,9 @@ rule-providers:
   networktest_domain: {  type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/networktest.mrs", path: "./ruleset/networktest.mrs"}
   ads_domain: {  type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/ads.mrs", path: "./ruleset/ads.mrs"}
 
-  google_ip: {  type: http, behavior: ipcidr, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/google.mrs", path: "./ruleset/google.mrs"}
-  apple_ip: {  type: http, behavior: ipcidr, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo-lite/geoip/apple.mrs", path: "./ruleset/apple.mrs"}
-  telegram_ip: {  type: http, behavior: ipcidr, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/telegram.mrs", path: "./ruleset/telegram.mrs"}
-  netflix_ip: {  type: http, behavior: ipcidr, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/netflix.mrs", path: "./ruleset/netflix.mrs"}
-  cn_ip: {  type: http, behavior: ipcidr, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/cn.mrs", path: "./ruleset/cn.mrs"}
-  private_ip: {  type: http, behavior: ipcidr, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/private.mrs", path: "./ruleset/private.mrs"}
+  google_ip: {  type: http, behavior: ipcidr, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/google.mrs", path: "./ruleset/google_ip.mrs"}
+  apple_ip: {  type: http, behavior: ipcidr, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo-lite/geoip/apple.mrs", path: "./ruleset/apple_ip.mrs"}
+  telegram_ip: {  type: http, behavior: ipcidr, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/telegram.mrs", path: "./ruleset/telegram_ip.mrs"}
+  netflix_ip: {  type: http, behavior: ipcidr, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/netflix.mrs", path: "./ruleset/netflix_ip.mrs"}
+  cn_ip: {  type: http, behavior: ipcidr, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/cn.mrs", path: "./ruleset/cn_ip.mrs"}
+  private_ip: {  type: http, behavior: ipcidr, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/private.mrs", path: "./ruleset/private_ip.mrs"}
