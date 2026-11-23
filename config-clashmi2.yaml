@@ -58,7 +58,7 @@ skip-auth-prefixes:
   - ::1/128
 allow-lan: true
 bind-address: "*"
-ipv6: true
+ipv6: false
 unified-delay: true
 tcp-concurrent: true
 log-level: warning
@@ -134,7 +134,7 @@ dns:
   cache-algorithm: arc
   listen: 0.0.0.0:53 # 开启 DNS 服务器监听
 #  prefer-h3: false # 是否开启 DoH 支持 HTTP/3，将并发尝试
-  ipv6: true
+  ipv6: false
 #  ipv6-timeout: 300 # 单位：ms，内部双栈并发时，向上游查询 AAAA 时，等待 AAAA 的时间，默认 100ms
   enhanced-mode: fake-ip
   fake-ip-ttl: 1
