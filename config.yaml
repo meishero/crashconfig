@@ -35,7 +35,7 @@ proxy-providers:
     override:
       udp: true
       skip-cert-verify: true
-    filter: '(?i)^(?!.*(官方|剩余|重置|到期|防失联|官网|导航|客服|群|t.me|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|软件|装新|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Author|分享|bestcf.pages.dev)).*$'
+    filter: '(?i)^(?!.*(官方|剩余|重置|到期|防失联|官网|导航|客服|群|t.me|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|软件|装新|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Author|分享|返佣|bestcf.pages.dev)).*$'
   edgetunnel-yidong:
     type: http
     url: "https://www0802.meishero3.dpdns.org/sub?token=100e27bda76c66ae91f9e09c3f78acda"
@@ -55,7 +55,7 @@ proxy-providers:
     override:
       udp: true
       skip-cert-verify: true
-    filter: '(?i)^(?!.*(官方|剩余|重置|到期|防失联|官网|导航|客服|群|t.me|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|软件|装新|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Author|分享|bestcf.pages.dev)).*$'    
+    filter: '(?i)^(?!.*(官方|剩余|重置|到期|防失联|官网|导航|客服|群|t.me|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|软件|装新|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Author|分享|返佣|bestcf.pages.dev)).*$'    
 
 # 自定义代理节点
 proxies:
