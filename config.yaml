@@ -1,25 +1,25 @@
 # 锚点配置
-rule-anchor:
-  # 节点
-  x-url-test:     &url-test     { type: url-test, url: "https://cp.cloudflare.com/generate_204", interval: 188, tolerance: 38, empty-fallback: REJECT, include-all: true, lazy: true }
-  x-load-balance: &load-balance { type: load-balance, url: "https://cp.cloudflare.com/generate_204", interval: 188, empty-fallback: REJECT, include-all: true, lazy: true }
-  x-fallback:     &fallback     { type: fallback, url: "https://cp.cloudflare.com/generate_204", interval: 188, empty-fallback: REJECT, include-all: true, lazy: true }
-  
-  # 策略组
-  x-oversea:      &oversea      {type: select, proxies:  [自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT]}
-  
-  # 规则集
-  x-rule-set-domain: &rule-set-domain { type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT }
-  x-rule-set-domain-text: &rule-set-domain-text { type: http, behavior: domain, format: text, interval: 86400, proxy: DIRECT }
-  x-rule-set-domain-classical: &rule-set-domain-classical { type: http, behavior: classical, format: text, interval: 86400, proxy: DIRECT }
-  x-rule-set-ipcidr: &rule-set-ipcidr { type: http, behavior: ipcidr, format: mrs, interval: 86400, proxy: DIRECT }
+#rule-anchor:
+#  # 节点
+#  x-url-test:     &url-test     { type: url-test, url: "https://cp.cloudflare.com/generate_204", interval: 188, tolerance: 38, empty-fallback: REJECT, include-all: true, lazy: true }
+#  x-load-balance: &load-balance { type: load-balance, url: "https://cp.cloudflare.com/generate_204", interval: 188, empty-fallback: REJECT, include-all: true, lazy: true }
+#  x-fallback:     &fallback     { type: fallback, url: "https://cp.cloudflare.com/generate_204", interval: 188, empty-fallback: REJECT, include-all: true, lazy: true }
+#  
+#  # 策略组
+#  x-oversea:      &oversea      {type: select, proxies:  [自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT]}
+#  
+#  # 规则集
+#  x-rule-set-domain: &rule-set-domain { type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT }
+#  x-rule-set-domain-text: &rule-set-domain-text { type: http, behavior: domain, format: text, interval: 86400, proxy: DIRECT }
+#  x-rule-set-domain-classical: &rule-set-domain-classical { type: http, behavior: classical, format: text, interval: 86400, proxy: DIRECT }
+#  x-rule-set-ipcidr: &rule-set-ipcidr { type: http, behavior: ipcidr, format: mrs, interval: 86400, proxy: DIRECT }
 
 # 代理提供者
 proxy-providers:
-  edgetunnel:
+  edgetunnel-dianxin:
     type: http
     url: "https://www0802.meishero2.dpdns.org/sub?token=9b385e4587845a63994ce094f5caec54"
-    path: "./providers/edgetunnel.yaml"
+    path: "./providers/edgetunnel-dianxin.yaml"
     interval: 1500
     proxy: DIRECT
     empty-fallback: REJECT
@@ -36,7 +36,26 @@ proxy-providers:
       udp: true
       skip-cert-verify: true
     filter: '(?i)^(?!.*(官方|剩余|重置|到期|防失联|官网|导航|客服|群|t.me|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|软件|装新|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Author|分享|bestcf.pages.dev)).*$'
-    
+  edgetunnel-yidong:
+    type: http
+    url: "https://www0802.meishero3.dpdns.org/sub?token=100e27bda76c66ae91f9e09c3f78acda"
+    path: "./providers/edgetunnel-yidong.yaml"
+    interval: 1500
+    proxy: DIRECT
+    empty-fallback: REJECT
+    health-check:
+      enable: true
+      lazy: true
+      url: "https://cp.cloudflare.com/generate_204"
+      interval: 188
+# #并发测速为16
+      # concurrency: 16
+# #超时时间为1.5s   如果存在丢包重传 时间肯定比较大 扔掉那些丢包严重的
+      # timeout: 1500
+    override:
+      udp: true
+      skip-cert-verify: true
+    filter: '(?i)^(?!.*(官方|剩余|重置|到期|防失联|官网|导航|客服|群|t.me|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|软件|装新|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Author|分享|bestcf.pages.dev)).*$'    
 # 自定义代理节点
 proxies:
   # - name: "ss1"
@@ -312,43 +331,72 @@ dns:
 # 代理策略组
 proxy-groups:
   # 默认代理
-  - { name: 默认代理, type: select, proxies:  [自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/select.png"}
+  - { name: 默认代理, type: select, proxies: [电信代理, 移动代理, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/select.png"}
 
-  # 自动选择
-  - { name: 自动选择,  type: url-test, url: "https://cp.cloudflare.com/generate_204", interval: 188, tolerance: 38, empty-fallback: REJECT, include-all: true, lazy: true , icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png }
+  # 电信代理
+  - { name: 电信代理, type: select, proxies: [电信自动选择, 电信手动选择, 电信故障转移, 电信负载均衡散列, 电信负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/select.png"}
+
+  # 移动代理
+  - { name: 移动代理, type: select, proxies: [移动自动选择, 移动手动选择, 移动故障转移, 移动负载均衡散列, 移动负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/select.png"}
+
+
+
+
+  # 电信自动选择
+  - { name: 电信自动选择, type: url-test, url: "https://cp.cloudflare.com/generate_204", interval: 188, tolerance: 38, empty-fallback: REJECT, use: [edgetunnel-dianxin], lazy: true, icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png }
  
-  # 手动选择
-  - { name: 手动选择, type: select, include-all: true, icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Clubhouse.png }
+  # 电信手动选择
+  - { name: 电信手动选择, type: select, use: [edgetunnel-dianxin], icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Clubhouse.png }
   
-  # 故障转移
-  - { name: 故障转移,  type: fallback, url: "https://cp.cloudflare.com/generate_204", interval: 188, empty-fallback: REJECT, include-all: true, lazy: true , icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ULB.png }
+  # 电信故障转移
+  - { name: 电信故障转移, type: fallback, url: "https://cp.cloudflare.com/generate_204", interval: 188, empty-fallback: REJECT, use: [edgetunnel-dianxin], lazy: true, hidden: true, icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ULB.png }
 
-  # 负载均衡散列
-  - { name: 负载均衡散列,  type: load-balance, url: "https://cp.cloudflare.com/generate_204", interval: 188, empty-fallback: REJECT, include-all: true, lazy: true , strategy: consistent-hashing, icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Round_Robin_1.png }
+  # 电信负载均衡散列
+  - { name: 电信负载均衡散列, type: load-balance, url: "https://cp.cloudflare.com/generate_204", interval: 188, empty-fallback: REJECT, use: [edgetunnel-dianxin], lazy: true, hidden: true, strategy: consistent-hashing, icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Round_Robin_1.png }
   
-  # 负载均衡轮询
-  - { name: 负载均衡轮询,  type: load-balance, url: "https://cp.cloudflare.com/generate_204", interval: 188, empty-fallback: REJECT, include-all: true, lazy: true , strategy: round-robin, icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Round_Robin.png }
+  # 电信负载均衡轮询
+  - { name: 电信负载均衡轮询, type: load-balance, url: "https://cp.cloudflare.com/generate_204", interval: 188, empty-fallback: REJECT, use: [edgetunnel-dianxin], lazy: true, hidden: true, strategy: round-robin, icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Round_Robin.png }
+  
+  
+  
+  
+  # 移动自动选择
+  - { name: 移动自动选择, type: url-test, url: "https://cp.cloudflare.com/generate_204", interval: 188, tolerance: 38, empty-fallback: REJECT, use: [edgetunnel-yidong], lazy: true, icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png }
+ 
+  # 移动手动选择
+  - { name: 移动手动选择, type: select, use: [edgetunnel-yidong], icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Clubhouse.png }
+  
+  # 移动故障转移
+  - { name: 移动故障转移, type: fallback, url: "https://cp.cloudflare.com/generate_204", interval: 188, empty-fallback: REJECT, use: [edgetunnel-yidong], lazy: true, hidden: true, icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ULB.png }
+
+  # 移动负载均衡散列
+  - { name: 移动负载均衡散列, type: load-balance, url: "https://cp.cloudflare.com/generate_204", interval: 188, empty-fallback: REJECT, use: [edgetunnel-yidong], lazy: true, strategy: consistent-hashing, hidden: true, icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Round_Robin_1.png }
+  
+  # 移动负载均衡轮询
+  - { name: 移动负载均衡轮询, type: load-balance, url: "https://cp.cloudflare.com/generate_204", interval: 188, empty-fallback: REJECT, use: [edgetunnel-yidong], lazy: true, strategy: round-robin, hidden: true, icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Round_Robin.png }
+
+
 
   # 漏网之鱼
-  - { name: 漏网之鱼, type: select, proxies:  [DIRECT, 默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/final.png"}
+  - { name: 漏网之鱼, type: select, proxies:  [默认代理, 电信代理, 移动代理, 电信自动选择, 电信手动选择, 电信故障转移, 电信负载均衡散列, 电信负载均衡轮询, 移动自动选择, 移动手动选择, 移动故障转移, 移动负载均衡散列, 移动负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/final.png"}
 
 
   # 路由策略
-  - {name: Ads, type: select, proxies:  [REJECT-DROP, DIRECT, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/ai.png"}
-  - {name: AI, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/ai.png"}
-  - {name: NetWorkTest, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/ai.png"}
-  - {name: YouTube, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/youtube.png"}
-  - {name: Google, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/google.png"}
-  - {name: GitHub, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/github.png"}
-  - {name: Telegram, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/telegram.png"}
-  - {name: TikTok, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/douyin.png"}
-  - {name: NETFLIX, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/netflix.png"}
-  - {name: Games, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/netflix.png"}
-  - {name: Wallet, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/wallet.png"}
-  - {name: Steam, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/steam.png"}
-  - {name: Microsoft, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], default-selected:DIRECT, icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/microsoft.png"}
-  - {name: OneDrive, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/onedrive.png"}
-  - {name: Apple, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/apple.png"}
+  - {name: Ads, type: select, proxies: [REJECT-DROP, PASS, DIRECT, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/ai.png"}
+  - {name: AI, type: select, proxies: [默认代理, 电信代理, 移动代理, 电信自动选择, 电信手动选择, 电信故障转移, 电信负载均衡散列, 电信负载均衡轮询, 移动自动选择, 移动手动选择, 移动故障转移, 移动负载均衡散列, 移动负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/ai.png"}
+  - {name: NetWorkTest, type: select, proxies: [默认代理, 电信代理, 移动代理, 电信自动选择, 电信手动选择, 电信故障转移, 电信负载均衡散列, 电信负载均衡轮询, 移动自动选择, 移动手动选择, 移动故障转移, 移动负载均衡散列, 移动负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/ai.png"}
+  - {name: YouTube, type: select, proxies: [默认代理, 电信代理, 移动代理, 电信自动选择, 电信手动选择, 电信故障转移, 电信负载均衡散列, 电信负载均衡轮询, 移动自动选择, 移动手动选择, 移动故障转移, 移动负载均衡散列, 移动负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/youtube.png"}
+  - {name: Google, type: select, proxies: [默认代理, 电信代理, 移动代理, 电信自动选择, 电信手动选择, 电信故障转移, 电信负载均衡散列, 电信负载均衡轮询, 移动自动选择, 移动手动选择, 移动故障转移, 移动负载均衡散列, 移动负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/google.png"}
+  - {name: GitHub, type: select, proxies: [默认代理, 电信代理, 移动代理, 电信自动选择, 电信手动选择, 电信故障转移, 电信负载均衡散列, 电信负载均衡轮询, 移动自动选择, 移动手动选择, 移动故障转移, 移动负载均衡散列, 移动负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/github.png"}
+  - {name: Telegram, type: select, proxies: [默认代理, 电信代理, 移动代理, 电信自动选择, 电信手动选择, 电信故障转移, 电信负载均衡散列, 电信负载均衡轮询, 移动自动选择, 移动手动选择, 移动故障转移, 移动负载均衡散列, 移动负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/telegram.png"}
+  - {name: TikTok, type: select, proxies: [默认代理, 电信代理, 移动代理, 电信自动选择, 电信手动选择, 电信故障转移, 电信负载均衡散列, 电信负载均衡轮询, 移动自动选择, 移动手动选择, 移动故障转移, 移动负载均衡散列, 移动负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/douyin.png"}
+  - {name: NETFLIX, type: select, proxies: [默认代理, 电信代理, 移动代理, 电信自动选择, 电信手动选择, 电信故障转移, 电信负载均衡散列, 电信负载均衡轮询, 移动自动选择, 移动手动选择, 移动故障转移, 移动负载均衡散列, 移动负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/netflix.png"}
+  - {name: Games, type: select, proxies: [默认代理, 电信代理, 移动代理, 电信自动选择, 电信手动选择, 电信故障转移, 电信负载均衡散列, 电信负载均衡轮询, 移动自动选择, 移动手动选择, 移动故障转移, 移动负载均衡散列, 移动负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/netflix.png"}
+  - {name: Wallet, type: select, proxies: [默认代理, 电信代理, 移动代理, 电信自动选择, 电信手动选择, 电信故障转移, 电信负载均衡散列, 电信负载均衡轮询, 移动自动选择, 移动手动选择, 移动故障转移, 移动负载均衡散列, 移动负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/wallet.png"}
+  - {name: Steam, type: select, proxies: [默认代理, 电信代理, 移动代理, 电信自动选择, 电信手动选择, 电信故障转移, 电信负载均衡散列, 电信负载均衡轮询, 移动自动选择, 移动手动选择, 移动故障转移, 移动负载均衡散列, 移动负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/steam.png"}
+  - {name: Microsoft, type: select, proxies: [默认代理, 电信代理, 移动代理, 电信自动选择, 电信手动选择, 电信故障转移, 电信负载均衡散列, 电信负载均衡轮询, 移动自动选择, 移动手动选择, 移动故障转移, 移动负载均衡散列, 移动负载均衡轮询, DIRECT, REJECT-DROP, REJECT], default-selected:DIRECT, icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/microsoft.png"}
+  - {name: OneDrive, type: select, proxies: [默认代理, 电信代理, 移动代理, 电信自动选择, 电信手动选择, 电信故障转移, 电信负载均衡散列, 电信负载均衡轮询, 移动自动选择, 移动手动选择, 移动故障转移, 移动负载均衡散列, 移动负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/onedrive.png"}
+  - {name: Apple, type: select, proxies: [默认代理, 电信代理, 移动代理, 电信自动选择, 电信手动选择, 电信故障转移, 电信负载均衡散列, 电信负载均衡轮询, 移动自动选择, 移动手动选择, 移动故障转移, 移动负载均衡散列, 移动负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/apple.png"}
  
 # 规则路由
 rules:
