@@ -1,0 +1,1122 @@
+port: 0
+socks-port: 0
+redir-port: 7892
+tproxy-port: 7893
+mixed-port: 7890
+ss-config: ""
+vmess-config: ""
+inbound-tfo: false
+inbound-mptcp: false
+authentication:
+    - ""
+skip-auth-prefixes:
+    - 127.0.0.0/8
+    - 192.168.0.0/16
+    - ::1/128
+lan-allowed-ips:
+    - 0.0.0.0/0
+    - ::/0
+lan-disallowed-ips: []
+allow-lan: true
+bind-address: '*'
+mode: rule
+unified-delay: true
+log-level: error
+ipv6: false
+external-controller: 127.0.0.1:9090
+external-controller-routing-mark: 0
+external-controller-pipe: ""
+external-controller-unix: ""
+external-controller-tls: ""
+external-controller-cors:
+    allow-origins:
+        - '*'
+    allow-private-network: true
+external-ui: ui
+external-ui-url: https://raw.githubusercontent.com/juewuy/ShellCrash/update/bin/dashboard/meta_xd.tar.gz
+external-ui-name: meta_xd
+external-doh-server: ""
+secret: 7b85727d8399356a
+interface-name: ""
+routing-mark: 0
+tunnels: []
+geo-auto-update: false
+geo-update-interval: 24
+geodata-mode: false
+geodata-loader: memconservative
+geosite-matcher: ""
+tcp-concurrent: true
+find-process-mode: always
+global-client-fingerprint: ""
+global-ua: clash.meta/1.19.33
+etag-support: true
+keep-alive-idle: 600
+keep-alive-interval: 15
+disable-keep-alive: false
+proxy-providers:
+    edgetunnel:
+        empty-fallback: REJECT
+        filter: (?i)^(?!.*(官方|剩余|重置|到期|防失联|官网|导航|客服|群|t.me|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|软件|装新|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Author|分享|bestcf.pages.dev)).*$
+        health-check:
+            enable: true
+            interval: 188
+            lazy: true
+            url: https://cp.cloudflare.com/generate_204
+        interval: 1500
+        override:
+            skip-cert-verify: true
+            udp: true
+        path: ./providers/edgetunnel.yaml
+        proxy: DIRECT
+        type: http
+        url: https://www0802.meishero2.dpdns.org/sub?token=9b385e4587845a63994ce094f5caec54
+rule-providers:
+    ads_domain:
+        behavior: domain
+        format: mrs
+        interval: 86400
+        path: ./ruleset/ads.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/ads.mrs
+    ai_domain:
+        behavior: domain
+        format: mrs
+        interval: 86400
+        path: ./ruleset/category-ai-!cn.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-ai-!cn.mrs
+    apple_domain:
+        behavior: domain
+        format: mrs
+        interval: 86400
+        path: ./ruleset/apple.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/apple.mrs
+    apple_ip:
+        behavior: ipcidr
+        format: mrs
+        interval: 86400
+        path: ./ruleset/apple_ip.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo-lite/geoip/apple.mrs
+    applecn_domain:
+        behavior: domain
+        format: mrs
+        interval: 86400
+        path: ./ruleset/apple@cn.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/apple@cn.mrs
+    applications_text:
+        behavior: classical
+        format: text
+        interval: 86400
+        path: ./ruleset/applications.list
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/applications.list
+    binance_domain:
+        behavior: domain
+        format: mrs
+        interval: 86400
+        path: ./ruleset/binance.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/binance.mrs
+    cn!_domain:
+        behavior: domain
+        format: mrs
+        interval: 86400
+        path: ./ruleset/geolocation-!cn.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/geolocation-!cn.mrs
+    cn_domain:
+        behavior: domain
+        format: mrs
+        interval: 86400
+        path: ./ruleset/cn.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/cn.mrs
+    cn_ip:
+        behavior: ipcidr
+        format: mrs
+        interval: 86400
+        path: ./ruleset/cn_ip.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/cn.mrs
+    fakeipfilter_!cn:
+        behavior: domain
+        format: text
+        interval: 86400
+        path: ./ruleset/fakeipfilter-!cn.list
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/qichiyuhub/rule@main/rules/fakeipfilter-!cn.list
+    fakeipfilter_cn:
+        behavior: domain
+        format: text
+        interval: 86400
+        path: ./ruleset/fakeipfilter-cn.list
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/qichiyuhub/rule@main/rules/fakeipfilter-cn.list
+    games-cn_domain:
+        behavior: domain
+        format: mrs
+        interval: 86400
+        path: ./ruleset/games-cn.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/games-cn.mrs
+    games_domain:
+        behavior: domain
+        format: mrs
+        interval: 86400
+        path: ./ruleset/games.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/games.mrs
+    github_domain:
+        behavior: domain
+        format: mrs
+        interval: 86400
+        path: ./ruleset/github.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/github.mrs
+    google_domain:
+        behavior: domain
+        format: mrs
+        interval: 86400
+        path: ./ruleset/google.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google.mrs
+    google_ip:
+        behavior: ipcidr
+        format: mrs
+        interval: 86400
+        path: ./ruleset/google_ip.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/google.mrs
+    microsoft_domain:
+        behavior: domain
+        format: mrs
+        interval: 86400
+        path: ./ruleset/microsoft.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/microsoft.mrs
+    microsoftcn_domain:
+        behavior: domain
+        format: mrs
+        interval: 86400
+        path: ./ruleset/microsoft@cn.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/microsoft@cn.mrs
+    netflix_domain:
+        behavior: domain
+        format: mrs
+        interval: 86400
+        path: ./ruleset/netflix.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/netflix.mrs
+    netflix_ip:
+        behavior: ipcidr
+        format: mrs
+        interval: 86400
+        path: ./ruleset/netflix_ip.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/netflix.mrs
+    networktest_domain:
+        behavior: domain
+        format: mrs
+        interval: 86400
+        path: ./ruleset/networktest.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/networktest.mrs
+    okx_domain:
+        behavior: domain
+        format: mrs
+        interval: 86400
+        path: ./ruleset/okx.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/okx.mrs
+    onedrive_domain:
+        behavior: domain
+        format: mrs
+        interval: 86400
+        path: ./ruleset/onedrive.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/onedrive.mrs
+    paypal_domain:
+        behavior: domain
+        format: mrs
+        interval: 86400
+        path: ./ruleset/paypal.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/paypal.mrs
+    private_domain:
+        behavior: domain
+        format: mrs
+        interval: 86400
+        path: ./ruleset/private.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/private.mrs
+    private_ip:
+        behavior: ipcidr
+        format: mrs
+        interval: 86400
+        path: ./ruleset/private_ip.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/private.mrs
+    steam_domain:
+        behavior: domain
+        format: mrs
+        interval: 86400
+        path: ./ruleset/steam.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/steam.mrs
+    steamcn_domain:
+        behavior: domain
+        format: mrs
+        interval: 86400
+        path: ./ruleset/steam@cn.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/steam@cn.mrs
+    telegram_domain:
+        behavior: domain
+        format: mrs
+        interval: 86400
+        path: ./ruleset/telegram.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/telegram.mrs
+    telegram_ip:
+        behavior: ipcidr
+        format: mrs
+        interval: 86400
+        path: ./ruleset/telegram_ip.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/telegram.mrs
+    tiktok_domain:
+        behavior: domain
+        format: mrs
+        interval: 86400
+        path: ./ruleset/tiktok.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/tiktok.mrs
+    trackerslist_domain:
+        behavior: domain
+        format: mrs
+        interval: 86400
+        path: ./ruleset/trackerslist.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/trackerslist.mrs
+    usd_domain:
+        behavior: domain
+        format: mrs
+        interval: 86400
+        path: ./ruleset/category-cryptocurrency.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-cryptocurrency.mrs
+    youtube_domain:
+        behavior: domain
+        format: mrs
+        interval: 86400
+        path: ./ruleset/youtube.mrs
+        proxy: DIRECT
+        type: http
+        url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/youtube.mrs
+proxies: []
+proxy-groups:
+    - empty-fallback: REJECT
+      icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin.png
+      include-all: true
+      interval: 188
+      lazy: true
+      name: 负载均衡轮询
+      strategy: round-robin
+      type: load-balance
+      url: https://cp.cloudflare.com/generate_204
+    - empty-fallback: REJECT
+      icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin_1.png
+      include-all: true
+      interval: 188
+      lazy: true
+      name: 负载均衡散列
+      strategy: consistent-hashing
+      type: load-balance
+      url: https://cp.cloudflare.com/generate_204
+    - empty-fallback: REJECT
+      icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/ULB.png
+      include-all: true
+      interval: 188
+      lazy: true
+      name: 故障转移
+      type: fallback
+      url: https://cp.cloudflare.com/generate_204
+    - icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Clubhouse.png
+      include-all: true
+      name: 手动选择
+      type: select
+    - empty-fallback: REJECT
+      icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+      include-all: true
+      interval: 188
+      lazy: true
+      name: 自动选择
+      tolerance: 38
+      type: url-test
+      url: https://cp.cloudflare.com/generate_204
+    - icon: https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/select.png
+      name: 默认代理
+      proxies:
+        - 自动选择
+        - 手动选择
+        - 故障转移
+        - 负载均衡散列
+        - 负载均衡轮询
+        - DIRECT
+        - REJECT-DROP
+        - REJECT
+      type: select
+    - icon: https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/final.png
+      name: 漏网之鱼
+      proxies:
+        - DIRECT
+        - 默认代理
+        - 自动选择
+        - 手动选择
+        - 故障转移
+        - 负载均衡散列
+        - 负载均衡轮询
+        - REJECT-DROP
+        - REJECT
+      type: select
+    - icon: https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/apple.png
+      name: Apple
+      proxies:
+        - 默认代理
+        - 自动选择
+        - 手动选择
+        - 故障转移
+        - 负载均衡散列
+        - 负载均衡轮询
+        - DIRECT
+        - REJECT-DROP
+        - REJECT
+      type: select
+    - icon: https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/douyin.png
+      name: TikTok
+      proxies:
+        - 默认代理
+        - 自动选择
+        - 手动选择
+        - 故障转移
+        - 负载均衡散列
+        - 负载均衡轮询
+        - DIRECT
+        - REJECT-DROP
+        - REJECT
+      type: select
+    - icon: https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/github.png
+      name: GitHub
+      proxies:
+        - 默认代理
+        - 自动选择
+        - 手动选择
+        - 故障转移
+        - 负载均衡散列
+        - 负载均衡轮询
+        - DIRECT
+        - REJECT-DROP
+        - REJECT
+      type: select
+    - icon: https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/ai.png
+      name: Ads
+      proxies:
+        - REJECT-DROP
+        - DIRECT
+        - REJECT
+      type: select
+    - default-selected:DIRECT: null
+      icon: https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/microsoft.png
+      name: Microsoft
+      proxies:
+        - 默认代理
+        - 自动选择
+        - 手动选择
+        - 故障转移
+        - 负载均衡散列
+        - 负载均衡轮询
+        - DIRECT
+        - REJECT-DROP
+        - REJECT
+      type: select
+    - icon: https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/wallet.png
+      name: Wallet
+      proxies:
+        - 默认代理
+        - 自动选择
+        - 手动选择
+        - 故障转移
+        - 负载均衡散列
+        - 负载均衡轮询
+        - DIRECT
+        - REJECT-DROP
+        - REJECT
+      type: select
+    - icon: https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/telegram.png
+      name: Telegram
+      proxies:
+        - 默认代理
+        - 自动选择
+        - 手动选择
+        - 故障转移
+        - 负载均衡散列
+        - 负载均衡轮询
+        - DIRECT
+        - REJECT-DROP
+        - REJECT
+      type: select
+    - icon: https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/google.png
+      name: Google
+      proxies:
+        - 默认代理
+        - 自动选择
+        - 手动选择
+        - 故障转移
+        - 负载均衡散列
+        - 负载均衡轮询
+        - DIRECT
+        - REJECT-DROP
+        - REJECT
+      type: select
+    - icon: https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/onedrive.png
+      name: OneDrive
+      proxies:
+        - 默认代理
+        - 自动选择
+        - 手动选择
+        - 故障转移
+        - 负载均衡散列
+        - 负载均衡轮询
+        - DIRECT
+        - REJECT-DROP
+        - REJECT
+      type: select
+    - icon: https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/steam.png
+      name: Steam
+      proxies:
+        - 默认代理
+        - 自动选择
+        - 手动选择
+        - 故障转移
+        - 负载均衡散列
+        - 负载均衡轮询
+        - DIRECT
+        - REJECT-DROP
+        - REJECT
+      type: select
+    - icon: https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/netflix.png
+      name: Games
+      proxies:
+        - 默认代理
+        - 自动选择
+        - 手动选择
+        - 故障转移
+        - 负载均衡散列
+        - 负载均衡轮询
+        - DIRECT
+        - REJECT-DROP
+        - REJECT
+      type: select
+    - icon: https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/netflix.png
+      name: NETFLIX
+      proxies:
+        - 默认代理
+        - 自动选择
+        - 手动选择
+        - 故障转移
+        - 负载均衡散列
+        - 负载均衡轮询
+        - DIRECT
+        - REJECT-DROP
+        - REJECT
+      type: select
+    - icon: https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/youtube.png
+      name: YouTube
+      proxies:
+        - 默认代理
+        - 自动选择
+        - 手动选择
+        - 故障转移
+        - 负载均衡散列
+        - 负载均衡轮询
+        - DIRECT
+        - REJECT-DROP
+        - REJECT
+      type: select
+    - icon: https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/ai.png
+      name: NetWorkTest
+      proxies:
+        - 默认代理
+        - 自动选择
+        - 手动选择
+        - 故障转移
+        - 负载均衡散列
+        - 负载均衡轮询
+        - DIRECT
+        - REJECT-DROP
+        - REJECT
+      type: select
+    - icon: https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/ai.png
+      name: AI
+      proxies:
+        - 默认代理
+        - 自动选择
+        - 手动选择
+        - 故障转移
+        - 负载均衡散列
+        - 负载均衡轮询
+        - DIRECT
+        - REJECT-DROP
+        - REJECT
+      type: select
+rules:
+    - AND,((RULE-SET,cn!_domain),(DST-PORT,443),(NETWORK,UDP)),REJECT
+    - DST-PORT,3478,REJECT
+    - DST-PORT,19302,REJECT
+    - DOMAIN-SUFFIX,now.com,默认代理
+    - DOMAIN-SUFFIX,now-tv.com,默认代理
+    - DOMAIN-SUFFIX,ovhcloud.com,默认代理
+    - DOMAIN-SUFFIX,852851.xyz,默认代理
+    - DOMAIN-SUFFIX,cdnipcs.com,默认代理
+    - DOMAIN-SUFFIX,tuta.com,默认代理
+    - IP-CIDR,38.58.176.207/32,默认代理,no-resolve
+    - IP-CIDR,51.77.133.124/32,默认代理,no-resolve
+    - DOMAIN-SUFFIX,789505.xyz,DIRECT
+    - DOMAIN-SUFFIX,707626.xyz,默认代理
+    - DOMAIN-SUFFIX,newl.zenfit.cfd,默认代理
+    - DOMAIN-SUFFIX,pixman.passwdwork.cc.cd,默认代理
+    - DOMAIN-SUFFIX,mpd.cc.cd,默认代理
+    - DOMAIN-SUFFIX,pixman.us.ci,默认代理
+    - DOMAIN-SUFFIX,test96.178.indevs.in,默认代理
+    - DOMAIN-SUFFIX,cloudflaremirrors.com,默认代理
+    - DOMAIN-SUFFIX,claude.ai,AI
+    - DOMAIN-SUFFIX,goiptv.de5.net,默认代理
+    - DOMAIN-SUFFIX,goiptv.us.ci,默认代理
+    - DOMAIN-SUFFIX,starhubgo.com,默认代理
+    - DOMAIN-SUFFIX,veloxmedia.co.uk,默认代理
+    - DOMAIN-SUFFIX,newtvsuper.com,默认代理
+    - DOMAIN-SUFFIX,catvod.com,默认代理
+    - IP-CIDR,50.7.158.194/32,默认代理,no-resolve
+    - IP-CIDR,103.102.135.231/24,默认代理,no-resolve
+    - DOMAIN-SUFFIX,z2u.com,默认代理
+    - DOMAIN-SUFFIX,amazonaws.com,默认代理
+    - DOMAIN-SUFFIX,nodeseek.com,默认代理
+    - DOMAIN-SUFFIX,go-iptv.ggff.net,默认代理
+    - DOMAIN-SUFFIX,tvb.com,默认代理
+    - DOMAIN-SUFFIX,stream-link.org,默认代理
+    - DOMAIN-SUFFIX,lioncdn.net,默认代理
+    - DOMAIN-SUFFIX,edgeware.tvb.com,默认代理
+    - DOMAIN-SUFFIX,cdn.hinet.net,默认代理
+    - DOMAIN-SUFFIX,858.qzz.io,默认代理
+    - DOMAIN-SUFFIX,bee.tzh911.qzz.io,默认代理
+    - DOMAIN-SUFFIX,cluster-cz5nqyh5nreq6ua6gaqd7okl7o.cloudworkstations.dev,默认代理
+    - DOMAIN-SUFFIX,hrtn.net,默认代理
+    - DOMAIN-SUFFIX,pendy.dpdns.org,默认代理
+    - DOMAIN-SUFFIX,diver.eu.org,默认代理
+    - DOMAIN-SUFFIX,wrod.diver.eu.org,默认代理
+    - DOMAIN-SUFFIX,judy.xx.kg,默认代理
+    - DOMAIN-SUFFIX,8plus.eu.org,默认代理
+    - DOMAIN-SUFFIX,ru8.dpdns.org,默认代理
+    - DOMAIN-SUFFIX,vip-tptv.xyz,默认代理
+    - DOMAIN-SUFFIX,passwdword.xyz,默认代理
+    - DOMAIN-SUFFIX,infini.money,默认代理
+    - DOMAIN-SUFFIX,hudsonvalleyhost.com,默认代理
+    - DOMAIN-KEYWORD,astro,默认代理
+    - DOMAIN-KEYWORD,wavve,默认代理
+    - DOMAIN-SUFFIX,r2.hfyrw.com,默认代理
+    - DOMAIN,fhnfile.oss-cn-shenzhen.aliyuncs.com,DIRECT
+    - DOMAIN-SUFFIX,115.com,DIRECT
+    - DOMAIN-SUFFIX,115cdn.com,DIRECT
+    - DOMAIN-SUFFIX,115cdn.net,DIRECT
+    - DOMAIN-SUFFIX,115img.com,DIRECT
+    - DOMAIN-SUFFIX,116cd.cn,DIRECT
+    - DOMAIN-SUFFIX,116cd.com,DIRECT
+    - DOMAIN-SUFFIX,116cd.net,DIRECT
+    - DOMAIN-SUFFIX,anxia.com,DIRECT
+    - DOMAIN-SUFFIX,sq.cc,DIRECT
+    - DOMAIN,ynuf.aliapp.org,DIRECT
+    - DOMAIN-SUFFIX,aliyun.com,DIRECT
+    - DOMAIN-SUFFIX,alipan.com,DIRECT
+    - DOMAIN-SUFFIX,alicdn.com,DIRECT
+    - DOMAIN-SUFFIX,aliyundrive.com,DIRECT
+    - DOMAIN-SUFFIX,aliyundrive.net,DIRECT
+    - DOMAIN-SUFFIX,alibaba.com,DIRECT
+    - DOMAIN-SUFFIX,quark.cn,DIRECT
+    - DOMAIN-SUFFIX,uc.cn,DIRECT
+    - DOMAIN-SUFFIX,taobao.com,DIRECT
+    - DOMAIN-SUFFIX,aliyuncs.com,DIRECT
+    - DOMAIN,himg.bdimg.com,DIRECT
+    - DOMAIN-SUFFIX,baidu.com,DIRECT
+    - DOMAIN-SUFFIX,bcebos.com,DIRECT
+    - DOMAIN-SUFFIX,bdstatic.com,DIRECT
+    - DOMAIN-SUFFIX,baidupcs.com,DIRECT
+    - DOMAIN,ux.21cn.com,DIRECT
+    - DOMAIN-SUFFIX,189.cn,DIRECT
+    - DOMAIN-SUFFIX,dlife.cn,DIRECT
+    - DOMAIN,static.xbase.cloud,DIRECT
+    - DOMAIN-SUFFIX,xunlei.com,DIRECT
+    - DOMAIN-SUFFIX,a.88cdn.com,DIRECT
+    - DOMAIN,www.123684.com,DIRECT
+    - DOMAIN,www.123912.com,DIRECT
+    - DOMAIN,www.123865.com,DIRECT
+    - DOMAIN,matomo4397.123245.com,DIRECT
+    - DOMAIN,umini.shujupie.com,DIRECT
+    - DOMAIN,123295.com,DIRECT
+    - DOMAIN-SUFFIX,cjjd19.com,DIRECT
+    - DOMAIN-SUFFIX,cnzz.com,DIRECT
+    - DOMAIN-KEYWORD,123pan.com,DIRECT
+    - DOMAIN-SUFFIX,139.com,DIRECT
+    - DOMAIN-SUFFIX,10086.cn,DIRECT
+    - DOMAIN-SUFFIX,cmecloud.cn,DIRECT
+    - DOMAIN-SUFFIX,cmicapm.com,DIRECT
+    - DOMAIN-SUFFIX,guangyapan.com,DIRECT
+    - DOMAIN-SUFFIX,guangyacdn.com,DIRECT
+    - DOMAIN-KEYWORD,wogg,DIRECT
+    - DOMAIN-KEYWORD,woggpan.888484.xyz,DIRECT
+    - DOMAIN,www.muoua.top,DIRECT
+    - DOMAIN-SUFFIX,333291.xyz,DIRECT
+    - DOMAIN-SUFFIX,666291.xyz,DIRECT
+    - DOMAIN,fmao.fun,DIRECT
+    - DOMAIN,www.mmpanpan.site,DIRECT
+    - DOMAIN-SUFFIX,xiaocgege.shop,DIRECT
+    - DOMAIN,tv.214521.xyz,DIRECT
+    - DOMAIN-KEYWORD,yydsys,DIRECT
+    - DOMAIN-KEYWORD,xhban,DIRECT
+    - IP-CIDR,103.40.14.172/32,DIRECT,no-resolve
+    - IP-CIDR,38.76.197.172/32,DIRECT,no-resolve
+    - DOMAIN,woog.nxog.fun,DIRECT
+    - DOMAIN,woog.430520.xyz,DIRECT
+    - DOMAIN,woog.nxog.eu.org,DIRECT
+    - DOMAIN,sd.sduc.site,DIRECT
+    - DOMAIN,shandian.blog,DIRECT
+    - DOMAIN,www.hjzhencai.top,DIRECT
+    - DOMAIN,www.huanjuanwp.shop,DIRECT
+    - DOMAIN-SUFFIX,webcast.hkstv.tv,DIRECT
+    - DOMAIN-SUFFIX,rthktv31-live.akamaized.net,DIRECT
+    - DOMAIN-SUFFIX,rthktv32-live.akamaized.net,DIRECT
+    - DOMAIN-SUFFIX,hlive.ktv.go.kr,DIRECT
+    - DOMAIN-SUFFIX,mgugaklive.nowcdn.co.kr,DIRECT
+    - DOMAIN-SUFFIX,php.jdshipin.com,默认代理
+    - DOMAIN-SUFFIX,163189.xyz,默认代理
+    - DOMAIN-SUFFIX,1678520.xyz,默认代理
+    - DOMAIN-SUFFIX,178.indevs.in,默认代理
+    - DOMAIN-SUFFIX,cdn.loc.cc,默认代理
+    - DOMAIN-SUFFIX,filegear-sg.me,默认代理
+    - DOMAIN-SUFFIX,live.264788.xyz,默认代理
+    - IP-CIDR,82.156.243.185/32,默认代理,no-resolve
+    - DOMAIN-SUFFIX,hanime1.me,默认代理
+    - DOMAIN-SUFFIX,hanimeone.me,默认代理
+    - DOMAIN-SUFFIX,hanime1.biz,默认代理
+    - DOMAIN-SUFFIX,hanime1.info,默认代理
+    - DOMAIN,ghfast.top,DIRECT
+    - DOMAIN,github-proxy.memory-echoes.cn,DIRECT
+    - DOMAIN,gh.927223.xyz,DIRECT
+    - DOMAIN,ghf.无名氏.top,DIRECT
+    - DOMAIN,github.dpik.top,DIRECT
+    - DOMAIN,ghproxy.net,DIRECT
+    - DOMAIN,gh-proxy.com,DIRECT
+    - DOMAIN,gh-proxy.org,DIRECT
+    - DOMAIN,githubproxy.cc,DIRECT
+    - DOMAIN,ghproxylist.com,DIRECT
+    - DOMAIN,cdn.gh-proxy.com,DIRECT
+    - DOMAIN,cdn.gh-proxy.org,DIRECT
+    - DOMAIN,v6.gh-proxy.org,DIRECT
+    - DOMAIN,api.github.com,默认代理
+    - DOMAIN,cdn.jsdelivr.net,DIRECT
+    - RULE-SET,private_ip,DIRECT,no-resolve
+    - RULE-SET,private_domain,DIRECT
+    - RULE-SET,networktest_domain,NetWorkTest
+    - RULE-SET,ads_domain,Ads
+    - RULE-SET,trackerslist_domain,DIRECT
+    - RULE-SET,applications_text,DIRECT
+    - RULE-SET,ai_domain,AI
+    - RULE-SET,youtube_domain,YouTube
+    - RULE-SET,google_domain,Google
+    - RULE-SET,github_domain,GitHub
+    - RULE-SET,onedrive_domain,OneDrive
+    - RULE-SET,microsoftcn_domain,DIRECT
+    - RULE-SET,microsoft_domain,Microsoft
+    - RULE-SET,applecn_domain,DIRECT
+    - RULE-SET,apple_domain,Apple
+    - RULE-SET,telegram_domain,Telegram
+    - RULE-SET,tiktok_domain,TikTok
+    - RULE-SET,netflix_domain,NETFLIX
+    - RULE-SET,paypal_domain,Wallet
+    - RULE-SET,binance_domain,Wallet
+    - RULE-SET,okx_domain,Wallet
+    - RULE-SET,usd_domain,Wallet
+    - RULE-SET,steamcn_domain,DIRECT
+    - RULE-SET,steam_domain,Steam
+    - RULE-SET,games-cn_domain,DIRECT
+    - RULE-SET,games_domain,Games
+    - RULE-SET,cn!_domain,默认代理
+    - RULE-SET,cn_domain,DIRECT
+    - RULE-SET,google_ip,Google,no-resolve
+    - RULE-SET,apple_ip,Apple,no-resolve
+    - RULE-SET,telegram_ip,Telegram,no-resolve
+    - RULE-SET,netflix_ip,NETFLIX,no-resolve
+    - RULE-SET,cn_ip,DIRECT,no-resolve
+    - MATCH,漏网之鱼
+sub-rules: {}
+listeners: []
+hosts:
+    localhost: 127.0.0.1
+    services.googleapis.cn: services.googleapis.com
+    time.android.com: 203.107.6.88
+    time.facebook.com: 203.107.6.88
+dns:
+    enable: true
+    prefer-h3: false
+    ipv6: true
+    ipv6-timeout: 100
+    use-hosts: true
+    use-system-hosts: true
+    respect-rules: true
+    nameserver:
+        - https://cloudflare-dns.com/dns-query   # 换成国外 DoH 做兜底
+        - https://dns.google/dns-query
+    fallback: []
+    fallback-filter:
+        geoip: true
+        geoip-code: CN
+        ipcidr: []
+        domain: []
+        geosite: []
+    fallback-lazy-query: false
+    listen: ""
+    listen-routing-mark: 0
+    enhanced-mode: fake-ip
+    fake-ip-range: 198.18.0.0/15
+    fake-ip-range6: ""
+    fake-ip-filter:
+        - +.gstatic.com
+        - +.miwifi.com
+        - +.miwifi.com
+        - +.market.xiaomi.com
+        - +.push.apple.com
+        - '*.lan'
+        - '*.localdomain'
+        - '*.example'
+        - '*.invalid'
+        - '*.localhost'
+        - '*.test'
+        - '*.local'
+        - '*.home.arpa'
+        - '*.direct'
+        - time.*.com
+        - time.*.gov
+        - time.*.edu.cn
+        - time.*.apple.com
+        - time-ios.apple.com
+        - time1.*.com
+        - time2.*.com
+        - time3.*.com
+        - time4.*.com
+        - time5.*.com
+        - time6.*.com
+        - time7.*.com
+        - ntp.*.com
+        - ntp1.*.com
+        - ntp2.*.com
+        - ntp3.*.com
+        - ntp4.*.com
+        - ntp5.*.com
+        - ntp6.*.com
+        - ntp7.*.com
+        - '*.time.edu.cn'
+        - '*.ntp.org.cn'
+        - +.pool.ntp.org
+        - time1.cloud.tencent.com
+        - music.163.com
+        - '*.music.163.com'
+        - '*.126.net'
+        - musicapi.taihe.com
+        - music.taihe.com
+        - songsearch.kugou.com
+        - trackercdn.kugou.com
+        - '*.kuwo.cn'
+        - api-jooxtt.sanook.com
+        - api.joox.com
+        - joox.com
+        - y.qq.com
+        - '*.y.qq.com'
+        - streamoc.music.tc.qq.com
+        - mobileoc.music.tc.qq.com
+        - isure.stream.qqmusic.qq.com
+        - dl.stream.qqmusic.qq.com
+        - aqqmusic.tc.qq.com
+        - amobile.music.tc.qq.com
+        - '*.xiami.com'
+        - '*.music.migu.cn'
+        - music.migu.cn
+        - +.msftconnecttest.com
+        - +.msftncsi.com
+        - localhost.ptlogin2.qq.com
+        - localhost.sec.qq.com
+        - localhost.*.weixin.qq.com
+        - +.kk-rays.com
+        - +.steamcontent.com
+        - +.srv.nintendo.net
+        - '*.n.n.srv.nintendo.net'
+        - +.cdn.nintendo.net
+        - xbox.*.*.microsoft.com
+        - '*.*.xboxlive.com'
+        - xbox.*.microsoft.com
+        - xnotify.xboxlive.com
+        - +.battle.net
+        - +.battlenet.com.cn
+        - +.wotgame.cn
+        - +.wggames.cn
+        - +.wowsgame.cn
+        - +.wargaming.net
+        - proxy.golang.org
+        - +.stun.*.*
+        - +.stun.*.*.*
+        - +.stun.*.*.*.*
+        - +.stun.*.*.*.*.*
+        - heartbeat.belkin.com
+        - '*.linksys.com'
+        - '*.linksyssmartwifi.com'
+        - '*.router.asus.com'
+        - mesu.apple.com
+        - swscan.apple.com
+        - swquery.apple.com
+        - swdownload.apple.com
+        - swcdn.apple.com
+        - swdist.apple.com
+        - lens.l.google.com
+        - na.b.g-tun.com
+        - '*.square-enix.com'
+        - '*.finalfantasyxiv.com'
+        - '*.ffxiv.com'
+        - '*.ff14.sdo.com'
+        - ff.dorado.sdo.com
+        - '*.mcdn.bilivideo.cn'
+        - +.media.dssott.com
+        - shark007.net
+        - Mijia Cloud
+        - +.market.xiaomi.com
+        - +.cmbchina.com
+        - +.cmbimg.com
+        - adguardteam.github.io
+        - adrules.top
+        - anti-ad.net
+        - local.adguard.org
+        - static.adtidy.org
+        - +.sandai.net
+        - +.n0808.com
+        - +.3gppnetwork.org
+        - +.uu.163.com
+        - ps.res.netease.com
+        - +.pub.3gppnetwork.org
+        - +.oray.com
+        - +.orayimg.com
+        - +.gcloudcs.com
+        - +.gcloudsdk.com
+        - +.dynv6.net
+        - rule-set:fakeipfilter_cn
+        - rule-set:fakeipfilter_!cn
+        - rule-set:private_domain
+        - rule-set:cn_domain
+        - rule-set:microsoftcn_domain
+        - rule-set:applecn_domain
+        - rule-set:steamcn_domain
+        - rule-set:games-cn_domain
+        - rule-set:applications_text
+        - rule-set:trackerslist_domain
+    fake-ip-filter-mode: blacklist
+    fake-ip-ttl: 1
+    default-nameserver:
+        - 223.5.5.5
+        - 119.29.29.29
+        - 2400:3200::1
+    cache-algorithm: arc
+    cache-max-size: 0
+    nameserver-policy:
+        ? rule-set:cn_domain,private_domain,fakeipfilter_cn,steamcn_domain,microsoftcn_domain,applecn_domain,games-cn_domain,applications_text,trackerslist_domain
+        :   - https://dns.alidns.com/dns-query#disable-qtype-65=true
+            - https://doh.pub/dns-query#disable-qtype-65=true
+        rule-set:fakeipfilter_!cn:
+            - https://cloudflare-dns.com/dns-query#disable-qtype-65=true
+            - https://dns.google/dns-query#disable-qtype-65=true
+    proxy-server-nameserver:
+        - 223.5.5.5
+        - 119.29.29.29
+    proxy-server-nameserver-policy: null
+    direct-nameserver:
+        - https://dns.alidns.com/dns-query
+        - https://doh.pub/dns-query
+    direct-nameserver-follow-policy: false
+ntp:
+    enable: true
+    server: time.apple.com
+    port: 123
+    interval: 30
+    dialer-proxy: ""
+    write-to-system: true
+tun:
+    enable: true
+    device: ""
+    stack: Mips
+    dns-mode: ""
+    dns-hijack:
+        - any:53
+        - tcp://any:53
+    auto-route: true
+    auto-detect-interface: true
+    mtu: 9000
+    gso: false
+    gso-max-size: 0
+    inet4-address:
+        - 198.18.0.0/30
+    inet6-address: []
+    iproute2-table-index: 0
+    iproute2-rule-index: 0
+    auto-redirect: false
+    auto-redirect-input-mark: 0
+    auto-redirect-output-mark: 0
+    auto-redirect-iproute2-fallback-rule-index: 0
+    loopback-address: []
+    strict-route: false
+    route-address: []
+    route-address-set: []
+    route-exclude-address: []
+    route-exclude-address-set:
+        - cn_ip
+    include-interface: []
+    exclude-interface: []
+    include-uid: []
+    include-uid-range: []
+    exclude-uid: []
+    exclude-uid-range: []
+    exclude-src-port: []
+    exclude-src-port-range: []
+    exclude-dst-port: []
+    exclude-dst-port-range: []
+    include-android-user: []
+    include-package: []
+    exclude-package: []
+    include-mac-address: []
+    exclude-mac-address: []
+    endpoint-independent-nat: false
+    udp-timeout: 0
+    icmp-timeout: 0
+    disable-icmp-forwarding: false
+    congestion-controller: ""
+    file-descriptor: 0
+    inet4-route-address: []
+    inet6-route-address: []
+    inet4-route-exclude-address: []
+    inet6-route-exclude-address: []
+    recvmsgx: true
+    sendmsgx: false
+    processors-per-channel: 1
+tuic-server:
+    enable: false
+    listen: ""
+    token: []
+    users: {}
+    certificate: ""
+    private-key: ""
+    congestion-controller: ""
+    max-idle-time: 15000
+    authentication-timeout: 1000
+    alpn:
+        - h3
+    max-udp-relay-packet-size: 1500
+    cwnd: 0
+iptables:
+    enable: false
+    inbound-interface: lo
+    bypass: []
+    dns-redirect: true
+experimental:
+    fingerprints: []
+    quic-go-disable-gso: false
+    quic-go-disable-ecn: true
+    dialer-ip4p-convert: false
+profile:
+    store-selected: true
+    store-fake-ip: true
+geox-url:
+    geoip: https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.dat
+    mmdb: https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.metadb
+    asn: https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/GeoLite2-ASN.mmdb
+    geosite: https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat
+sniffer:
+    enable: true
+    override-destination: false
+    sniffing: []
+    force-domain: []
+    skip-src-address: []
+    skip-dst-address: []
+    skip-domain:
+        - Mijia Cloud
+        - +.push.apple.com
+    port-whitelist: []
+    force-dns-mapping: false
+    parse-pure-ip: true
+    sniff:
+        HTTP:
+            ports:
+                - "80"
+                - 8080-8880
+            override-destination: true
+        QUIC:
+            ports:
+                - "443"
+                - "8443"
+            override-destination: null
+        TLS:
+            ports:
+                - "443"
+                - "8443"
+            override-destination: null
+tls:
+    certificate: ""
+    private-key: ""
+    client-auth-type: ""
+    client-auth-cert: ""
+    ech-key: ""
+    custom-certifactes: []
+clash-for-android:
+    append-system-dns: false
+    ui-subtitle-pattern: ""
