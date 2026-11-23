@@ -141,20 +141,19 @@ dns:
   fake-ip-range: 198.18.0.0/15
   fake-ip-range6: 2001:2::/64
   fake-ip-filter-mode: blacklist
-  respect-rules: true
+#  respect-rules: true  #下面#默认代理 可以替代掉
   use-hosts: true # 查询 hosts
   default-nameserver:
-    - 223.5.5.5
-    - 119.29.29.29
-    - 2400:3200::1
+    - https://223.5.5.5/dns-query
+    - https://119.29.29.29/dns-query
+#    - 2400:3200::1
 #    - system
   nameserver:
-    - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query
-#    - https://8.8.8.8/dns-query#默认代理&ecs=223.5.5.0/24
+    - https://1.1.1.1/dns-query#默认代理&disable-qtype-65=true
+    - https://8.8.8.8/dns-query#默认代理&disable-qtype-65=true
   proxy-server-nameserver:
-    - 223.5.5.5
-    - 119.29.29.29
+    - https://223.5.5.5/dns-query
+    - https://119.29.29.29/dns-query
   direct-nameserver:
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
@@ -163,9 +162,8 @@ dns:
     - https://dns.alidns.com/dns-query#disable-qtype-65=true
     - https://doh.pub/dns-query#disable-qtype-65=true
     "rule-set:fakeipfilter_!cn":
-    - https://cloudflare-dns.com/dns-query#disable-qtype-65=true
-    - https://dns.google/dns-query#disable-qtype-65=true
-#    - https://8.8.8.8/dns-query#默认代理&disable-qtype-65=true
+    - https://1.1.1.1/dns-query#默认代理&disable-qtype-65=true
+    - https://8.8.8.8/dns-query#默认代理&disable-qtype-65=true
   # fallback:
     # - https://8.8.8.8/dns-query#默认代理
   # fallback-filter:
