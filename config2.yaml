@@ -84,7 +84,7 @@ external-ui: ui
 external-ui-name: meta_xd
 external-ui-url: "https://raw.githubusercontent.com/juewuy/ShellCrash/update/bin/dashboard/meta_xd.tar.gz"
 
-#routing-mark: 7894 # 配置 fwmark 仅用于 Linux
+#routing-mark: 7894 # 配置 fwmark 仅用于 Linux 和route-exclude-address-set冲突
 
 #Hosts
 hosts:
@@ -105,9 +105,9 @@ tun:
   stack: mips   ##如果内核版本大于v1.19.31，此处可以改为自研协议栈 mips ，理论上性能更好。
   dns-hijack: ["any:53", "tcp://any:53"]
   auto-route: true
-  auto-redirect: true
+  auto-redirect: true  #仅支持 Linux，自动配置 iptables/nftables 重定向 TCP，需 auto-route 已启用
   auto-detect-interface: true
-  route-exclude-address-set:
+  route-exclude-address-set: #将规则集 IP 加入防火墙使其绕过路由，仅支持 Linux，且需要 nftables 以及 auto-route 和 auto-redirect 已启用
     - cn_ip
     
 # 流量嗅探
