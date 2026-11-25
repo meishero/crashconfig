@@ -1,25 +1,7 @@
-# 锚点配置
-rule-anchor:
-  # 节点
-  x-url-test:     &url-test     { type: url-test, url: "https://cp.cloudflare.com/generate_204", interval: 188, tolerance: 38, empty-fallback: REJECT, include-all: true, lazy: true }
-  x-load-balance: &load-balance { type: load-balance, url: "https://cp.cloudflare.com/generate_204", interval: 188, empty-fallback: REJECT, include-all: true, lazy: true }
-  x-fallback:     &fallback     { type: fallback, url: "https://cp.cloudflare.com/generate_204", interval: 188, empty-fallback: REJECT, include-all: true, lazy: true }
-  
-  # 策略组
-  x-oversea:      &oversea      {type: select, proxies:  [自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT]}
-  
-  # 规则集
-  x-rule-set-domain: &rule-set-domain { type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT }
-  x-rule-set-domain-text: &rule-set-domain-text { type: http, behavior: domain, format: text, interval: 86400, proxy: DIRECT }
-  x-rule-set-domain-classical: &rule-set-domain-classical { type: http, behavior: classical, format: text, interval: 86400, proxy: DIRECT }
-  x-rule-set-ipcidr: &rule-set-ipcidr { type: http, behavior: ipcidr, format: mrs, interval: 86400, proxy: DIRECT }
-
 # 代理提供者
 proxy-providers:
-  edgetunnel:
+  edgetunnel-dianxin:
     type: http
-    url: "https://www0802.meishero2.dpdns.org/sub?token=9b385e4587845a63994ce094f5caec54"
-    path: "./providers/edgetunnel.yaml"
     interval: 1500
     proxy: DIRECT
     empty-fallback: REJECT
@@ -28,15 +10,38 @@ proxy-providers:
       lazy: true
       url: "https://cp.cloudflare.com/generate_204"
       interval: 188
-# #并发测速为16
+      # 并发测速为16
       # concurrency: 16
-# #超时时间为1.5s   如果存在丢包重传 时间肯定比较大 扔掉那些丢包严重的
+      # 超时时间为1.5s，如果存在丢包重传，时间肯定比较大，扔掉那些丢包严重的
       # timeout: 1500
     override:
       udp: true
       skip-cert-verify: true
     filter: '(?i)^(?!.*(官方|剩余|重置|到期|防失联|官网|导航|客服|群|t.me|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|软件|装新|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Author|分享|bestcf.pages.dev)).*$'
-    
+    url: "https://www0802.meishero2.dpdns.org/sub?token=9b385e4587845a63994ce094f5caec54"
+    path: "./providers/edgetunnel-dianxin.yaml"
+
+  edgetunnel-yidong:
+    type: http
+    interval: 1500
+    proxy: DIRECT
+    empty-fallback: REJECT
+    health-check:
+      enable: true
+      lazy: true
+      url: "https://cp.cloudflare.com/generate_204"
+      interval: 188
+      # 并发测速为16
+      # concurrency: 16
+      # 超时时间为1.5s，如果存在丢包重传，时间肯定比较大，扔掉那些丢包严重的
+      # timeout: 1500
+    override:
+      udp: true
+      skip-cert-verify: true
+    filter: '(?i)^(?!.*(官方|剩余|重置|到期|防失联|官网|导航|客服|群|t.me|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|软件|装新|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Author|分享|bestcf.pages.dev)).*$'
+    url: "https://www0802.meishero3.dpdns.org/sub?token=100e27bda76c66ae91f9e09c3f78acda"
+    path: "./providers/edgetunnel-yidong.yaml"
+
 # 自定义代理节点
 proxies:
   # - name: "ss1"
@@ -58,14 +63,15 @@ skip-auth-prefixes:
   - ::1/128
 allow-lan: true
 bind-address: "*"
-ipv6: false
+ipv6: true
 unified-delay: true
 tcp-concurrent: true
 log-level: warning
 keep-alive-idle: 600
 keep-alive-interval: 15
+disable-keep-alive: false  # 禁用 TCP Keep Alive，false 即启用 Keep-Alive，连接保持开启，允许多个请求复用同一个 TCP 连接 #目前在android端强制为true
 #experimental: {quic-go-disable-gso: true} #默认false 只有 QUIC 节点异常时才设 true
-find-process-mode: 'off' #strict
+find-process-mode: 'strict' #strict
 profile:
   store-selected: true
   store-fake-ip: true
@@ -107,6 +113,7 @@ tun:
   auto-route: true
   auto-redirect: true  #仅支持 Linux，自动配置 iptables/nftables 重定向 TCP，需 auto-route 已启用
   auto-detect-interface: true
+  strict-route: true
   route-exclude-address-set: #将规则集 IP 加入防火墙使其绕过路由，仅支持 Linux，且需要 nftables 以及 auto-route 和 auto-redirect 已启用
     - cn_ip
     
@@ -127,6 +134,8 @@ sniffer:
   skip-domain:
     - "Mijia Cloud"
     - "+.push.apple.com"
+  force-domain:               # 强制进行嗅探的域名
+    - "+.v2ex.com"
 
 # DNS设置
 dns:
@@ -134,7 +143,7 @@ dns:
   cache-algorithm: arc
   listen: 0.0.0.0:53 # 开启 DNS 服务器监听
 #  prefer-h3: false # 是否开启 DoH 支持 HTTP/3，将并发尝试
-  ipv6: false
+  ipv6: true
 #  ipv6-timeout: 300 # 单位：ms，内部双栈并发时，向上游查询 AAAA 时，等待 AAAA 的时间，默认 100ms
   enhanced-mode: fake-ip
   fake-ip-ttl: 1
@@ -158,7 +167,7 @@ dns:
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
   nameserver-policy:
-    "rule-set:cn_domain,private_domain,fakeipfilter_cn,steamcn_domain,microsoftcn_domain,applecn_domain,games-cn_domain,applications_text,trackerslist_domain":
+    "rule-set:cn_domain,private_domain,fakeipfilter_cn,steamcn_domain,microsoftcn_domain,applecn_domain,gamescn_domain,applications_text,trackerslist_domain":
     - https://dns.alidns.com/dns-query#disable-qtype-65=true
     - https://doh.pub/dns-query#disable-qtype-65=true
     "rule-set:fakeipfilter_!cn":
@@ -170,133 +179,6 @@ dns:
     # geoip: true
     # geoip-code: CN
   fake-ip-filter:
-#666OS
-    - '+.gstatic.com'
-    - '+.miwifi.com'
-    - '+.miwifi.com'
-    - '+.market.xiaomi.com'
-    - '+.push.apple.com'
-#shellcrash
-    - '*.lan'
-    - '*.localdomain'
-    - '*.example'
-    - '*.invalid'
-    - '*.localhost'
-    - '*.test'
-    - '*.local'
-    - '*.home.arpa'
-    - '*.direct'
-    - 'time.*.com'
-    - 'time.*.gov'
-    - 'time.*.edu.cn'
-    - 'time.*.apple.com'
-    - 'time-ios.apple.com'
-    - 'time1.*.com'
-    - 'time2.*.com'
-    - 'time3.*.com'
-    - 'time4.*.com'
-    - 'time5.*.com'
-    - 'time6.*.com'
-    - 'time7.*.com'
-    - 'ntp.*.com'
-    - 'ntp1.*.com'
-    - 'ntp2.*.com'
-    - 'ntp3.*.com'
-    - 'ntp4.*.com'
-    - 'ntp5.*.com'
-    - 'ntp6.*.com'
-    - 'ntp7.*.com'
-    - '*.time.edu.cn'
-    - '*.ntp.org.cn'
-    - '+.pool.ntp.org'
-    - 'time1.cloud.tencent.com'
-    - 'music.163.com'
-    - '*.music.163.com'
-    - '*.126.net'
-    - 'musicapi.taihe.com'
-    - 'music.taihe.com'
-    - 'songsearch.kugou.com'
-    - 'trackercdn.kugou.com'
-    - '*.kuwo.cn'
-    - 'api-jooxtt.sanook.com'
-    - 'api.joox.com'
-    - 'joox.com'
-    - 'y.qq.com'
-    - '*.y.qq.com'
-    - 'streamoc.music.tc.qq.com'
-    - 'mobileoc.music.tc.qq.com'
-    - 'isure.stream.qqmusic.qq.com'
-    - 'dl.stream.qqmusic.qq.com'
-    - 'aqqmusic.tc.qq.com'
-    - 'amobile.music.tc.qq.com'
-    - '*.xiami.com'
-    - '*.music.migu.cn'
-    - 'music.migu.cn'
-    - '+.msftconnecttest.com'
-    - '+.msftncsi.com'
-    - 'localhost.ptlogin2.qq.com'
-    - 'localhost.sec.qq.com'
-    - 'localhost.*.weixin.qq.com'
-    - '+.kk-rays.com'
-    - '+.steamcontent.com'
-    - '+.srv.nintendo.net'
-    - '*.n.n.srv.nintendo.net'
-    - '+.cdn.nintendo.net'
-    - 'xbox.*.*.microsoft.com'
-    - '*.*.xboxlive.com'
-    - 'xbox.*.microsoft.com'
-    - 'xnotify.xboxlive.com'
-    - '+.battle.net'
-    - '+.battlenet.com.cn'
-    - '+.wotgame.cn'
-    - '+.wggames.cn'
-    - '+.wowsgame.cn'
-    - '+.wargaming.net'
-    - 'proxy.golang.org'
-    - '+.stun.*.*'
-    - '+.stun.*.*.*'
-    - '+.stun.*.*.*.*'
-    - '+.stun.*.*.*.*.*'
-    - 'heartbeat.belkin.com'
-    - '*.linksys.com'
-    - '*.linksyssmartwifi.com'
-    - '*.router.asus.com'
-    - 'mesu.apple.com'
-    - 'swscan.apple.com'
-    - 'swquery.apple.com'
-    - 'swdownload.apple.com'
-    - 'swcdn.apple.com'
-    - 'swdist.apple.com'
-    - 'lens.l.google.com'
-    - 'na.b.g-tun.com'
-    - '*.square-enix.com'
-    - '*.finalfantasyxiv.com'
-    - '*.ffxiv.com'
-    - '*.ff14.sdo.com'
-    - 'ff.dorado.sdo.com'
-    - '*.mcdn.bilivideo.cn'
-    - '+.media.dssott.com'
-    - 'shark007.net'
-    - 'Mijia Cloud'
-    - '+.market.xiaomi.com'
-    - '+.cmbchina.com'
-    - '+.cmbimg.com'
-    - 'adguardteam.github.io'
-    - 'adrules.top'
-    - 'anti-ad.net'
-    - 'local.adguard.org'
-    - 'static.adtidy.org'
-    - '+.sandai.net'
-    - '+.n0808.com'
-    - '+.3gppnetwork.org'
-    - '+.uu.163.com'
-    - 'ps.res.netease.com'
-    - '+.pub.3gppnetwork.org'
-    - '+.oray.com'
-    - '+.orayimg.com'
-    - '+.gcloudcs.com'
-    - '+.gcloudsdk.com'
-    - '+.dynv6.net'
 # qichiyu    
     - rule-set:fakeipfilter_cn
     - rule-set:fakeipfilter_!cn
@@ -305,51 +187,283 @@ dns:
     - rule-set:microsoftcn_domain
     - rule-set:applecn_domain
     - rule-set:steamcn_domain
-    - rule-set:games-cn_domain
+    - rule-set:gamescn_domain
     - rule-set:applications_text
     - rule-set:trackerslist_domain
     
 # 代理策略组
 proxy-groups:
   # 默认代理
-  - { name: 默认代理, type: select, proxies:  [自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/select.png"}
+  - name: 默认代理
+    type: select
+    proxies:
+      - 电信代理
+      - 移动代理
+      - DIRECT
+      - REJECT-DROP
+      - REJECT
+    icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/select.png"
 
-  # 自动选择
-  - { name: 自动选择,  type: url-test, url: "https://cp.cloudflare.com/generate_204", interval: 188, tolerance: 38, empty-fallback: REJECT, include-all: true, lazy: true , icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png }
- 
-  # 手动选择
-  - { name: 手动选择, type: select, include-all: true, icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Clubhouse.png }
-  
-  # 故障转移
-  - { name: 故障转移,  type: fallback, url: "https://cp.cloudflare.com/generate_204", interval: 188, empty-fallback: REJECT, include-all: true, lazy: true , icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ULB.png }
+  # 电信代理
+  - name: 电信代理
+    type: select
+    proxies:
+      - 电信自动选择
+      - 电信手动选择
+      - 电信故障转移
+      - 电信负载均衡散列
+      - 电信负载均衡轮询
+      - DIRECT
+      - REJECT-DROP
+      - REJECT
+    icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/select.png"
 
-  # 负载均衡散列
-  - { name: 负载均衡散列,  type: load-balance, url: "https://cp.cloudflare.com/generate_204", interval: 188, empty-fallback: REJECT, include-all: true, lazy: true , strategy: consistent-hashing, icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Round_Robin_1.png }
-  
-  # 负载均衡轮询
-  - { name: 负载均衡轮询,  type: load-balance, url: "https://cp.cloudflare.com/generate_204", interval: 188, empty-fallback: REJECT, include-all: true, lazy: true , strategy: round-robin, icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Round_Robin.png }
+  # 移动代理
+  - name: 移动代理
+    type: select
+    proxies:
+      - 移动自动选择
+      - 移动手动选择
+      - 移动故障转移
+      - 移动负载均衡散列
+      - 移动负载均衡轮询
+      - DIRECT
+      - REJECT-DROP
+      - REJECT
+    icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/select.png"
 
-  # 漏网之鱼
-  - { name: 漏网之鱼, type: select, proxies:  [DIRECT, 默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/final.png"}
+  # 电信自动选择
+  - name: 电信自动选择
+    type: url-test
+    url: "https://cp.cloudflare.com/generate_204"
+    interval: 188
+    tolerance: 38
+    empty-fallback: REJECT
+    use:
+      - edgetunnel-dianxin
+    lazy: true
+    timeout: 2000
+    max-failed-times: 3 # 默认 5 次，超过最大失败次数则触发一次强制健康检查
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png
 
+  # 电信手动选择
+  - name: 电信手动选择
+    type: select
+    use:
+      - edgetunnel-dianxin
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Clubhouse.png
 
-  # 路由策略
-  - {name: Ads, type: select, proxies:  [REJECT-DROP, DIRECT, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/ai.png"}
-  - {name: AI, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/ai.png"}
-  - {name: NetWorkTest, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/ai.png"}
-  - {name: YouTube, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/youtube.png"}
-  - {name: Google, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/google.png"}
-  - {name: GitHub, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/github.png"}
-  - {name: Telegram, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/telegram.png"}
-  - {name: TikTok, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/douyin.png"}
-  - {name: NETFLIX, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/netflix.png"}
-  - {name: Games, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/netflix.png"}
-  - {name: Wallet, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/wallet.png"}
-  - {name: Steam, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/steam.png"}
-  - {name: Microsoft, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], default-selected:DIRECT, icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/microsoft.png"}
-  - {name: OneDrive, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/onedrive.png"}
-  - {name: Apple, type: select, proxies:  [默认代理, 自动选择, 手动选择, 故障转移, 负载均衡散列, 负载均衡轮询, DIRECT, REJECT-DROP, REJECT], icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/apple.png"}
- 
+  # 电信故障转移
+  - name: 电信故障转移
+    type: fallback
+    url: "https://cp.cloudflare.com/generate_204"
+    interval: 188
+    empty-fallback: REJECT
+    use:
+      - edgetunnel-dianxin
+    lazy: true
+    timeout: 2000
+    max-failed-times: 3 # 默认 5 次，超过最大失败次数则触发一次强制健康检查
+    hidden: true
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ULB.png
+
+  # 电信负载均衡散列
+  - name: 电信负载均衡散列
+    type: load-balance
+    url: "https://cp.cloudflare.com/generate_204"
+    interval: 188
+    empty-fallback: REJECT
+    use:
+      - edgetunnel-dianxin
+    lazy: true
+    timeout: 2000
+    max-failed-times: 3 # 默认 5 次，超过最大失败次数则触发一次强制健康检查
+    hidden: true
+    strategy: consistent-hashing
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Round_Robin_1.png
+
+  # 电信负载均衡轮询
+  - name: 电信负载均衡轮询
+    type: load-balance
+    url: "https://cp.cloudflare.com/generate_204"
+    interval: 188
+    empty-fallback: REJECT
+    use:
+      - edgetunnel-dianxin
+    lazy: true
+    timeout: 2000
+    max-failed-times: 3 # 默认 5 次，超过最大失败次数则触发一次强制健康检查
+    hidden: true
+    strategy: round-robin
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Round_Robin.png
+
+  # 移动自动选择
+  - name: 移动自动选择
+    type: url-test
+    url: "https://cp.cloudflare.com/generate_204"
+    interval: 188
+    tolerance: 38
+    empty-fallback: REJECT
+    use:
+      - edgetunnel-yidong
+    lazy: true
+    timeout: 2000
+    max-failed-times: 3 # 默认 5 次，超过最大失败次数则触发一次强制健康检查
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png
+
+  # 移动手动选择
+  - name: 移动手动选择
+    type: select
+    use:
+      - edgetunnel-yidong
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Clubhouse.png
+
+  # 移动故障转移
+  - name: 移动故障转移
+    type: fallback
+    url: "https://cp.cloudflare.com/generate_204"
+    interval: 188
+    empty-fallback: REJECT
+    use:
+      - edgetunnel-yidong
+    lazy: true
+    timeout: 2000
+    max-failed-times: 3 # 默认 5 次，超过最大失败次数则触发一次强制健康检查
+    hidden: true
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ULB.png
+
+  # 移动负载均衡散列
+  - name: 移动负载均衡散列
+    type: load-balance
+    url: "https://cp.cloudflare.com/generate_204"
+    interval: 188
+    empty-fallback: REJECT
+    use:
+      - edgetunnel-yidong
+    lazy: true
+    timeout: 2000
+    max-failed-times: 3 # 默认 5 次，超过最大失败次数则触发一次强制健康检查
+    strategy: consistent-hashing
+    hidden: true
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Round_Robin_1.png
+
+  # 移动负载均衡轮询
+  - name: 移动负载均衡轮询
+    type: load-balance
+    url: "https://cp.cloudflare.com/generate_204"
+    interval: 188
+    empty-fallback: REJECT
+    use:
+      - edgetunnel-yidong
+    lazy: true
+    timeout: 2000
+    max-failed-times: 3 # 默认 5 次，超过最大失败次数则触发一次强制健康检查
+    strategy: round-robin
+    hidden: true
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Round_Robin.png
+
+  # 漏网之鱼 —— 定义 &full_list
+  - name: 漏网之鱼
+    type: select
+    proxies: &full_list
+      - 默认代理
+      - 电信代理
+      - 移动代理
+      - 电信自动选择
+      - 电信手动选择
+      - 电信故障转移
+      - 电信负载均衡散列
+      - 电信负载均衡轮询
+      - 移动自动选择
+      - 移动手动选择
+      - 移动故障转移
+      - 移动负载均衡散列
+      - 移动负载均衡轮询
+      - DIRECT
+      - REJECT-DROP
+      - REJECT
+    icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/final.png"
+
+  - name: Ads
+    type: select
+    proxies:
+      - REJECT-DROP
+      - PASS
+      - DIRECT
+      - REJECT
+    icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/ai.png"
+
+  - name: AI
+    type: select
+    proxies: *full_list
+    icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/ai.png"
+
+  - name: NetWorkTest
+    type: select
+    proxies: *full_list
+    icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/ai.png"
+
+  - name: YouTube
+    type: select
+    proxies: *full_list
+    icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/youtube.png"
+
+  - name: Google
+    type: select
+    proxies: *full_list
+    icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/google.png"
+
+  - name: GitHub
+    type: select
+    proxies: *full_list
+    icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/github.png"
+
+  - name: Telegram
+    type: select
+    proxies: *full_list
+    icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/telegram.png"
+
+  - name: TikTok
+    type: select
+    proxies: *full_list
+    icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/douyin.png"
+
+  - name: NETFLIX
+    type: select
+    proxies: *full_list
+    icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/netflix.png"
+
+  - name: Games
+    type: select
+    proxies: *full_list
+    icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/netflix.png"
+
+  - name: Wallet
+    type: select
+    proxies: *full_list
+    icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/wallet.png"
+
+  - name: Steam
+    type: select
+    proxies: *full_list
+    icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/steam.png"
+
+  - name: Microsoft
+    type: select
+    proxies: *full_list
+    default-selected: DIRECT
+    icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/microsoft.png"
+
+  - name: OneDrive
+    type: select
+    proxies: *full_list
+    icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/onedrive.png"
+
+  - name: Apple
+    type: select
+    proxies: *full_list
+    icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/apple.png"
+
 # 规则路由
 rules:
   - AND,((RULE-SET,cn!_domain),(DST-PORT,443),(NETWORK,UDP)),REJECT
@@ -423,116 +537,6 @@ rules:
   - DOMAIN-SUFFIX,r2.hfyrw.com,默认代理
   
   
-# NAME: PanVod
-# AUTHOR: eulac-dev
-# REPO: https://github.com/eulac-dev/Proxy
-# UPDATED: 2026-08-14  22:41
-# TOTAL: 47
-
-#115
-  - DOMAIN,fhnfile.oss-cn-shenzhen.aliyuncs.com,DIRECT
-  - DOMAIN-SUFFIX,115.com,DIRECT
-  - DOMAIN-SUFFIX,115cdn.com,DIRECT
-  - DOMAIN-SUFFIX,115cdn.net,DIRECT
-  - DOMAIN-SUFFIX,115img.com,DIRECT
-  - DOMAIN-SUFFIX,116cd.cn,DIRECT
-  - DOMAIN-SUFFIX,116cd.com,DIRECT
-  - DOMAIN-SUFFIX,116cd.net,DIRECT
-  - DOMAIN-SUFFIX,anxia.com,DIRECT
-  - DOMAIN-SUFFIX,sq.cc,DIRECT
-   
-#阿里/夸克/UC
-  - DOMAIN,ynuf.aliapp.org,DIRECT
-  - DOMAIN-SUFFIX,aliyun.com,DIRECT
-  - DOMAIN-SUFFIX,alipan.com,DIRECT
-  - DOMAIN-SUFFIX,alicdn.com,DIRECT
-  - DOMAIN-SUFFIX,aliyundrive.com,DIRECT
-  - DOMAIN-SUFFIX,aliyundrive.net,DIRECT
-  - DOMAIN-SUFFIX,alibaba.com,DIRECT
-  - DOMAIN-SUFFIX,quark.cn,DIRECT
-  - DOMAIN-SUFFIX,uc.cn,DIRECT
-  - DOMAIN-SUFFIX,taobao.com,DIRECT
-  - DOMAIN-SUFFIX,aliyuncs.com,DIRECT
-   
-#百度
-  - DOMAIN,himg.bdimg.com,DIRECT
-  - DOMAIN-SUFFIX,baidu.com,DIRECT
-  - DOMAIN-SUFFIX,bcebos.com,DIRECT
-  - DOMAIN-SUFFIX,bdstatic.com,DIRECT
-  - DOMAIN-SUFFIX,baidupcs.com,DIRECT
-   
-#天翼
-  - DOMAIN,ux.21cn.com,DIRECT
-  - DOMAIN-SUFFIX,189.cn,DIRECT
-  - DOMAIN-SUFFIX,dlife.cn,DIRECT
-   
-#迅雷
-  - DOMAIN,static.xbase.cloud,DIRECT
-  - DOMAIN-SUFFIX,xunlei.com,DIRECT
-  - DOMAIN-SUFFIX,a.88cdn.com,DIRECT
-   
-#123
-  - DOMAIN,www.123684.com,DIRECT
-  - DOMAIN,www.123912.com,DIRECT
-  - DOMAIN,www.123865.com,DIRECT
-  - DOMAIN,matomo4397.123245.com,DIRECT
-  - DOMAIN,umini.shujupie.com,DIRECT
-  - DOMAIN,123295.com,DIRECT
-  - DOMAIN-SUFFIX,cjjd19.com,DIRECT
-  - DOMAIN-SUFFIX,cnzz.com,DIRECT
-  - DOMAIN-KEYWORD,123pan.com,DIRECT
-   
-#移动云盘
-  - DOMAIN-SUFFIX,139.com,DIRECT
-  - DOMAIN-SUFFIX,10086.cn,DIRECT
-  - DOMAIN-SUFFIX,cmecloud.cn,DIRECT
-  - DOMAIN-SUFFIX,cmicapm.com,DIRECT
-   
-#光鸭
-  - DOMAIN-SUFFIX,guangyapan.com,DIRECT
-  - DOMAIN-SUFFIX,guangyacdn.com,DIRECT
-
-# NAME: ResourceSite
-# AUTHOR: eulac-dev
-# REPO: https://github.com/eulac-dev/Proxy
-# UPDATED: 2026-07-15  19:11
-# TOTAL: 22
-
-#玩偶哥哥
-  - DOMAIN-KEYWORD,wogg,DIRECT
-  - DOMAIN-KEYWORD,woggpan.888484.xyz,DIRECT
-#木偶
-  - DOMAIN,www.muoua.top,DIRECT
-  - DOMAIN-SUFFIX,333291.xyz,DIRECT
-  - DOMAIN-SUFFIX,666291.xyz,DIRECT
-
-#蜡笔
-  - DOMAIN,fmao.fun,DIRECT
-  - DOMAIN,www.mmpanpan.site,DIRECT
-  - DOMAIN-SUFFIX,xiaocgege.shop,DIRECT
-
-#多多
-  - DOMAIN,tv.214521.xyz,DIRECT
-  - DOMAIN-KEYWORD,yydsys,DIRECT
-   
-#虎斑#小斑
-  - DOMAIN-KEYWORD,xhban,DIRECT
-  - IP-CIDR,103.40.14.172/32,DIRECT,no-resolve
-  - IP-CIDR,38.76.197.172/32,DIRECT,no-resolve
-
-#欧歌
-  - DOMAIN,woog.nxog.fun,DIRECT
-  - DOMAIN,woog.430520.xyz,DIRECT
-  - DOMAIN,woog.nxog.eu.org,DIRECT
-  
-#闪电
-  - DOMAIN,sd.sduc.site,DIRECT
-  - DOMAIN,shandian.blog,DIRECT
-  
-#花卷
-  - DOMAIN,www.hjzhencai.top,DIRECT
-  - DOMAIN,www.huanjuanwp.shop,DIRECT
-
 #RTHK
   - DOMAIN-SUFFIX,webcast.hkstv.tv,DIRECT
   - DOMAIN-SUFFIX,rthktv31-live.akamaized.net,DIRECT
@@ -568,7 +572,6 @@ rules:
   - DOMAIN-SUFFIX,hanime1.biz,默认代理
   - DOMAIN-SUFFIX,hanime1.info,默认代理
    
-   
   - DOMAIN,ghfast.top,DIRECT
   - DOMAIN,github-proxy.memory-echoes.cn,DIRECT
   - DOMAIN,gh.927223.xyz,DIRECT
@@ -584,13 +587,17 @@ rules:
   - DOMAIN,v6.gh-proxy.org,DIRECT
   - DOMAIN,api.github.com,默认代理 
   - DOMAIN,cdn.jsdelivr.net,DIRECT
-  
+
+
+#规则集规则  
   - RULE-SET,private_ip,DIRECT,no-resolve
   - RULE-SET,private_domain,DIRECT
   - RULE-SET,networktest_domain,NetWorkTest
   - RULE-SET,ads_domain,Ads
   - RULE-SET,trackerslist_domain,DIRECT
-  - RULE-SET,applications_text,DIRECT    
+  - RULE-SET,applications_text,DIRECT  
+  - RULE-SET,PanVod,DIRECT,no-resolve
+  - RULE-SET,ResourceSite,DIRECT,no-resolve  
   - RULE-SET,ai_domain,AI
   - RULE-SET,youtube_domain,YouTube
   - RULE-SET,google_domain,Google
@@ -609,10 +616,11 @@ rules:
   - RULE-SET,usd_domain,Wallet
   - RULE-SET,steamcn_domain,DIRECT
   - RULE-SET,steam_domain,Steam
-  - RULE-SET,games-cn_domain,DIRECT
+  - RULE-SET,gamescn_domain,DIRECT
   - RULE-SET,games_domain,Games
   - RULE-SET,cn!_domain,默认代理
   - RULE-SET,cn_domain,DIRECT
+  
   - RULE-SET,google_ip,Google,no-resolve
   - RULE-SET,apple_ip,Apple,no-resolve
   - RULE-SET,telegram_ip,Telegram,no-resolve
@@ -623,41 +631,213 @@ rules:
   - MATCH,漏网之鱼
 
 # 规则集提供者
+# 规则集提供者
 rule-providers:
-  fakeipfilter_cn: {  type: http, behavior: domain, format: text, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/qichiyuhub/rule@main/rules/fakeipfilter-cn.list", path: "./ruleset/fakeipfilter-cn.list"}
-  fakeipfilter_!cn: {  type: http, behavior: domain, format: text, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/qichiyuhub/rule@main/rules/fakeipfilter-!cn.list", path: "./ruleset/fakeipfilter-!cn.list"}
-  private_domain: {  type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/private.mrs", path: "./ruleset/private.mrs"}
-  ai_domain: {  type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-ai-!cn.mrs", path: "./ruleset/category-ai-!cn.mrs"}
-  youtube_domain: {  type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/youtube.mrs", path: "./ruleset/youtube.mrs"}
-  google_domain: {  type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google.mrs", path: "./ruleset/google.mrs"}
-  github_domain: {  type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/github.mrs", path: "./ruleset/github.mrs"}
-  onedrive_domain: {  type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/onedrive.mrs", path: "./ruleset/onedrive.mrs"}
-  microsoftcn_domain: {  type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/microsoft@cn.mrs", path: "./ruleset/microsoft@cn.mrs"}
-  microsoft_domain: {  type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/microsoft.mrs", path: "./ruleset/microsoft.mrs"}
-  applecn_domain: {  type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/apple@cn.mrs", path: "./ruleset/apple@cn.mrs"}
-  apple_domain: {  type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/apple.mrs", path: "./ruleset/apple.mrs"}
-  telegram_domain: {  type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/telegram.mrs", path: "./ruleset/telegram.mrs"}
-  tiktok_domain: {  type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/tiktok.mrs", path: "./ruleset/tiktok.mrs"}
-  netflix_domain: {  type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/netflix.mrs", path: "./ruleset/netflix.mrs"}
-  paypal_domain: {  type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/paypal.mrs", path: "./ruleset/paypal.mrs"}
-  binance_domain: {  type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/binance.mrs", path: "./ruleset/binance.mrs"}
-  okx_domain: {  type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/okx.mrs", path: "./ruleset/okx.mrs"}
-  usd_domain: {  type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-cryptocurrency.mrs", path: "./ruleset/category-cryptocurrency.mrs"}
-  steamcn_domain: {  type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/steam@cn.mrs", path: "./ruleset/steam@cn.mrs"}
-  steam_domain: {  type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/steam.mrs", path: "./ruleset/steam.mrs"}
-  cn!_domain: {  type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/geolocation-!cn.mrs", path: "./ruleset/geolocation-!cn.mrs"}
-  cn_domain: {  type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/cn.mrs", path: "./ruleset/cn.mrs"}
+  # ===== domain + text =====
+  fakeipfilter_cn:
+    <<: &domain_text
+      type: http
+      interval: 86400
+      proxy: DIRECT
+      behavior: domain
+      format: text
+    url: "https://cdn.jsdelivr.net/gh/qichiyuhub/rule@main/rules/fakeipfilter-cn.list"
+    path: "./ruleset/fakeipfilter-cn.list"
 
-  games-cn_domain: {  type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/games-cn.mrs", path: "./ruleset/games-cn.mrs"}
-  games_domain: {  type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/games.mrs", path: "./ruleset/games.mrs"}
-  trackerslist_domain: {  type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/trackerslist.mrs", path: "./ruleset/trackerslist.mrs"}
-  applications_text: {  type: http, behavior: classical, format: text, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/applications.list", path: "./ruleset/applications.list"}
-  networktest_domain: {  type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/networktest.mrs", path: "./ruleset/networktest.mrs"}
-  ads_domain: {  type: http, behavior: domain, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/ads.mrs", path: "./ruleset/ads.mrs"}
+  fakeipfilter_!cn:
+    <<: *domain_text
+    url: "https://cdn.jsdelivr.net/gh/qichiyuhub/rule@main/rules/fakeipfilter-!cn.list"
+    path: "./ruleset/fakeipfilter-!cn.list"
 
-  google_ip: {  type: http, behavior: ipcidr, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/google.mrs", path: "./ruleset/google_ip.mrs"}
-  apple_ip: {  type: http, behavior: ipcidr, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo-lite/geoip/apple.mrs", path: "./ruleset/apple_ip.mrs"}
-  telegram_ip: {  type: http, behavior: ipcidr, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/telegram.mrs", path: "./ruleset/telegram_ip.mrs"}
-  netflix_ip: {  type: http, behavior: ipcidr, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/netflix.mrs", path: "./ruleset/netflix_ip.mrs"}
-  cn_ip: {  type: http, behavior: ipcidr, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/cn.mrs", path: "./ruleset/cn_ip.mrs"}
-  private_ip: {  type: http, behavior: ipcidr, format: mrs, interval: 86400, proxy: DIRECT , url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/private.mrs", path: "./ruleset/private_ip.mrs"}
+  # ===== domain + mrs =====
+  private_domain:
+    <<: &domain_mrs
+      type: http
+      interval: 86400
+      proxy: DIRECT
+      behavior: domain
+      format: mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/private.mrs"
+    path: "./ruleset/private.mrs"
+
+  ai_domain:
+    <<: *domain_mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-ai-!cn.mrs"
+    path: "./ruleset/category-ai-!cn.mrs"
+
+  youtube_domain:
+    <<: *domain_mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/youtube.mrs"
+    path: "./ruleset/youtube.mrs"
+
+  google_domain:
+    <<: *domain_mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google.mrs"
+    path: "./ruleset/google.mrs"
+
+  github_domain:
+    <<: *domain_mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/github.mrs"
+    path: "./ruleset/github.mrs"
+
+  onedrive_domain:
+    <<: *domain_mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/onedrive.mrs"
+    path: "./ruleset/onedrive.mrs"
+
+  microsoftcn_domain:
+    <<: *domain_mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/microsoft@cn.mrs"
+    path: "./ruleset/microsoft@cn.mrs"
+
+  microsoft_domain:
+    <<: *domain_mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/microsoft.mrs"
+    path: "./ruleset/microsoft.mrs"
+
+  applecn_domain:
+    <<: *domain_mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/apple@cn.mrs"
+    path: "./ruleset/apple@cn.mrs"
+
+  apple_domain:
+    <<: *domain_mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/apple.mrs"
+    path: "./ruleset/apple.mrs"
+
+  telegram_domain:
+    <<: *domain_mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/telegram.mrs"
+    path: "./ruleset/telegram.mrs"
+
+  tiktok_domain:
+    <<: *domain_mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/tiktok.mrs"
+    path: "./ruleset/tiktok.mrs"
+
+  netflix_domain:
+    <<: *domain_mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/netflix.mrs"
+    path: "./ruleset/netflix.mrs"
+
+  paypal_domain:
+    <<: *domain_mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/paypal.mrs"
+    path: "./ruleset/paypal.mrs"
+
+  binance_domain:
+    <<: *domain_mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/binance.mrs"
+    path: "./ruleset/binance.mrs"
+
+  okx_domain:
+    <<: *domain_mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/okx.mrs"
+    path: "./ruleset/okx.mrs"
+
+  usd_domain:
+    <<: *domain_mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-cryptocurrency.mrs"
+    path: "./ruleset/category-cryptocurrency.mrs"
+
+  steamcn_domain:
+    <<: *domain_mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/steam@cn.mrs"
+    path: "./ruleset/steam@cn.mrs"
+
+  steam_domain:
+    <<: *domain_mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/steam.mrs"
+    path: "./ruleset/steam.mrs"
+
+  cn!_domain:
+    <<: *domain_mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/geolocation-!cn.mrs"
+    path: "./ruleset/geolocation-!cn.mrs"
+
+  cn_domain:
+    <<: *domain_mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/cn.mrs"
+    path: "./ruleset/cn.mrs"
+
+  gamescn_domain:
+    <<: *domain_mrs
+        url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-games-cn.mrs"
+    path: "./ruleset/games-cn.mrs"
+
+  games_domain:
+    <<: *domain_mrs
+        url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-games.mrs"
+    path: "./ruleset/games.mrs"
+
+  trackerslist_domain:
+    <<: *domain_mrs
+    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/trackerslist.mrs"
+    path: "./ruleset/trackerslist.mrs"
+
+  networktest_domain:
+    <<: *domain_mrs
+    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/networktest.mrs"
+    path: "./ruleset/networktest.mrs"
+
+  ads_domain:
+    <<: *domain_mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-ads-all.mrs "
+    path: "./ruleset/ads.mrs"
+
+  # ===== classical + text =====
+  applications_text:
+    <<: &classical_text
+      type: http
+      interval: 86400
+      proxy: DIRECT
+      behavior: classical
+      format: text
+    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/applications.list"
+    path: "./ruleset/applications.list"
+
+  ResourceSite:
+    <<: *classical_text
+    url: "https://cdn.jsdelivr.net/gh/eulac-dev/Proxy@main/Shadowrocket/Rules/ResourceSite.list"
+    path: "./ruleset/ResourceSite.list"
+
+  PanVod:
+    <<: *classical_text
+    url: "https://cdn.jsdelivr.net/gh/eulac-dev/Proxy@main/Shadowrocket/Rules/PanVod.list"
+    path: "./ruleset/PanVod.list"
+
+  # ===== ipcidr + mrs =====
+  google_ip:
+    <<: &ipcidr_mrs
+      type: http
+      interval: 86400
+      proxy: DIRECT
+      behavior: ipcidr
+      format: mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/google.mrs"
+    path: "./ruleset/google_ip.mrs"
+
+  apple_ip:
+    <<: *ipcidr_mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo-lite/geoip/apple.mrs"
+    path: "./ruleset/apple_ip.mrs"
+
+  telegram_ip:
+    <<: *ipcidr_mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/telegram.mrs"
+    path: "./ruleset/telegram_ip.mrs"
+
+  netflix_ip:
+    <<: *ipcidr_mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/netflix.mrs"
+    path: "./ruleset/netflix_ip.mrs"
+
+  cn_ip:
+    <<: *ipcidr_mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/cn.mrs"
+    path: "./ruleset/cn_ip.mrs"
+
+  private_ip:
+    <<: *ipcidr_mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/private.mrs"
+    path: "./ruleset/private_ip.mrs"
