@@ -41,6 +41,27 @@ proxy-providers:
     filter: '(?i)^(?!.*(官方|剩余|重置|到期|防失联|官网|导航|客服|群|t.me|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|软件|装新|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Author|分享|bestcf.pages.dev)).*$'
     url: "https://www0802.meishero3.dpdns.org/sub?token=100e27bda76c66ae91f9e09c3f78acda"
     path: "./providers/edgetunnel-yidong.yaml"
+    
+  一元机场vip:
+    type: http
+    interval: 1500
+    proxy: DIRECT
+    empty-fallback: REJECT
+    health-check:
+      enable: true
+      lazy: true
+      url: "https://cp.cloudflare.com/generate_204"
+      interval: 188
+      # 并发测速为16
+      # concurrency: 16
+      # 超时时间为1.5s，如果存在丢包重传，时间肯定比较大，扔掉那些丢包严重的
+      # timeout: 1500
+    override:
+      udp: true
+      skip-cert-verify: true
+    filter: '(?i)^(?!.*(官方|剩余|重置|到期|防失联|官网|导航|客服|群|t.me|邀请|返利|循环|网站|网址|获取|订阅|流量|机场|软件|装新|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Author|分享|bestcf.pages.dev)).*$'
+    url: "https://y4ckkxagxaxxefca.duboji.vip/search?token=d79c9c76be87785bd68642b82156bdfe"
+    path: "./providers/一元机场vip.yaml"
 
 # 自定义代理节点
 proxies:
@@ -232,6 +253,17 @@ proxy-groups:
       - REJECT
     icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/select.png"
 
+  # 一元机场vip
+  - name: 一元机场vip
+    type: select
+    proxies:
+      - 一元机场vip自动选择
+      - 一元机场vip手动选择
+      - DIRECT
+      - REJECT-DROP
+      - REJECT
+    icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/select.png"
+    
   # 电信自动选择
   - name: 电信自动选择
     type: url-test
@@ -362,6 +394,27 @@ proxy-groups:
     hidden: true
     icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Round_Robin.png
 
+  # 一元机场vip自动选择
+  - name: 一元机场vip自动选择
+    type: url-test
+    url: "https://cp.cloudflare.com/generate_204"
+    interval: 188
+    tolerance: 38
+    empty-fallback: REJECT
+    use:
+      - 一元机场vip
+    lazy: true
+    timeout: 2000
+    max-failed-times: 3 # 默认 5 次，超过最大失败次数则触发一次强制健康检查
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png
+
+  # 一元机场vip手动选择
+  - name: 一元机场vip手动选择
+    type: select
+    use:
+      - 一元机场vip
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Clubhouse.png
+    
   # 漏网之鱼 —— 定义 &full_list
   - name: 漏网之鱼
     type: select
@@ -379,6 +432,8 @@ proxy-groups:
       - 移动故障转移
       - 移动负载均衡散列
       - 移动负载均衡轮询
+      - 一元机场vip自动选择
+      - 一元机场vip手动选择
       - DIRECT
       - REJECT-DROP
       - REJECT
