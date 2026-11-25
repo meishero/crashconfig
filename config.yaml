@@ -762,12 +762,12 @@ rule-providers:
 
   gamescn_domain:
     <<: *domain_mrs
-        url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-games-cn.mrs"
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-games-cn.mrs"
     path: "./ruleset/games-cn.mrs"
 
   games_domain:
     <<: *domain_mrs
-        url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-games.mrs"
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-games.mrs"
     path: "./ruleset/games.mrs"
 
   trackerslist_domain:
