@@ -220,6 +220,7 @@ proxy-groups:
     proxies:
       - 电信代理
       - 移动代理
+      - 一元机场vip代理
       - DIRECT
       - REJECT-DROP
       - REJECT
