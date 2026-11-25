@@ -4,7 +4,6 @@ proxy-providers:
     type: http
     interval: 1500
     proxy: DIRECT
-    empty-fallback: REJECT
     health-check:
       enable: true
       lazy: true
@@ -13,7 +12,7 @@ proxy-providers:
       # 并发测速为16
       # concurrency: 16
       # 超时时间为1.5s，如果存在丢包重传，时间肯定比较大，扔掉那些丢包严重的
-      # timeout: 1500
+      timeout: 1500
     override:
       udp: true
       skip-cert-verify: true
@@ -25,7 +24,6 @@ proxy-providers:
     type: http
     interval: 1500
     proxy: DIRECT
-    empty-fallback: REJECT
     health-check:
       enable: true
       lazy: true
@@ -34,7 +32,7 @@ proxy-providers:
       # 并发测速为16
       # concurrency: 16
       # 超时时间为1.5s，如果存在丢包重传，时间肯定比较大，扔掉那些丢包严重的
-      # timeout: 1500
+      timeout: 1500
     override:
       udp: true
       skip-cert-verify: true
@@ -46,7 +44,6 @@ proxy-providers:
     type: http
     interval: 1500
     proxy: DIRECT
-    empty-fallback: REJECT
     health-check:
       enable: true
       lazy: true
@@ -55,7 +52,7 @@ proxy-providers:
       # 并发测速为16
       # concurrency: 16
       # 超时时间为1.5s，如果存在丢包重传，时间肯定比较大，扔掉那些丢包严重的
-      # timeout: 1500
+      timeout: 1500
     override:
       udp: true
       skip-cert-verify: true
@@ -162,7 +159,7 @@ sniffer:
 dns:
   enable: true
   cache-algorithm: arc
-  listen: 0.0.0.0:53 # 开启 DNS 服务器监听
+  listen: 0.0.0.0:1053 # 开启 DNS 服务器监听
 #  prefer-h3: false # 是否开启 DoH 支持 HTTP/3，将并发尝试
   ipv6: true
 #  ipv6-timeout: 300 # 单位：ms，内部双栈并发时，向上游查询 AAAA 时，等待 AAAA 的时间，默认 100ms
@@ -523,8 +520,8 @@ proxy-groups:
 # 规则路由
 rules:
   - AND,((RULE-SET,cn!_domain),(DST-PORT,443),(NETWORK,UDP)),REJECT
-  - DST-PORT,3478,REJECT   #webrtc泄露 拒绝所有通过 3478 端口的 STUN 探测
-  - DST-PORT,19302,REJECT  #webrtc泄露 拒绝谷歌专用的 STUN 端口
+  - DST-PORT,3478,REJECT-DROP   #webrtc泄露 拒绝所有通过 3478 端口的 STUN 探测
+  - DST-PORT,19302,REJECT-DROP  #webrtc泄露 拒绝谷歌专用的 STUN 端口
 
   - DOMAIN-SUFFIX,googleapis.cn,Google      #Hosts已经添加了 这里保底
   - DOMAIN-SUFFIX,xn--ngstr-lra8j.com,Google #Google商店的东西
@@ -565,7 +562,7 @@ rules:
 # - IP-CIDR,123.51.231.132/32,默认代理,no-resolve
 # - IP-CIDR,60.250.121.103/32,默认代理,no-resolve
   - DOMAIN-SUFFIX,z2u.com,默认代理
-  - DOMAIN-SUFFIX,amazonaws.com,默认代理
+# - DOMAIN-SUFFIX,amazonaws.com,默认代理
   - DOMAIN-SUFFIX,nodeseek.com,默认代理
   - DOMAIN-SUFFIX,go-iptv.ggff.net,默认代理
   - DOMAIN-SUFFIX,tvb.com,默认代理
@@ -838,7 +835,7 @@ rule-providers:
 
   ads_domain:
     <<: *domain_mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-ads-all.mrs "
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-ads-all.mrs"
     path: "./ruleset/ads.mrs"
 
   # ===== classical + text =====
