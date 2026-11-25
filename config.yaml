@@ -254,7 +254,7 @@ proxy-groups:
     icon: "https://cdn.jsdelivr.net/gh/s0lnce/mofish-icon@main/mihomo/pure/corner/select.png"
 
   # 一元机场vip
-  - name: 一元机场vip
+  - name: 一元机场vip代理
     type: select
     proxies:
       - 一元机场vip自动选择
