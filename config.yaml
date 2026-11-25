@@ -2,13 +2,13 @@
 proxy-providers:
   edgetunnel-dianxin:
     type: http
-    interval: 1500
+    interval: 2100
     proxy: DIRECT
     health-check:
       enable: true
       lazy: true
       url: "https://cp.cloudflare.com/generate_204"
-      interval: 188
+      interval: 300
       # 并发测速为16
       # concurrency: 16
       # 超时时间为1.5s，如果存在丢包重传，时间肯定比较大，扔掉那些丢包严重的
@@ -22,13 +22,13 @@ proxy-providers:
 
   edgetunnel-yidong:
     type: http
-    interval: 1500
+    interval: 2100
     proxy: DIRECT
     health-check:
       enable: true
       lazy: true
       url: "https://cp.cloudflare.com/generate_204"
-      interval: 188
+      interval: 300
       # 并发测速为16
       # concurrency: 16
       # 超时时间为1.5s，如果存在丢包重传，时间肯定比较大，扔掉那些丢包严重的
@@ -42,13 +42,13 @@ proxy-providers:
     
   一元机场vip:
     type: http
-    interval: 1500
+    interval: 2100
     proxy: DIRECT
     health-check:
       enable: true
       lazy: true
       url: "https://cp.cloudflare.com/generate_204"
-      interval: 188
+      interval: 300
       # 并发测速为16
       # concurrency: 16
       # 超时时间为1.5s，如果存在丢包重传，时间肯定比较大，扔掉那些丢包严重的
@@ -266,13 +266,13 @@ proxy-groups:
   - name: 电信自动选择
     type: url-test
     url: "https://cp.cloudflare.com/generate_204"
-    interval: 188
+    interval: 300
     tolerance: 38
     empty-fallback: REJECT
     use:
       - edgetunnel-dianxin
     lazy: true
-    timeout: 2000
+    timeout: 1500
     max-failed-times: 3 # 默认 5 次，超过最大失败次数则触发一次强制健康检查
     icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png
 
@@ -287,12 +287,12 @@ proxy-groups:
   - name: 电信故障转移
     type: fallback
     url: "https://cp.cloudflare.com/generate_204"
-    interval: 188
+    interval: 300
     empty-fallback: REJECT
     use:
       - edgetunnel-dianxin
     lazy: true
-    timeout: 2000
+    timeout: 1500
     max-failed-times: 3 # 默认 5 次，超过最大失败次数则触发一次强制健康检查
     hidden: true
     icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ULB.png
@@ -301,12 +301,12 @@ proxy-groups:
   - name: 电信负载均衡散列
     type: load-balance
     url: "https://cp.cloudflare.com/generate_204"
-    interval: 188
+    interval: 300
     empty-fallback: REJECT
     use:
       - edgetunnel-dianxin
     lazy: true
-    timeout: 2000
+    timeout: 1500
     max-failed-times: 3 # 默认 5 次，超过最大失败次数则触发一次强制健康检查
     hidden: true
     strategy: consistent-hashing
@@ -316,12 +316,12 @@ proxy-groups:
   - name: 电信负载均衡轮询
     type: load-balance
     url: "https://cp.cloudflare.com/generate_204"
-    interval: 188
+    interval: 300
     empty-fallback: REJECT
     use:
       - edgetunnel-dianxin
     lazy: true
-    timeout: 2000
+    timeout: 1500
     max-failed-times: 3 # 默认 5 次，超过最大失败次数则触发一次强制健康检查
     hidden: true
     strategy: round-robin
@@ -331,13 +331,13 @@ proxy-groups:
   - name: 移动自动选择
     type: url-test
     url: "https://cp.cloudflare.com/generate_204"
-    interval: 188
+    interval: 300
     tolerance: 38
     empty-fallback: REJECT
     use:
       - edgetunnel-yidong
     lazy: true
-    timeout: 2000
+    timeout: 1500
     max-failed-times: 3 # 默认 5 次，超过最大失败次数则触发一次强制健康检查
     icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png
 
@@ -352,12 +352,12 @@ proxy-groups:
   - name: 移动故障转移
     type: fallback
     url: "https://cp.cloudflare.com/generate_204"
-    interval: 188
+    interval: 300
     empty-fallback: REJECT
     use:
       - edgetunnel-yidong
     lazy: true
-    timeout: 2000
+    timeout: 1500
     max-failed-times: 3 # 默认 5 次，超过最大失败次数则触发一次强制健康检查
     hidden: true
     icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ULB.png
@@ -366,12 +366,12 @@ proxy-groups:
   - name: 移动负载均衡散列
     type: load-balance
     url: "https://cp.cloudflare.com/generate_204"
-    interval: 188
+    interval: 300
     empty-fallback: REJECT
     use:
       - edgetunnel-yidong
     lazy: true
-    timeout: 2000
+    timeout: 1500
     max-failed-times: 3 # 默认 5 次，超过最大失败次数则触发一次强制健康检查
     strategy: consistent-hashing
     hidden: true
@@ -381,12 +381,12 @@ proxy-groups:
   - name: 移动负载均衡轮询
     type: load-balance
     url: "https://cp.cloudflare.com/generate_204"
-    interval: 188
+    interval: 300
     empty-fallback: REJECT
     use:
       - edgetunnel-yidong
     lazy: true
-    timeout: 2000
+    timeout: 1500
     max-failed-times: 3 # 默认 5 次，超过最大失败次数则触发一次强制健康检查
     strategy: round-robin
     hidden: true
@@ -396,13 +396,13 @@ proxy-groups:
   - name: 一元机场vip自动选择
     type: url-test
     url: "https://cp.cloudflare.com/generate_204"
-    interval: 188
+    interval: 300
     tolerance: 38
     empty-fallback: REJECT
     use:
       - 一元机场vip
     lazy: true
-    timeout: 2000
+    timeout: 1500
     max-failed-times: 3 # 默认 5 次，超过最大失败次数则触发一次强制健康检查
     icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png
 
