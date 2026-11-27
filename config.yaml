@@ -234,7 +234,7 @@ dns:
     - rule-set:steamcn_domain
     - rule-set:gamescn_domain
     - rule-set:applications_text
-#    - rule-set:trackerslist_domain
+    - rule-set:trackerslist_domain
     
 # 代理策略组
 proxy-groups:
@@ -674,7 +674,7 @@ rules:
   - RULE-SET,private_domain,DIRECT
   - RULE-SET,networktest_domain,NetWorkTest
   - RULE-SET,ads_domain,Ads
-#  - RULE-SET,trackerslist_domain,DIRECT
+  - RULE-SET,trackerslist_domain,DIRECT
   - RULE-SET,applications_text,DIRECT  
   - RULE-SET,PanVod,DIRECT,no-resolve
   - RULE-SET,ResourceSite,DIRECT,no-resolve  
